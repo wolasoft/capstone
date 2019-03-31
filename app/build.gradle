@@ -33,4 +33,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
+
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
