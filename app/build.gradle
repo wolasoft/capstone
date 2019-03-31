@@ -16,6 +16,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        paid {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.paid"
+            buildConfigField "String", "HOST", "\"\""
+        }
+
+        free {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.free"
+            buildConfigField "String", "HOST", "\"\""
+        }
+    }
 }
 
 dependencies {
@@ -36,4 +52,9 @@ dependencies {
 
     // gson
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 }

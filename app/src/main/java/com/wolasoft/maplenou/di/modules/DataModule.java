@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.di;
+package com.wolasoft.maplenou.di.modules;
 
 import android.content.Context;
 

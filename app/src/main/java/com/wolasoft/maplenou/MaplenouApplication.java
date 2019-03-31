@@ -3,7 +3,7 @@ package com.wolasoft.maplenou;
 import android.app.Application;
 
 import com.wolasoft.maplenou.di.AppComponent;
-import com.wolasoft.maplenou.di.ContextModule;
+import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.DaggerAppComponent;
 
 public class MaplenouApplication extends Application {
