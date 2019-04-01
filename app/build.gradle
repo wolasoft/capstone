@@ -57,4 +57,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // android arch room
+    implementation "android.arch.lifecycle:extensions:${rootProject.ext.lifeCycleVersion}"
+    annotationProcessor "android.arch.lifecycle:compiler:${rootProject.ext.lifeCycleVersion}"
+    implementation "android.arch.persistence.room:runtime:${rootProject.ext.lifeCycleVersion}"
+    annotationProcessor "android.arch.persistence.room:compiler:${rootProject.ext.lifeCycleVersion}"
 }
