@@ -16,6 +16,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        paid {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.paid"
+            buildConfigField "String", "HOST", "\"\""
+        }
+
+        free {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.free"
+            buildConfigField "String", "HOST", "\"\""
+        }
+    }
 }
 
 dependencies {
@@ -33,4 +49,18 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
+
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // android arch room
+    implementation "android.arch.lifecycle:extensions:${rootProject.ext.lifeCycleVersion}"
+    annotationProcessor "android.arch.lifecycle:compiler:${rootProject.ext.lifeCycleVersion}"
+    implementation "android.arch.persistence.room:runtime:${rootProject.ext.lifeCycleVersion}"
+    annotationProcessor "android.arch.persistence.room:compiler:${rootProject.ext.lifeCycleVersion}"
 }
