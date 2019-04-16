@@ -8,6 +8,8 @@ import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSourceFactory;
+import com.wolasoft.maplenou.ui.announcement.AnnouncementListFragment;
+import com.wolasoft.maplenou.ui.announcement.AnnouncementViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -25,5 +27,11 @@ public interface AppComponent {
     AnnouncementDataSource announcementDataSource();
     // data source factory
     AnnouncementDataSourceFactory announcementDataSourceFactory();
+    // view model factories
+    AnnouncementViewModelFactory announcementViewModelFactory();
 
+
+
+    // injection methods
+    void inject(AnnouncementListFragment fragment);
 }
