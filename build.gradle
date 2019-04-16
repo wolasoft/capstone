@@ -31,6 +31,7 @@ ext {
     compileSdkVersion = 28
     daggerVersion = "2.20"
     lifeCycleVersion = '2.0.0'
+    pagingVersion = '2.1.0'
     picassoVersion = "2.71828"
     retrofitVersion = "2.5.0"
     roomVersion = '2.0.0'

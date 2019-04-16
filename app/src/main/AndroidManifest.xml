@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wolasoft.maplenou">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MaplenouApplication"
         android:allowBackup="true"

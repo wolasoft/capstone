@@ -6,6 +6,8 @@ import com.wolasoft.maplenou.di.modules.ApiModule;
 import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
+import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSource;
+import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSourceFactory;
 
 import javax.inject.Singleton;
 
@@ -19,5 +21,9 @@ public interface AppComponent {
     AnnouncementService announcementService();
     // data repositories
     AnnouncementRepository announcementRepository();
+    //data sources
+    AnnouncementDataSource announcementDataSource();
+    // data source factory
+    AnnouncementDataSourceFactory announcementDataSourceFactory();
 
 }

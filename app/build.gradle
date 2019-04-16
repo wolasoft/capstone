@@ -66,4 +66,6 @@ dependencies {
     implementation "androidx.room:room-runtime:${rootProject.ext.roomVersion}"
     annotationProcessor "androidx.room:room-compiler:${rootProject.ext.roomVersion}"
 
+    //adding paging
+    implementation "androidx.paging:paging-runtime:${rootProject.ext.pagingVersion}"
 }
