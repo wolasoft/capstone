@@ -2,4 +2,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--list item-->
+    <dimen name="list_item_announcement_width">100dp</dimen>
+    <dimen name="list_item_announcement_height">90dp</dimen>
+
+    <!--spacers-->
+    <dimen name="spacer4">16dp</dimen>
 </resources>

@@ -5,4 +5,14 @@
     <string name="menu_title_add">Add</string>
     <string name="menu_title_message">Message</string>
     <string name="menu_title_person">Person</string>
+
+    <!-- label text -->
+    <string name="label_announcement_title">Title</string>
+    <string name="label_announcement_price">1000 F CFA</string>
+    <string name="label_announcement_category">Decoration</string>
+    <string name="label_announcement_city">Lomé</string>
+    <string name="label_announcement_creation_date">02/04/2019 à 23:45</string>
+
+    <!-- image view content description text -->
+    <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
 </resources>

@@ -32,6 +32,8 @@ android {
             buildConfigField "String", "HOST", "\"\""
         }
     }
+
+    dataBinding.enabled = true
 }
 
 dependencies {
@@ -59,6 +61,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // picasso
+    implementation "com.squareup.picasso:picasso:${rootProject.ext.picassoVersion}"
 
     // android arch room
     implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.lifeCycleVersion}"

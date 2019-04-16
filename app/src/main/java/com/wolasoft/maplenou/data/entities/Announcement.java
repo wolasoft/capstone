@@ -69,4 +69,44 @@ public class Announcement {
     public Category getCategory() {
         return category;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Announcement)) return false;
+
+        Announcement that = (Announcement) o;
+
+        if (id != that.id) return false;
+        if (price != that.price) return false;
+        if (!uuid.equals(that.uuid)) return false;
+        if (!title.equals(that.title)) return false;
+        if (!description.equals(that.description)) return false;
+        if (!localization.equals(that.localization)) return false;
+        if (!status.equals(that.status)) return false;
+        if (!creationDate.equals(that.creationDate)) return false;
+        if (!modificationDate.equals(that.modificationDate)) return false;
+        if (!deletionDate.equals(that.deletionDate)) return false;
+        if (!photos.equals(that.photos)) return false;
+        if (!category.equals(that.category)) return false;
+        return city.equals(that.city);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + uuid.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + price;
+        result = 31 * result + localization.hashCode();
+        result = 31 * result + status.hashCode();
+        result = 31 * result + creationDate.hashCode();
+        result = 31 * result + modificationDate.hashCode();
+        result = 31 * result + deletionDate.hashCode();
+        result = 31 * result + photos.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + category.hashCode();
+        return result;
+    }
 }
