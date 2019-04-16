@@ -1,6 +1,6 @@
 package com.wolasoft.maplenou.data.database;
 
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.RoomDatabase;
 
 //TODO uncomment
 /*@Database(
