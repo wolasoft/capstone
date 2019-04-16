@@ -16,6 +16,7 @@ public class Announcement {
     private Date deletionDate;
     private List<Photo> photos;
     private City city;
+    private Category category;
 
     public int getId() {
         return id;
@@ -63,5 +64,9 @@ public class Announcement {
 
     public City getCity() {
         return city;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }
