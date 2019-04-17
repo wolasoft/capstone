@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.wolasoft.maplenou"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -23,13 +23,13 @@ android {
         paid {
             dimension 'version'
             applicationId "com.wolasoft.maplenou.paid"
-            buildConfigField "String", "HOST", "\"\""
+            buildConfigField "String", "HOST", "\"http://5cadd57a845049001423bfe0.mockapi.io/api/v1/\""
         }
 
         free {
             dimension 'version'
             applicationId "com.wolasoft.maplenou.free"
-            buildConfigField "String", "HOST", "\"\""
+            buildConfigField "String", "HOST", "\"http://5cadd57a845049001423bfe0.mockapi.io/api/v1/\""
         }
     }
 
@@ -73,4 +73,7 @@ dependencies {
 
     //adding paging
     implementation "androidx.paging:paging-runtime:${rootProject.ext.pagingVersion}"
+
+    // others
+    implementation "org.apache.commons:commons-lang3:3.0"
 }

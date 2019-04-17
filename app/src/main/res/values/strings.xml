@@ -19,4 +19,13 @@
 
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
+
+    <!-- date format -->
+    <string name="date_format_simple_day">dd/mm/yyyy à hh:mm</string>
+    <string name="date_format_today">\'Ajourd\'\'hui\' \'à\' hh:mm</string>
+    <string name="date_format_year_day">EEEE d MMM \'à\' hh:mm</string>
+    <string name="date_format_yesterday">\'Hier\' \'à\' hh:mm</string>
+
+    <!-- currency -->
+    <string name="currency_cfa">F CFA</string>
 </resources>
