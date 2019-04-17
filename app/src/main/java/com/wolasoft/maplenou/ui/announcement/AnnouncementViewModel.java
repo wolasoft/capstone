@@ -14,7 +14,8 @@ public class AnnouncementViewModel extends ViewModel {
     public AnnouncementViewModel(AnnouncementDataSourceFactory dataSourceFactory) {
         PagedList.Config pagedListConfig =
                 (new PagedList.Config.Builder())
-                        .setEnablePlaceholders(false)
+                        .setEnablePlaceholders(true)
+                        .setInitialLoadSizeHint(AnnouncementDataSource.PAGE_SIZE)
                         .setPageSize(AnnouncementDataSource.PAGE_SIZE).build();
 
         this.itemPagedList = (new LivePagedListBuilder(dataSourceFactory, pagedListConfig))

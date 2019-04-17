@@ -10,6 +10,7 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.FragmentListAnnouncementBinding;
+import com.wolasoft.maplenou.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
@@ -30,6 +31,7 @@ public class AnnouncementListFragment extends Fragment implements
     @Inject
     public AnnouncementViewModelFactory factory;
     private AnnouncementAdapter adapter;
+    private AnnouncementViewModel announcementViewModel;
 
     public AnnouncementListFragment() { }
 
@@ -52,30 +54,34 @@ public class AnnouncementListFragment extends Fragment implements
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
 
-        adapter = new AnnouncementAdapter(this);
         initViews();
-
-        final AnnouncementViewModel announcementViewModel =
-                ViewModelProviders.of(this, factory).get(AnnouncementViewModel.class);
-
-        announcementViewModel.getItemPagedList()
-                .observe(this, new Observer<PagedList<Announcement>>() {
-            @Override
-            public void onChanged(@Nullable PagedList<Announcement> announcements) {
-                adapter.submitList(announcements);
-            }
-        });
 
         return dataBinding.getRoot();
     }
 
     private void initViews() {
-        dataBinding.emptyListHolder.setVisibility(View.GONE);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(
-                getContext(), RecyclerView.VERTICAL, false);
-        dataBinding.recyclerView.setLayoutManager(layoutManager);
-        dataBinding.recyclerView.setAdapter(adapter);
-        dataBinding.recyclerView.setHasFixedSize(true);
+        if (!NetworkUtils.isInternetAvailable(getContext())) {
+            dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+        } else {
+            dataBinding.networkErrorHolder.setVisibility(View.GONE);
+            adapter = new AnnouncementAdapter(this);
+
+            announcementViewModel =
+                    ViewModelProviders.of(this, factory).get(AnnouncementViewModel.class);
+            announcementViewModel.getItemPagedList()
+                    .observe(this, new Observer<PagedList<Announcement>>() {
+                        @Override
+                        public void onChanged(@Nullable PagedList<Announcement> announcements) {
+                            adapter.submitList(announcements);
+                        }
+                    });
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(
+                    getContext(), RecyclerView.VERTICAL, false);
+            dataBinding.recyclerView.setLayoutManager(layoutManager);
+            dataBinding.recyclerView.setAdapter(adapter);
+            dataBinding.recyclerView.setHasFixedSize(true);
+        }
     }
 
     @Override
