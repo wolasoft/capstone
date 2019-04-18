@@ -21,6 +21,9 @@
     <style name="subhead.text"><item name="android:textColor">@color/colorBlack</item></style>
     <style name="subhead.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="subhead.text.bold"><item name="android:textStyle">bold</item></style>
+    <style name="subhead.white"><item name="android:textColor">@color/colorWhite</item></style>
+    <style name="subhead.white.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
+    <style name="subhead.white.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
     <style name="body2.main"><item name="android:textColor">@color/colorPrimary</item></style>
@@ -29,6 +32,7 @@
     <style name="body2.text.bold"><item name="android:textStyle">bold</item></style>
     <style name="body2.light"><item name="android:textColor">@color/colorLight</item></style>
     <style name="body2.light.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
+    <style name="body2.white"><item name="android:textColor">@color/colorWhite</item></style>
 
     <style name="headline"><item name="android:textSize">@dimen/material_text_headline</item></style>
     <style name="headline.main"><item name="android:textColor">@color/colorPrimary</item></style>
