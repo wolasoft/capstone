@@ -10,18 +10,22 @@ import javax.inject.Inject;
 
 public class AnnouncementDataSourceFactory extends DataSource.Factory {
 
-    private MutableLiveData<PageKeyedDataSource<Integer, Announcement>> itemLiveDataSource ;
+    private MutableLiveData<AnnouncementDataSource> announcementLiveDataSource;
     private AnnouncementDataSource announcementDataSource;
 
     @Inject
     public AnnouncementDataSourceFactory(AnnouncementDataSource announcementDataSource) {
         this.announcementDataSource = announcementDataSource;
-        this.itemLiveDataSource = new MutableLiveData<>();
+        this.announcementLiveDataSource = new MutableLiveData<>();
     }
 
     @Override
     public DataSource<Integer, Announcement> create() {
-        itemLiveDataSource.postValue(announcementDataSource);
+        announcementLiveDataSource.postValue(announcementDataSource);
         return announcementDataSource;
+    }
+
+    public MutableLiveData<AnnouncementDataSource> getAnnouncementLiveDataSource() {
+        return announcementLiveDataSource;
     }
 }

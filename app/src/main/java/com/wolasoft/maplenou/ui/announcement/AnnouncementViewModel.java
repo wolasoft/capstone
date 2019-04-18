@@ -1,17 +1,27 @@
 package com.wolasoft.maplenou.ui.announcement;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
+import com.wolasoft.maplenou.data.api.LoadingState;
 import com.wolasoft.maplenou.data.entities.Announcement;
 
 public class AnnouncementViewModel extends ViewModel {
 
+    private AnnouncementDataSourceFactory dataSourceFactory;
     private LiveData<PagedList<Announcement>> itemPagedList;
+    private LiveData<LoadingState> progressLiveStatus;
 
     public AnnouncementViewModel(AnnouncementDataSourceFactory dataSourceFactory) {
+        this.dataSourceFactory = dataSourceFactory;
+        config();
+    }
+
+    private void config() {
         PagedList.Config pagedListConfig =
                 (new PagedList.Config.Builder())
                         .setEnablePlaceholders(true)
@@ -20,6 +30,14 @@ public class AnnouncementViewModel extends ViewModel {
 
         this.itemPagedList = (new LivePagedListBuilder(dataSourceFactory, pagedListConfig))
                 .build();
+
+        progressLiveStatus = Transformations.switchMap(
+                dataSourceFactory.getAnnouncementLiveDataSource(),
+                AnnouncementDataSource::getProgressLiveStatus);
+    }
+
+    public LiveData<LoadingState> getProgressLiveStatus() {
+        return progressLiveStatus;
     }
 
     public LiveData<PagedList<Announcement>> getItemPagedList() {

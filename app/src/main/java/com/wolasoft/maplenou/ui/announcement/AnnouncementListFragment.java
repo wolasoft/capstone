@@ -69,13 +69,27 @@ public class AnnouncementListFragment extends Fragment implements
             announcementViewModel =
                     ViewModelProviders.of(this, factory).get(AnnouncementViewModel.class);
             announcementViewModel.getItemPagedList()
-                    .observe(this, new Observer<PagedList<Announcement>>() {
-                        @Override
-                        public void onChanged(@Nullable PagedList<Announcement> announcements) {
-                            adapter.submitList(announcements);
-                        }
-                    });
+                    .observe(this, announcements -> adapter.submitList(announcements));
 
+            announcementViewModel.getProgressLiveStatus().observe(this, loadingState -> {
+                switch (loadingState) {
+                    case LOADING:
+                        dataBinding.progressBar.setVisibility(View.VISIBLE);
+                        return;
+                    case LOADED:
+                        dataBinding.progressBar.setVisibility(View.GONE);
+                        return;
+                    case ERROR:
+                        dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+                        return;
+                    case LOADING_MORE:
+                        return;
+                    case LOADED_MORE:
+                        return;
+                    case ERROR_LOADING_MORE:
+                        return;
+                }
+            });
             LinearLayoutManager layoutManager = new LinearLayoutManager(
                     getContext(), RecyclerView.VERTICAL, false);
             dataBinding.recyclerView.setLayoutManager(layoutManager);
