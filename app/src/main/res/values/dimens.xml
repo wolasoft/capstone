@@ -6,11 +6,15 @@
     <!--list item-->
     <dimen name="list_item_announcement_width">100dp</dimen>
     <dimen name="list_item_announcement_height">90dp</dimen>
+    <dimen name="list_item_announcement_padding">0dp</dimen>
+    <dimen name="list_item_announcement_padding_top">0dp</dimen>
 
     <!--spacers-->
+    <dimen name="spacer1">4dp</dimen>
     <dimen name="spacer4">16dp</dimen>
+    <dimen name="spacer16">64dp</dimen>
 
-    <dimen name="progress_bar_size">150dp</dimen>
+    <dimen name="progress_bar_size">125dp</dimen>
 
     <!--font sizes-->
     <dimen name="material_text_button">14sp</dimen>

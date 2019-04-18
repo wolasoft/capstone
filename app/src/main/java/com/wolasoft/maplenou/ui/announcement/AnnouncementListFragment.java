@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.ui.announcement;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,10 @@ import com.wolasoft.maplenou.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.paging.PagedList;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +31,9 @@ public class AnnouncementListFragment extends Fragment implements
     public AnnouncementViewModelFactory factory;
     private AnnouncementAdapter adapter;
     private AnnouncementViewModel announcementViewModel;
+    private RecyclerView.LayoutManager layoutManager;
+    private int orientation;
+    private boolean isTablet;
 
     public AnnouncementListFragment() { }
 
@@ -90,8 +92,21 @@ public class AnnouncementListFragment extends Fragment implements
                         return;
                 }
             });
-            LinearLayoutManager layoutManager = new LinearLayoutManager(
-                    getContext(), RecyclerView.VERTICAL, false);
+            isTablet = getContext().getResources().getBoolean(R.bool.is_tablet);
+            orientation = getContext().getResources().getConfiguration().orientation;
+            if (isTablet) {
+                int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+                layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
+            } else {
+                if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                    layoutManager = new LinearLayoutManager(
+                            getContext(), RecyclerView.VERTICAL, false);
+                } else {
+                    int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+                    layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
+                }
+            }
+
             dataBinding.recyclerView.setLayoutManager(layoutManager);
             dataBinding.recyclerView.setAdapter(adapter);
             dataBinding.recyclerView.setHasFixedSize(true);
