@@ -14,7 +14,7 @@
     <dimen name="spacer4">16dp</dimen>
     <dimen name="spacer16">64dp</dimen>
 
-    <dimen name="progress_bar_size">150dp</dimen>
+    <dimen name="progress_bar_size">125dp</dimen>
 
     <!--font sizes-->
     <dimen name="material_text_button">14sp</dimen>
