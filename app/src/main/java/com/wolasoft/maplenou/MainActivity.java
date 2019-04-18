@@ -1,15 +1,22 @@
 package com.wolasoft.maplenou;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wolasoft.maplenou.data.entities.Announcement;
+import com.wolasoft.maplenou.ui.announcement.AnnouncementListFragment;
 
-    private TextView mTextMessage;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+public class MainActivity extends AppCompatActivity implements
+        AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener {
+
+    private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
+    private FragmentManager fragmentManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,19 +25,15 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_announcement:
-                    mTextMessage.setText(R.string.menu_title_announcement);
+                    addOrReplaceFragment(AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG);
                     return true;
                 case R.id.navigation_favorite:
-                    mTextMessage.setText(R.string.menu_title_favorite);
                     return true;
                 case R.id.navigation_add:
-                    mTextMessage.setText(R.string.menu_title_add);
                     return true;
                 case R.id.navigation_message:
-                    mTextMessage.setText(R.string.menu_title_message);
                     return true;
                 case R.id.navigation_person:
-                    mTextMessage.setText(R.string.menu_title_person);
                     return true;
             }
             return false;
@@ -42,9 +45,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        fragmentManager = getSupportFragmentManager();
+        addOrReplaceFragment(AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG);
     }
 
+    @Override
+    public void onAnnouncementListFragmentInteraction(Announcement announcement) {
+
+    }
+
+    private void addOrReplaceFragment(Fragment fragment, String tag) {
+        fragmentManager.beginTransaction()
+                .add(R.id.fragment_container, fragment, tag)
+                //.addToBackStack(null)
+                .commit();
+    }
 }

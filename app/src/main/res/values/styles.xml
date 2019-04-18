@@ -8,4 +8,56 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Font family (size, color) -->
+    <style name="title"><item name="android:textSize">@dimen/material_text_title</item></style>
+    <style name="title.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="title.main.bold"><item name="android:textStyle">bold</item></style>
+    <style name="title.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="title.text.bold"><item name="android:textStyle">bold</item></style>
+
+    <style name="subhead"><item name="android:textSize">@dimen/material_text_subhead</item></style>
+    <style name="subhead.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="subhead.main.bold"><item name="android:textStyle">bold</item></style>
+    <style name="subhead.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="subhead.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
+    <style name="subhead.text.bold"><item name="android:textStyle">bold</item></style>
+
+    <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
+    <style name="body2.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="body2.main.bold"><item name="android:textStyle">bold</item></style>
+    <style name="body2.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="body2.text.bold"><item name="android:textStyle">bold</item></style>
+    <style name="body2.light"><item name="android:textColor">@color/colorLight</item></style>
+    <style name="body2.light.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
+
+    <style name="headline"><item name="android:textSize">@dimen/material_text_headline</item></style>
+    <style name="headline.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="headline.main.bold"><item name="android:textStyle">bold</item></style>
+    <style name="headline.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="headline.text.bold"><item name="android:textStyle">bold</item></style>
+
+    <style name="ListItemTitle" parent="subhead.text.medium">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItemPrice" parent="body2.main.bold">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItemCategory" parent="body2.text">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItemLocation" parent="body2.text">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItemDate" parent="body2.light">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>

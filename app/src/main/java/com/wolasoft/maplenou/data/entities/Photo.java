@@ -6,7 +6,7 @@ public class Photo {
     private int id;
     private String uuid;
     private String mimetype;
-    private byte[] file;
+    private String file;
     private String status;
     private Date creationDate;
     private Date modificationDate;
@@ -24,7 +24,7 @@ public class Photo {
         return mimetype;
     }
 
-    public byte[] getFile() {
+    public String getFile() {
         return file;
     }
 
