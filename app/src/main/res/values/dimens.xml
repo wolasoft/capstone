@@ -9,8 +9,13 @@
     <dimen name="list_item_announcement_padding">0dp</dimen>
     <dimen name="list_item_announcement_padding_top">0dp</dimen>
 
+    <!--announcement-->
+    <dimen name="announcement_details_image_width">0dp</dimen>
+    <dimen name="announcement_details_image_height">300dp</dimen>
+
     <!--spacers-->
     <dimen name="spacer1">4dp</dimen>
+    <dimen name="spacer2">8dp</dimen>
     <dimen name="spacer4">16dp</dimen>
     <dimen name="spacer16">64dp</dimen>
 
