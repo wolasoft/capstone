@@ -1,12 +1,11 @@
-package com.wolasoft.maplenou.ui.announcement;
-
-import androidx.lifecycle.MutableLiveData;
-import androidx.paging.DataSource;
-import androidx.paging.PageKeyedDataSource;
+package com.wolasoft.maplenou.ui.announcement.list;
 
 import com.wolasoft.maplenou.data.entities.Announcement;
 
 import javax.inject.Inject;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.paging.DataSource;
 
 public class AnnouncementDataSourceFactory extends DataSource.Factory {
 

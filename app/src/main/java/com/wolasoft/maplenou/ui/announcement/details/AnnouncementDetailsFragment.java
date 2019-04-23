@@ -68,7 +68,7 @@ public class AnnouncementDetailsFragment extends Fragment {
         } else {
             AnnouncementDetailsViewModel viewModel = ViewModelProviders.of(this, factory)
                     .get(AnnouncementDetailsViewModel.class);
-            viewModel.init("1");
+            viewModel.init(uuid);
             viewModel.getAnnouncementLiveData().observe(this, announcement -> {
                 setImageListener(announcement.getPhotos());
                 dataBinding.images.setPageCount(announcement.getPhotos().size());
@@ -81,8 +81,11 @@ public class AnnouncementDetailsFragment extends Fragment {
                 switch (loadingState) {
                     case ERROR:
                         dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+                        dataBinding.contentHolder.setVisibility(View.GONE);
                         return;
                     case LOADED:
+                        dataBinding.networkErrorHolder.setVisibility(View.GONE);
+                        dataBinding.contentHolder.setVisibility(View.VISIBLE);
                         return;
                 }
             });

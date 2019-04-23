@@ -1,8 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement;
-
-import androidx.lifecycle.MutableLiveData;
-import androidx.paging.PageKeyedDataSource;
-import androidx.annotation.NonNull;
+package com.wolasoft.maplenou.ui.announcement.list;
 
 import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.api.LoadingState;
@@ -11,6 +7,9 @@ import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.paging.PageKeyedDataSource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
