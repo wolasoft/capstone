@@ -1,7 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -25,6 +29,9 @@
     <style name="subhead.white.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="subhead.white.bold"><item name="android:textStyle">bold</item></style>
 
+    <style name="body1"><item name="android:textSize">@dimen/material_text_body1</item></style>
+    <style name="body1.text"><item name="android:textColor">@color/colorBlack</item></style>
+
     <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
     <style name="body2.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="body2.main.bold"><item name="android:textStyle">bold</item></style>
@@ -39,6 +46,12 @@
     <style name="headline.main.bold"><item name="android:textStyle">bold</item></style>
     <style name="headline.text"><item name="android:textColor">@color/colorBlack</item></style>
     <style name="headline.text.bold"><item name="android:textStyle">bold</item></style>
+
+    <style name="display1"><item name="android:textSize">@dimen/material_text_display1</item></style>
+    <style name="display1.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="display1.main.bold"><item name="android:textStyle">bold</item></style>
+    <style name="display1.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="display1.text.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="ListItemTitle" parent="subhead.text.medium">
         <item name="android:maxLines">1</item>
@@ -63,5 +76,32 @@
     <style name="ListItemDate" parent="body2.light">
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailsItemTitle" parent="title.text.bold"/>
+
+    <style name="DetailsItemPrice" parent="headline.main.bold">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemCategory" parent="subhead.text">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemLocation" parent="subhead.text">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemDate" parent="body2.main">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemDescriptionLabel" parent="subhead.text.bold">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailsItemDescription" parent="body1.text">
+        <item name="android:lineSpacingExtra">5dp</item>
     </style>
 </resources>

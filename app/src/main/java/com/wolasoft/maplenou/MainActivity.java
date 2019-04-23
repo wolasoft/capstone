@@ -1,11 +1,13 @@
 package com.wolasoft.maplenou;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementListFragment;
+import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,28 +19,25 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
     private FragmentManager fragmentManager;
+    boolean isTablet;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_announcement:
-                    addOrReplaceFragment(AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG);
-                    return true;
-                case R.id.navigation_favorite:
-                    return true;
-                case R.id.navigation_add:
-                    return true;
-                case R.id.navigation_message:
-                    return true;
-                case R.id.navigation_person:
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_announcement:
+                        addOrReplaceFragment(AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG);
+                        return true;
+                    case R.id.navigation_favorite:
+                        return true;
+                    case R.id.navigation_add:
+                        return true;
+                    case R.id.navigation_message:
+                        return true;
+                    case R.id.navigation_person:
+                        return true;
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +53,14 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onAnnouncementListFragmentInteraction(Announcement announcement) {
-
+        Intent intent = new Intent(this, AnnouncementDetailsActivity.class);
+        startActivity(intent);
     }
 
     private void addOrReplaceFragment(Fragment fragment, String tag) {
         fragmentManager.beginTransaction()
-                .add(R.id.fragment_container, fragment, tag)
-                //.addToBackStack(null)
+                .replace(R.id.fragment_container, fragment, tag)
+                .addToBackStack(null)
                 .commit();
     }
 }

@@ -5,9 +5,12 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface AnnouncementService {
     @GET("announcements")
     Call<ApiResponse<Announcement>> getAll(@Query("page") int page);
+    @GET("announcements/{uuid}")
+    Call<Announcement> getOne(@Path("uuid") String uuid);
 }

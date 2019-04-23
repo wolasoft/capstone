@@ -9,6 +9,8 @@ import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.ui.announcement.AnnouncementViewModelFactory;
+import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModel;
+import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -55,5 +57,12 @@ public class DataModule {
     AnnouncementViewModelFactory provideAnnouncementViewModelFactory(
             AnnouncementDataSourceFactory factory) {
         return new AnnouncementViewModelFactory(factory);
+    }
+
+    @Provides
+    @Singleton
+    AnnouncementDetailsViewModelFactory provideAnnouncementDetailsViewModelFactory(
+            AnnouncementRepository repository) {
+        return new AnnouncementDetailsViewModelFactory(repository);
     }
 }

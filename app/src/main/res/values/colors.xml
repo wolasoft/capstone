@@ -8,4 +8,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorLight">#707070</color>
     <color name="colorUltraLightGrey">#EFEFEF</color>
+    <color name="colorAppBarTransparency">#10000000</color>
 </resources>
