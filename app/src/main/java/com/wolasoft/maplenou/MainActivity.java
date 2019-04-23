@@ -2,14 +2,12 @@ package com.wolasoft.maplenou;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
-import com.wolasoft.maplenou.ui.announcement.AnnouncementListFragment;
+import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsActivity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

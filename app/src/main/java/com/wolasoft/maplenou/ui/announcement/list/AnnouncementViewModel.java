@@ -1,14 +1,13 @@
-package com.wolasoft.maplenou.ui.announcement;
+package com.wolasoft.maplenou.ui.announcement.list;
+
+import com.wolasoft.maplenou.data.api.LoadingState;
+import com.wolasoft.maplenou.data.entities.Announcement;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
-
-import com.wolasoft.maplenou.data.api.LoadingState;
-import com.wolasoft.maplenou.data.entities.Announcement;
 
 public class AnnouncementViewModel extends ViewModel {
 

@@ -6,10 +6,9 @@ import com.google.gson.Gson;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
-import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSource;
-import com.wolasoft.maplenou.ui.announcement.AnnouncementDataSourceFactory;
-import com.wolasoft.maplenou.ui.announcement.AnnouncementViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModel;
+import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
+import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
+import com.wolasoft.maplenou.ui.announcement.list.AnnouncementViewModelFactory;
 import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
 
 import javax.inject.Singleton;

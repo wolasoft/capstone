@@ -1,12 +1,12 @@
 package com.wolasoft.maplenou.ui.announcement.details;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.wolasoft.maplenou.R;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class AnnouncementDetailsActivity extends AppCompatActivity {
 

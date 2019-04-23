@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement;
+package com.wolasoft.maplenou.ui.announcement.list;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
