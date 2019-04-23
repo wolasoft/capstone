@@ -15,9 +15,9 @@
 
         <include
             android:id="@+id/appBarContent"
+            layout="@layout/transparent_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/transparent_app_bar"/>
+            android:layout_height="wrap_content" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -25,98 +25,103 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/spacer4">
 
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/images"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/announcement_details_image_height"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@string/content_description_list_item_announcement_images"
                     android:fitsSystemWindows="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    tools:src="@drawable/ic_photo_camera_black_24dp"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_photo_camera_black_24dp" />
 
                 <TextView
                     android:id="@+id/title"
+                    style="@style/DetailsItemTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/announcement_details_padding"
+                    android:layout_marginLeft="@dimen/announcement_details_padding"
+                    android:layout_marginTop="@dimen/spacer4"
+                    android:layout_marginEnd="@dimen/announcement_details_padding"
+                    android:layout_marginRight="@dimen/announcement_details_padding"
+                    android:layout_marginBottom="@dimen/spacer4"
                     android:text="@{announcement.title}"
-                    style="@style/DetailsItemTitle"
-                    android:layout_margin="@dimen/spacer4"
-                    app:layout_constraintTop_toBottomOf="@id/images"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/images"
                     tools:text="@string/label_announcement_title" />
 
                 <TextView
                     android:id="@+id/price"
+                    style="@style/DetailsItemPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    style="@style/DetailsItemPrice"
                     app:amount="@{announcement.price}"
-                    app:layout_constraintTop_toBottomOf="@id/title"
-                    app:layout_constraintStart_toStartOf="@id/title"
-                    app:layout_constraintLeft_toLeftOf="@id/title"
                     app:layout_constraintEnd_toEndOf="@id/title"
+                    app:layout_constraintLeft_toLeftOf="@id/title"
                     app:layout_constraintRight_toRightOf="@id/title"
-                    tools:text="@string/label_announcement_price"/>
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    tools:text="@string/label_announcement_price" />
 
                 <TextView
                     android:id="@+id/creationDate"
+                    style="@style/DetailsItemDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/DetailsItemDate"
                     android:layout_marginBottom="@dimen/spacer4"
-                    app:layout_constraintTop_toBottomOf="@id/price"
-                    app:layout_constraintStart_toStartOf="@id/title"
                     app:layout_constraintLeft_toLeftOf="@id/title"
-                    tools:text="@string/label_announcement_creation_date"/>
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@id/price"
+                    tools:text="@string/label_announcement_creation_date" />
 
                 <TextView
                     android:id="@+id/user"
+                    style="@style/DetailsItemDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/DetailsItemDate"
                     android:gravity="end"
-                    app:layout_constraintTop_toTopOf="@id/creationDate"
                     app:layout_constraintBottom_toBottomOf="@id/creationDate"
                     app:layout_constraintEnd_toEndOf="@id/title"
                     app:layout_constraintRight_toRightOf="@id/title"
-                    tools:text="@string/label_announcement_user"/>
+                    app:layout_constraintTop_toTopOf="@id/creationDate"
+                    tools:text="@string/label_announcement_user" />
 
                 <TextView
                     android:id="@+id/descriptionLabel"
+                    style="@style/DetailsItemDescriptionLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_announcement_description"
-                    style="@style/DetailsItemDescriptionLabel"
                     android:layout_marginTop="@dimen/spacer4"
-                    app:layout_constraintTop_toBottomOf="@id/creationDate"
-                    app:layout_constraintStart_toStartOf="@id/creationDate"
+                    android:text="@string/label_announcement_description"
                     app:layout_constraintLeft_toLeftOf="@id/creationDate"
-                    tools:text="@string/label_announcement_description"/>
+                    app:layout_constraintStart_toStartOf="@id/creationDate"
+                    app:layout_constraintTop_toBottomOf="@id/creationDate"
+                    tools:text="@string/label_announcement_description" />
 
                 <TextView
                     android:id="@+id/description"
+                    style="@style/DetailsItemDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{announcement.description}"
-                    style="@style/DetailsItemDescription"
                     android:layout_marginTop="@dimen/spacer2"
-                    app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
-                    app:layout_constraintStart_toStartOf="@id/title"
-                    app:layout_constraintLeft_toLeftOf="@id/title"
+                    android:text="@{announcement.description}"
                     app:layout_constraintEnd_toEndOf="@id/title"
+                    app:layout_constraintLeft_toLeftOf="@id/title"
                     app:layout_constraintRight_toRightOf="@id/title"
-                    tools:text="@string/large_text"/>
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
+                    tools:text="@string/large_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,19 +129,19 @@
 
         <include
             android:id="@+id/networkErrorHolder"
+            layout="@layout/network_error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            tools:visibility="visible"
-            layout="@layout/network_error"/>
+            tools:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="@dimen/progress_bar_size"
             android:layout_height="@dimen/progress_bar_size"
+            android:layout_gravity="center"
             android:visibility="visible"
-            tools:visibility="visible"
-            android:layout_gravity="center"/>
+            tools:visibility="visible" />
 
     </FrameLayout>
 

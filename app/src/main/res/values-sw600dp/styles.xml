@@ -8,4 +8,31 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
+
+    <style name="DetailsItemTitle" parent="display1.text.bold"/>
+
+    <style name="DetailsItemPrice" parent="headline.main.bold">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemCategory" parent="title.text">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemLocation" parent="title.text">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemDate" parent="subhead.main">
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DetailsItemDescriptionLabel" parent="headline.text.bold">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailsItemDescription" parent="title.text">
+        <item name="android:lineSpacingExtra">5dp</item>
+    </style>
 </resources>

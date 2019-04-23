@@ -11,7 +11,8 @@
 
     <!--announcement-->
     <dimen name="announcement_details_image_width">0dp</dimen>
-    <dimen name="announcement_details_image_height">300dp</dimen>
+    <dimen name="announcement_details_image_height">350dp</dimen>
+    <dimen name="announcement_details_padding">@dimen/spacer4</dimen>
 
     <!--spacers-->
     <dimen name="spacer1">4dp</dimen>
