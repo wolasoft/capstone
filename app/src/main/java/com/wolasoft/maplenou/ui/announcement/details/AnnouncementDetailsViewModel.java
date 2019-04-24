@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 public class AnnouncementDetailsViewModel extends ViewModel {
     private LiveData<Announcement> announcementLiveData;
+    private LiveData<Announcement> dbAnnouncementLiveData;
     private LiveData<LoadingState> progressLiveStatus;
     private AnnouncementRepository repository;
 
@@ -21,8 +22,9 @@ public class AnnouncementDetailsViewModel extends ViewModel {
             return;
         }
 
-        announcementLiveData = this.repository.getByUuid(uuid);
+        announcementLiveData = this.repository.fetchOneFromApi(uuid);
         progressLiveStatus = this.repository.getFetchOneLiveStatus();
+        dbAnnouncementLiveData = this.repository.fetchOneFromDb(uuid);
     }
 
     public LiveData<Announcement> getAnnouncementLiveData() {
@@ -31,5 +33,9 @@ public class AnnouncementDetailsViewModel extends ViewModel {
 
     public LiveData<LoadingState> getProgressLiveStatus() {
         return progressLiveStatus;
+    }
+
+    public LiveData<Announcement> getDbAnnouncementLiveData() {
+        return dbAnnouncementLiveData;
     }
 }

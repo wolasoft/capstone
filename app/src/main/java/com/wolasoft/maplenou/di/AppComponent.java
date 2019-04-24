@@ -7,6 +7,7 @@ import com.wolasoft.maplenou.di.modules.ApiModule;
 import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
+import com.wolasoft.maplenou.di.modules.UtilsModule;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
@@ -20,7 +21,8 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {
-        ApiModule.class, ContextModule.class, DataModule.class, DatabaseModule.class})
+        ApiModule.class, ContextModule.class, DataModule.class, DatabaseModule.class,
+        UtilsModule.class})
 public interface AppComponent {
     // api service
     AnnouncementService announcementService();

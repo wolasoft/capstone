@@ -19,6 +19,10 @@
     <string name="label_announcement_description">Description</string>
     <string name="label_announcement_user">Kwami K.</string>
 
+    <!-- announcement details -->
+    <string name="announcement_details_message_announcement_unsaved">Supprimé comme favoris</string>
+    <string name="announcement_details_message_announcement_saved">Ajouté comme favoris</string>
+
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
     <string name="content_description_list_item_announcement_images">Announcement images</string>
