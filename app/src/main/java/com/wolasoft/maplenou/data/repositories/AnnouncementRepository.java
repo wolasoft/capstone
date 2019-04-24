@@ -1,8 +1,11 @@
 package com.wolasoft.maplenou.data.repositories;
 
+import android.util.Log;
+
 import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.api.LoadingState;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
+import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.entities.Announcement;
 
 import javax.inject.Inject;
@@ -15,21 +18,25 @@ import retrofit2.Response;
 
 public class AnnouncementRepository implements IAnnouncementRepository{
 
+    public final String TAG = "AnnouncementRepository";
     private AnnouncementService announcementService;
+    private AnnouncementDao announcementDao;
     private MutableLiveData<LoadingState> fetchOneLiveStatus;
 
     @Inject
-    public AnnouncementRepository(AnnouncementService announcementService) {
+    public AnnouncementRepository(
+            AnnouncementService announcementService,AnnouncementDao announcementDao) {
         this.announcementService = announcementService;
+        this.announcementDao = announcementDao;
         this.fetchOneLiveStatus = new MutableLiveData<>();
     }
 
-    public Call<ApiResponse<Announcement>> getAll(final int firstPage) {
+    public Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage) {
         return this.announcementService.getAll(firstPage);
     }
 
     @Override
-    public LiveData<Announcement> getByUuid(String uuid) {
+    public LiveData<Announcement> fetchOneFromApi(String uuid) {
         final MutableLiveData<Announcement> data = new MutableLiveData<>();
         this.announcementService.getOne(uuid).enqueue(new Callback<Announcement>() {
             @Override
@@ -53,5 +60,23 @@ public class AnnouncementRepository implements IAnnouncementRepository{
 
     public MutableLiveData<LoadingState> getFetchOneLiveStatus() {
         return fetchOneLiveStatus;
+    }
+
+    @Override
+    public void saveToDb(final Announcement announcement) {
+        Log.d(TAG, "Saving announcement");
+        this.announcementDao.insert(announcement);
+    }
+
+    @Override
+    public LiveData<Announcement> fetchOneFromDb(String uuid) {
+        Log.d(TAG, "Fetching announcement by uuid");
+        return this.announcementDao.getByUuid(uuid);
+    }
+
+    @Override
+    public void deleteFromDb(final Announcement announcement) {
+        Log.d(TAG, "Deleting announcement");
+        this.announcementDao.delete(announcement);
     }
 }

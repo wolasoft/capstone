@@ -3,7 +3,12 @@ package com.wolasoft.maplenou.data.entities;
 import java.util.Date;
 import java.util.List;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "announcements")
 public class Announcement {
+    @PrimaryKey
     private int id;
     private String uuid;
     private String title;
@@ -68,6 +73,58 @@ public class Announcement {
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setLocalization(String localization) {
+        this.localization = localization;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setModificationDate(Date modificationDate) {
+        this.modificationDate = modificationDate;
+    }
+
+    public void setDeletionDate(Date deletionDate) {
+        this.deletionDate = deletionDate;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
