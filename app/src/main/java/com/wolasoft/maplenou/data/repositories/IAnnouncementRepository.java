@@ -7,6 +7,9 @@ import androidx.lifecycle.LiveData;
 import retrofit2.Call;
 
 public interface IAnnouncementRepository {
-    Call<ApiResponse<Announcement>> getAll(final int firstPage);
-    LiveData<Announcement> getByUuid(final String uuid);
+    Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage);
+    LiveData<Announcement> fetchOneFromApi(final String uuid);
+    void saveToDb(final Announcement announcement);
+    LiveData<Announcement> fetchOneFromDb(String uuid);
+    void deleteFromDb(final Announcement announcement);
 }

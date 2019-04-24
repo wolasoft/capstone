@@ -4,12 +4,13 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
+import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
+import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -31,8 +32,9 @@ public class DataModule {
     // repositories
     @Provides
     @Singleton
-    AnnouncementRepository provideAnnouncementRepository(AnnouncementService service) {
-        return new AnnouncementRepository(service);
+    AnnouncementRepository provideAnnouncementRepository(
+            AnnouncementService service, AnnouncementDao announcementDao) {
+        return new AnnouncementRepository(service, announcementDao);
     }
 
     // data sources
