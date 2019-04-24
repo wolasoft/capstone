@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.di;
 
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
+import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.di.modules.ApiModule;
 import com.wolasoft.maplenou.di.modules.ContextModule;
@@ -23,6 +24,8 @@ import dagger.Component;
 public interface AppComponent {
     // api service
     AnnouncementService announcementService();
+    // dao
+    AnnouncementDao announcementDao();
     // data repositories
     AnnouncementRepository announcementRepository();
     //data sources
