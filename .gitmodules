@@ -1,0 +1,3 @@
+[submodule "waul"]
+	path = waul
+	url = https://github.com/wolasoft/waul.git
