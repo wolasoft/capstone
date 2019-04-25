@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.wolasoft.maplenou.utils.Encryption;
+import com.wolasoft.waul.encryptions.Encryption;
 
 import java.lang.reflect.Type;
 
