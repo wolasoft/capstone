@@ -3,6 +3,7 @@ package com.wolasoft.maplenou.data.database.dao;
 import com.wolasoft.maplenou.data.entities.Announcement;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -17,4 +18,6 @@ public interface AnnouncementDao {
     LiveData<Announcement> getByUuid(String uuid);
     @Delete()
     void delete(Announcement announcement);
+    @Query("SELECT * FROM announcements ORDER BY id DESC")
+    DataSource.Factory<Integer, Announcement> getAllPaged();
 }
