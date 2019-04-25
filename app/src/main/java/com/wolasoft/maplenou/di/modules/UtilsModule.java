@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.di.modules;
 
-import com.wolasoft.maplenou.utils.ExecutorUtils;
+
+import com.wolasoft.waul.utils.ExecutorUtils;
 
 import javax.inject.Singleton;
 

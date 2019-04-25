@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.utils;
+package com.wolasoft.maplenou.databindings;
 
 import android.widget.ImageView;
 

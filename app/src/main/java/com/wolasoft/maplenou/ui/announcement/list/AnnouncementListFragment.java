@@ -11,7 +11,7 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.FragmentListAnnouncementBinding;
-import com.wolasoft.maplenou.utils.NetworkUtils;
+import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
 

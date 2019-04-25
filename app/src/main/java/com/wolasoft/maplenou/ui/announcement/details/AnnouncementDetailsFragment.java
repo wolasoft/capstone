@@ -2,7 +2,6 @@ package com.wolasoft.maplenou.ui.announcement.details;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,9 +18,9 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
-import com.wolasoft.maplenou.utils.DateUtilities;
-import com.wolasoft.maplenou.utils.ExecutorUtils;
-import com.wolasoft.maplenou.utils.NetworkUtils;
+import com.wolasoft.waul.utils.DateUtilities;
+import com.wolasoft.waul.utils.ExecutorUtils;
+import com.wolasoft.waul.utils.NetworkUtils;
 
 import java.util.List;
 
@@ -150,7 +149,6 @@ public class AnnouncementDetailsFragment extends Fragment {
 
             viewModel.getDbAnnouncementLiveData().observe(this, announcement -> {
                 isAnnouncementSaved = announcement != null;
-                Log.d("TAGGGGGGGGGGG", Boolean.toString(isAnnouncementSaved));
                 getActivity().invalidateOptionsMenu();
             });
         }
