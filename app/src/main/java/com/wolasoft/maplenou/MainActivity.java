@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
+import com.wolasoft.maplenou.ui.announcement.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteListFragment;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsActivity;
@@ -14,13 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity implements
-        AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener {
+        AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener,
+        AnnouncementFavoriteListFragment.OnFavoriteListFragmentInteractionListener {
 
     private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG
             = "ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG";
     private FragmentManager fragmentManager;
-    boolean isTablet;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -60,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onAnnouncementListFragmentInteraction(Announcement announcement) {
         Intent intent = new Intent(this, AnnouncementDetailsActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onFavoriteListFragmentInteraction(Announcement announcement) {
+        Intent intent = new Intent(this, FavoriteDetailsActivity.class);
         startActivity(intent);
     }
 

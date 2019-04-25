@@ -1,44 +1,36 @@
 <resources>
-    <string name="app_name">Maplenou</string>
+    <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Post</string>
-    <string name="menu_title_favorite">Favorite</string>
-    <string name="menu_title_delete">Delete</string>
-    <string name="menu_title_add">Add</string>
+    <string name="menu_title_favorite">Favoris</string>
+    <string name="menu_title_delete">Supprimer</string>
+    <string name="menu_title_add">Créer</string>
     <string name="menu_title_message">Message</string>
-    <string name="menu_title_person">Person</string>
+    <string name="menu_title_person">Utilisateur</string>
 
     <!-- message text -->
-    <string name="message_network_error">No internet connection available</string>
-    <string name="message_empty_list">No item available</string>
+    <string name="message_network_error">Aucune connexion internet disponible</string>
+    <string name="message_empty_list">Aucun élément disponible</string>
     <string name="message_item_deleted">Annonce supprimé</string>
 
     <!-- label text -->
-    <string name="label_announcement_title">Title</string>
-    <string name="label_announcement_price">1000 F CFA</string>
-    <string name="label_announcement_category">Decoration</string>
-    <string name="label_announcement_city">Lomé</string>
-    <string name="label_announcement_creation_date">02/04/2019 à 23:45</string>
-    <string name="label_announcement_description">Description</string>
-    <string name="label_announcement_user">Kwami K.</string>
+    <string name="announcement_label_announcement_title" translatable="false">Title</string>
+    <string name="announcement_label_announcement_price" translatable="false">1000 F CFA</string>
+    <string name="announcement_label_announcement_category" translatable="false">Decoration</string>
+    <string name="announcement_label_announcement_city" translatable="false">Lomé</string>
+    <string name="announcement_label_announcement_creation_date" translatable="false">02/04/2019 à 23:45</string>
+    <string name="announcement_label_announcement_description" translatable="false">Description</string>
+    <string name="announcement_label_announcement_user" translatable="false">Kwami K.</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Supprimé comme favoris</string>
     <string name="announcement_details_message_announcement_saved">Ajouté comme favoris</string>
 
     <!-- image view content description text -->
-    <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
-    <string name="content_description_list_item_announcement_images">Announcement images</string>
-
-    <!-- date format -->
-    <string name="date_format_simple_day">dd/mm/yyyy à hh:mm</string>
-    <string name="date_format_today">\'Ajourd\'\'hui\' \'à\' hh:mm</string>
-    <string name="date_format_year_day">EEEE d MMM \'à\' hh:mm</string>
-    <string name="date_format_yesterday">\'Hier\' \'à\' hh:mm</string>
+    <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
+    <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>
 
     <!-- currency -->
-    <string name="currency_cfa">F CFA</string>
-
-    <string name="large_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    <string name="large_text" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -60,6 +52,4 @@
         anim id est laborum.
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
