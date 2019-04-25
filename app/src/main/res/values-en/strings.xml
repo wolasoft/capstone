@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title_announcement">Post</string>
+    <string name="menu_title_favorite">Favorite</string>
+    <string name="menu_title_delete">Delete</string>
+    <string name="menu_title_add">Add</string>
+    <string name="menu_title_message">Message</string>
+    <string name="menu_title_person">Person</string>
+
+    <!-- message text -->
+    <string name="message_network_error">No internet connection available</string>
+    <string name="message_empty_list">No item available</string>
+    <string name="message_item_deleted">Annonce supprimé</string>
+
+    <!-- announcement details -->
+    <string name="announcement_details_message_announcement_unsaved">Removed as favorite</string>
+    <string name="announcement_details_message_announcement_saved">Add as favorite</string>
+
+    <!-- image view content description text -->
+    <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
+    <string name="content_description_list_item_announcement_images">Announcement images</string>
+</resources>
