@@ -124,6 +124,7 @@ public class AnnouncementDetailsFragment extends Fragment {
         } else {
             AnnouncementDetailsViewModel viewModel = ViewModelProviders.of(this, factory)
                     .get(AnnouncementDetailsViewModel.class);
+            // TODO replace 1 with uuid variable
             viewModel.init("1");
             viewModel.getAnnouncementLiveData().observe(this, announcement -> {
                 retrievedAnnouncement = announcement;
