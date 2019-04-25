@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.ui.announcement.favorite.list;
 
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
+import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
@@ -30,6 +32,7 @@ public class AnnouncementFavoriteListFragment extends Fragment
         implements FavoriteAnnouncementAdapter.OnAnnouncementClickedListener {
 
     private FragmentAnnouncementFavoriteListBinding dataBinding;
+    private OnFavoriteListFragmentInteractionListener listener;
     @Inject
     public AnnouncementFavoriteViewModelFactory factory;
     private FavoriteAnnouncementAdapter adapter;
@@ -73,8 +76,10 @@ public class AnnouncementFavoriteListFragment extends Fragment
             if (announcements == null || announcements.size() == 0) {
                 dataBinding.progressBar.setVisibility(View.GONE);
                 dataBinding.emptyListHolder.setVisibility(View.VISIBLE);
+                dataBinding.recyclerView.setVisibility(View.GONE);
             } else {
                 dataBinding.progressBar.setVisibility(View.GONE);
+                dataBinding.recyclerView.setVisibility(View.VISIBLE);
                 adapter.submitList(announcements);
             }
         });
@@ -117,7 +122,30 @@ public class AnnouncementFavoriteListFragment extends Fragment
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener) {
+            listener = (AnnouncementFavoriteListFragment.OnFavoriteListFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFavoriteListFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    @Override
     public void announcementClicked(Announcement announcement) {
-        // TODO open details
+        if (listener != null) {
+            listener.onFavoriteListFragmentInteraction(announcement);
+        }
+    }
+
+    public interface OnFavoriteListFragmentInteractionListener {
+        void onFavoriteListFragmentInteraction(Announcement announcement);
     }
 }
