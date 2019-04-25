@@ -10,14 +10,19 @@ import android.view.ViewGroup;
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
+import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
+import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
+import com.wolasoft.waul.utils.ExecutorUtils;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +33,10 @@ public class AnnouncementFavoriteListFragment extends Fragment
     @Inject
     public AnnouncementFavoriteViewModelFactory factory;
     private FavoriteAnnouncementAdapter adapter;
+    @Inject
+    public AnnouncementRepository announcementRepository;
+    @Inject
+    public ExecutorUtils executorUtils;
 
     public AnnouncementFavoriteListFragment() { }
 
@@ -50,6 +59,7 @@ public class AnnouncementFavoriteListFragment extends Fragment
                 inflater, R.layout.fragment_announcement_favorite_list, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();
+        setItemTouchHelper();
 
         return dataBinding.getRoot();
     }
@@ -89,6 +99,21 @@ public class AnnouncementFavoriteListFragment extends Fragment
         dataBinding.recyclerView.setLayoutManager(layoutManager);
         dataBinding.recyclerView.setAdapter(adapter);
         dataBinding.recyclerView.setHasFixedSize(true);
+    }
+
+    private void setItemTouchHelper() {
+        SwipeToDeleteCallback callback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                Announcement announcement = adapter.getCurrentList().get(position);
+                executorUtils.diskIO().execute(
+                        () -> announcementRepository.deleteFromDb(announcement));
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(dataBinding.recyclerView);
     }
 
     @Override
