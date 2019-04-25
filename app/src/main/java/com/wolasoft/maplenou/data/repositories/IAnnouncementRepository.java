@@ -4,6 +4,7 @@ import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.entities.Announcement;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import retrofit2.Call;
 
 public interface IAnnouncementRepository {
@@ -12,4 +13,5 @@ public interface IAnnouncementRepository {
     void saveToDb(final Announcement announcement);
     LiveData<Announcement> fetchOneFromDb(String uuid);
     void deleteFromDb(final Announcement announcement);
+    DataSource.Factory<Integer, Announcement> fetchAllFromDb();
 }

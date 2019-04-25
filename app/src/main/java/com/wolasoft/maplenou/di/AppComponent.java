@@ -8,6 +8,7 @@ import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
+import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteListFragment;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
@@ -43,4 +44,5 @@ public interface AppComponent {
     // injection methods
     void inject(AnnouncementListFragment fragment);
     void inject(AnnouncementDetailsFragment fragment);
+    void inject(AnnouncementFavoriteListFragment fragment);
 }

@@ -8,6 +8,7 @@ import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
+import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteViewModelFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementViewModelFactory;
@@ -65,5 +66,12 @@ public class DataModule {
     AnnouncementDetailsViewModelFactory provideAnnouncementDetailsViewModelFactory(
             AnnouncementRepository repository) {
         return new AnnouncementDetailsViewModelFactory(repository);
+    }
+
+    @Provides
+    @Singleton
+    AnnouncementFavoriteViewModelFactory provideAnnouncementFavoriteViewModelFactory(
+            AnnouncementRepository repository) {
+        return new AnnouncementFavoriteViewModelFactory(repository);
     }
 }

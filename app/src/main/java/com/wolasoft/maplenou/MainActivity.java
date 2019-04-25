@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
+import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteListFragment;
 import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsActivity;
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements
         AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener {
 
     private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
+    private static final String ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG
+            = "ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG";
     private FragmentManager fragmentManager;
     boolean isTablet;
 
@@ -23,9 +26,14 @@ public class MainActivity extends AppCompatActivity implements
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_announcement:
-                        addOrReplaceFragment(AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG);
+                        addOrReplaceFragment(
+                                AnnouncementListFragment.newInstance(),
+                                ANNOUNCEMENT_LIST_FRAGMENT_TAG);
                         return true;
                     case R.id.navigation_favorite:
+                        addOrReplaceFragment(
+                                AnnouncementFavoriteListFragment.newInstance(),
+                                ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG);
                         return true;
                     case R.id.navigation_add:
                         return true;

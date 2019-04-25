@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.DataSource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,5 +79,11 @@ public class AnnouncementRepository implements IAnnouncementRepository{
     public void deleteFromDb(final Announcement announcement) {
         Log.d(TAG, "Deleting announcement");
         this.announcementDao.delete(announcement);
+    }
+
+    @Override
+    public DataSource.Factory<Integer, Announcement> fetchAllFromDb() {
+        Log.d(TAG, "fetching paginated announcements from db");
+        return this.announcementDao.getAllPaged();
     }
 }
