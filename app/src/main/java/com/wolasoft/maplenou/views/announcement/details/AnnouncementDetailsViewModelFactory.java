@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.details;
+package com.wolasoft.maplenou.views.announcement.details;
 
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 
@@ -8,17 +8,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class FavoriteDetailsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class AnnouncementDetailsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private AnnouncementRepository repository;
     @Inject
-    public FavoriteDetailsViewModelFactory(AnnouncementRepository repository) {
+    public AnnouncementDetailsViewModelFactory(AnnouncementRepository repository) {
         this.repository = repository;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new FavoriteDetailsViewModel(this.repository);
+        return (T) new AnnouncementDetailsViewModel(this.repository);
     }
 }

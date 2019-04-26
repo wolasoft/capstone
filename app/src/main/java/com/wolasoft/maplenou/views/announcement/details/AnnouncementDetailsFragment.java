@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.details;
+package com.wolasoft.maplenou.views.announcement.details;
 
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.list;
+package com.wolasoft.maplenou.views.favorite.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FavoriteAnnouncementAdapter extends
-        PagedListAdapter<Announcement, FavoriteAnnouncementAdapter.ViewHolder> {
+public class FavoriteAdapter extends
+        PagedListAdapter<Announcement, FavoriteAdapter.ViewHolder> {
 
     private OnAnnouncementClickedListener listener;
 
-    FavoriteAnnouncementAdapter(OnAnnouncementClickedListener listener) {
+    FavoriteAdapter(OnAnnouncementClickedListener listener) {
         super(DIFF_CALLBACK);
         this.listener = listener;
     }

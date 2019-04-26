@@ -25,7 +25,7 @@
         <activity
             android:theme="@style/AppTheme"
             android:label=""
-            android:name=".ui.announcement.details.AnnouncementDetailsActivity"
+            android:name=".views.announcement.details.AnnouncementDetailsActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +34,7 @@
         <activity
             android:theme="@style/AppTheme"
             android:label=""
-            android:name=".ui.announcement.favorite.details.FavoriteDetailsActivity"
+            android:name=".views.favorite.details.FavoriteDetailsActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

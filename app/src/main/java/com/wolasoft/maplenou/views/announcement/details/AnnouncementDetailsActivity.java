@@ -1,24 +1,22 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.details;
+package com.wolasoft.maplenou.views.announcement.details;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.wolasoft.maplenou.R;
 
-import java.util.Objects;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class FavoriteDetailsActivity extends AppCompatActivity {
+public class AnnouncementDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_announcement_details);
+        setContentView(R.layout.activity_announcement_details);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

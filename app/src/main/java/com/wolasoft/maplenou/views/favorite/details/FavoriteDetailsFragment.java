@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.details;
+package com.wolasoft.maplenou.views.favorite.details;
 
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.list;
+package com.wolasoft.maplenou.views.favorite.list;
 
 
 import android.content.Context;
@@ -13,7 +13,7 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
@@ -28,23 +28,23 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AnnouncementFavoriteListFragment extends Fragment
-        implements FavoriteAnnouncementAdapter.OnAnnouncementClickedListener {
+public class FavoriteListFragment extends Fragment
+        implements FavoriteAdapter.OnAnnouncementClickedListener {
 
     private FragmentAnnouncementFavoriteListBinding dataBinding;
     private OnFavoriteListFragmentInteractionListener listener;
     @Inject
-    public AnnouncementFavoriteViewModelFactory factory;
-    private FavoriteAnnouncementAdapter adapter;
+    public FavoriteViewModelFactory factory;
+    private FavoriteAdapter adapter;
     @Inject
     public AnnouncementRepository announcementRepository;
     @Inject
     public ExecutorUtils executorUtils;
 
-    public AnnouncementFavoriteListFragment() { }
+    public FavoriteListFragment() { }
 
-    public static AnnouncementFavoriteListFragment newInstance() {
-        AnnouncementFavoriteListFragment fragment = new AnnouncementFavoriteListFragment();
+    public static FavoriteListFragment newInstance() {
+        FavoriteListFragment fragment = new FavoriteListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -68,9 +68,9 @@ public class AnnouncementFavoriteListFragment extends Fragment
     }
 
     private void initViews() {
-        adapter = new FavoriteAnnouncementAdapter(this);
-        AnnouncementFavoriteViewModel favoriteViewModel = ViewModelProviders.of(this, factory)
-                .get(AnnouncementFavoriteViewModel.class);
+        adapter = new FavoriteAdapter(this);
+        FavoriteViewModel favoriteViewModel = ViewModelProviders.of(this, factory)
+                .get(FavoriteViewModel.class);
 
         favoriteViewModel.getFavoriteAnnouncements().observe(this, announcements -> {
             if (announcements == null || announcements.size() == 0) {
@@ -125,7 +125,7 @@ public class AnnouncementFavoriteListFragment extends Fragment
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener) {
-            listener = (AnnouncementFavoriteListFragment.OnFavoriteListFragmentInteractionListener) context;
+            listener = (FavoriteListFragment.OnFavoriteListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFavoriteListFragmentInteractionListener");

@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.favorite.details;
+package com.wolasoft.maplenou.views.favorite.details;
 
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
