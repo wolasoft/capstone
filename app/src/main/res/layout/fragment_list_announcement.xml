@@ -1,7 +1,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment">
+    tools:context="com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment">
 
     <FrameLayout
         android:layout_width="match_parent"

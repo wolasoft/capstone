@@ -7,12 +7,12 @@ import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
-import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.favorite.details.FavoriteDetailsViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementViewModelFactory;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.list.FavoriteViewModelFactory;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -71,9 +71,9 @@ public class DataModule {
 
     @Provides
     @Singleton
-    AnnouncementFavoriteViewModelFactory provideAnnouncementFavoriteViewModelFactory(
+    FavoriteViewModelFactory provideAnnouncementFavoriteViewModelFactory(
             AnnouncementRepository repository) {
-        return new AnnouncementFavoriteViewModelFactory(repository);
+        return new FavoriteViewModelFactory(repository);
     }
 
     @Provides

@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.list;
+package com.wolasoft.maplenou.views.announcement.list;
 
 import com.wolasoft.maplenou.data.entities.Announcement;
 

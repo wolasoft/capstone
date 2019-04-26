@@ -1,7 +1,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsFragment">
+    tools:context="com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment">
     <data>
         <variable
             name="announcement"

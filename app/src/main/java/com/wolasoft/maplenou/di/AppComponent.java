@@ -8,14 +8,14 @@ import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
-import com.wolasoft.maplenou.ui.announcement.favorite.details.FavoriteDetailsFragment;
-import com.wolasoft.maplenou.ui.announcement.favorite.list.AnnouncementFavoriteListFragment;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSource;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementDataSourceFactory;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementListFragment;
-import com.wolasoft.maplenou.ui.announcement.list.AnnouncementViewModelFactory;
-import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsFragment;
-import com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
+import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -45,6 +45,6 @@ public interface AppComponent {
     // injection methods
     void inject(AnnouncementListFragment fragment);
     void inject(AnnouncementDetailsFragment fragment);
-    void inject(AnnouncementFavoriteListFragment fragment);
+    void inject(FavoriteListFragment fragment);
     void inject(FavoriteDetailsFragment fragment);
 }

@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.ui.announcement.details;
+package com.wolasoft.maplenou.views.announcement.details;
 
 import com.wolasoft.maplenou.data.api.LoadingState;
 import com.wolasoft.maplenou.data.entities.Announcement;

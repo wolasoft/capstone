@@ -6,7 +6,7 @@
     android:id="@+id/mainContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wolasoft.maplenou.ui.announcement.details.AnnouncementDetailsActivity">
+    tools:context="com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -30,6 +30,6 @@
         android:id="@+id/detailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.wolasoft.maplenou.ui.announcement.favorite.details.FavoriteDetailsFragment" />
+        class="com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment" />
 
 </FrameLayout>
