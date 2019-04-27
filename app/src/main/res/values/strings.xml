@@ -29,6 +29,14 @@
     <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
     <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>
 
+    <!-- login -->
+    <string name="login_login_title">Se connecter</string>
+    <string name="login_button_login_title">Connexion</string>
+    <string name="login_edittext_email_hint">Adresse email</string>
+    <string name="login_edittext_password_hint">Mot de passe</string>
+    <string name="login_message_create_account_title">Pas de compte? <b>S\'inscrire</b></string>
+    <string name="login_message_password_forgotten_title">Mot de passe oublié?</string>
+
     <!-- currency -->
     <string name="large_text" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis

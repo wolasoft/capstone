@@ -19,4 +19,12 @@
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
     <string name="content_description_list_item_announcement_images">Announcement images</string>
+
+    <!-- login -->
+    <string name="login_login_title">Sign in</string>
+    <string name="login_button_login_title">Login</string>
+    <string name="login_edittext_email_hint">Email address</string>
+    <string name="login_edittext_password_hint">Password</string>
+    <string name="login_message_create_account_title">Don\'t have account? <b>Sign up</b></string>
+    <string name="login_message_password_forgotten_title">Password forgotten?</string>
 </resources>
