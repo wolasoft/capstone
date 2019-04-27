@@ -11,18 +11,18 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.FragmentListAnnouncementBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AnnouncementListFragment extends Fragment implements
+public class AnnouncementListFragment extends SimpleFragment implements
         AnnouncementAdapter.OnAnnouncementClickedListener {
 
     private FragmentListAnnouncementBinding dataBinding;
@@ -30,10 +30,6 @@ public class AnnouncementListFragment extends Fragment implements
     @Inject
     public AnnouncementViewModelFactory factory;
     private AnnouncementAdapter adapter;
-    private AnnouncementViewModel announcementViewModel;
-    private RecyclerView.LayoutManager layoutManager;
-    private int orientation;
-    private boolean isTablet;
 
     public AnnouncementListFragment() { }
 
@@ -56,6 +52,7 @@ public class AnnouncementListFragment extends Fragment implements
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
 
+        setTitle(R.string.announcement_announcement_list_title);
         initViews();
 
         return dataBinding.getRoot();
@@ -68,8 +65,7 @@ public class AnnouncementListFragment extends Fragment implements
             dataBinding.networkErrorHolder.setVisibility(View.GONE);
             adapter = new AnnouncementAdapter(this);
 
-            announcementViewModel =
-                    ViewModelProviders.of(this, factory).get(AnnouncementViewModel.class);
+            AnnouncementViewModel announcementViewModel = ViewModelProviders.of(this, factory).get(AnnouncementViewModel.class);
             announcementViewModel.getItemPagedList()
                     .observe(this, announcements -> adapter.submitList(announcements));
 
@@ -92,17 +88,19 @@ public class AnnouncementListFragment extends Fragment implements
                         return;
                 }
             });
-            isTablet = getContext().getResources().getBoolean(R.bool.is_tablet);
-            orientation = getContext().getResources().getConfiguration().orientation;
+            boolean isTablet = getBoolean(R.bool.is_tablet);
+            int orientation = getOrientation();
+            RecyclerView.LayoutManager layoutManager;
+
             if (isTablet) {
-                int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+                int rows = getInteger(R.integer.list_view_rows);
                 layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
             } else {
                 if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                     layoutManager = new LinearLayoutManager(
                             getContext(), RecyclerView.VERTICAL, false);
                 } else {
-                    int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+                    int rows = getInteger(R.integer.list_view_rows);
                     layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
                 }
             }

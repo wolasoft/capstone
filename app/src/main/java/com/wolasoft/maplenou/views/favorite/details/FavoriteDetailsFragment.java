@@ -18,19 +18,18 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentFavoriteDetailsBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-public class FavoriteDetailsFragment extends Fragment {
+public class FavoriteDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
 
     private FragmentFavoriteDetailsBinding dataBinding;
@@ -149,7 +148,7 @@ public class FavoriteDetailsFragment extends Fragment {
         this.executorUtils.diskIO().execute(() -> {
             announcementRepository.deleteFromDb(retrievedAnnouncement);
             isAnnouncementDeleted = true;
-            Objects.requireNonNull(getActivity()).invalidateOptionsMenu();
+            invalidateOptionsMenu();
         });
     }
 }

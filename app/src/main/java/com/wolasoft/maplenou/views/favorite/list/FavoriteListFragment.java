@@ -13,22 +13,22 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
-import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
+import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FavoriteListFragment extends Fragment
+public class FavoriteListFragment extends SimpleFragment
         implements FavoriteAdapter.OnAnnouncementClickedListener {
 
     private FragmentAnnouncementFavoriteListBinding dataBinding;
@@ -61,6 +61,7 @@ public class FavoriteListFragment extends Fragment
         dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_announcement_favorite_list, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
+        setTitle(R.string.announcement_favorite_announcement_list_title);
         initViews();
         setItemTouchHelper();
 
@@ -84,19 +85,19 @@ public class FavoriteListFragment extends Fragment
             }
         });
 
-        boolean isTablet = getContext().getResources().getBoolean(R.bool.is_tablet);
-        int orientation = getContext().getResources().getConfiguration().orientation;
+        boolean isTablet = getBoolean(R.bool.is_tablet);
+        int orientation = getOrientation();
         RecyclerView.LayoutManager layoutManager;
 
         if (isTablet) {
-            int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+            int rows = getInteger(R.integer.list_view_rows);
             layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
         } else {
             if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 layoutManager = new LinearLayoutManager(
                         getContext(), RecyclerView.VERTICAL, false);
             } else {
-                int rows = getContext().getResources().getInteger(R.integer.list_view_rows);
+                int rows = getInteger(R.integer.list_view_rows);
                 layoutManager = new GridLayoutManager(getContext(), rows, RecyclerView.VERTICAL, false);
             }
         }

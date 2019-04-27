@@ -21,9 +21,15 @@
     <string name="announcement_label_announcement_description" translatable="false">Description</string>
     <string name="announcement_label_announcement_user" translatable="false">Kwami K.</string>
 
+    <!-- announcement -->
+    <string name="announcement_announcement_list_title">Announces</string>
+
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Supprimé comme favoris</string>
     <string name="announcement_details_message_announcement_saved">Ajouté comme favoris</string>
+
+    <!-- favorite announcement -->
+    <string name="announcement_favorite_announcement_list_title">Favoris</string>
 
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
