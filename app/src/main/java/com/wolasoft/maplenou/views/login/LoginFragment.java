@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.databinding.FragmentLoginBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends SimpleFragment {
     private OnLoginFragmentInteractionListener mListener;
     private FragmentLoginBinding dataBinding;
 
@@ -35,7 +35,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
                 container, false);
-        getActivity().setTitle(R.string.login_login_title);
+        setTitle(R.string.login_login_title);
         return dataBinding.getRoot();
     }
 

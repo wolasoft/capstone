@@ -12,9 +12,15 @@
     <string name="message_empty_list">No item available</string>
     <string name="message_item_deleted">Annonce supprimé</string>
 
+    <!-- announcement -->
+    <string name="announcement_announcement_list_title">Announcements</string>
+
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Removed as favorite</string>
     <string name="announcement_details_message_announcement_saved">Add as favorite</string>
+
+    <!-- favorite announcement -->
+    <string name="announcement_favorite_announcement_list_title">Favorites</string>
 
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>

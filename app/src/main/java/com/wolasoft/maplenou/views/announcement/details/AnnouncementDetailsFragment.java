@@ -18,6 +18,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.ExecutorUtils;
 import com.wolasoft.waul.utils.NetworkUtils;
@@ -27,10 +28,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-public class AnnouncementDetailsFragment extends Fragment {
+public class AnnouncementDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
 
     private FragmentAnnouncementDetailsBinding dataBinding;
@@ -150,7 +150,7 @@ public class AnnouncementDetailsFragment extends Fragment {
 
             viewModel.getDbAnnouncementLiveData().observe(this, announcement -> {
                 isAnnouncementSaved = announcement != null;
-                getActivity().invalidateOptionsMenu();
+                invalidateOptionsMenu();
             });
         }
     }
@@ -177,7 +177,7 @@ public class AnnouncementDetailsFragment extends Fragment {
                 announcementRepository.saveToDb(retrievedAnnouncement);
                 isAnnouncementSaved = true;
             }
-            getActivity().invalidateOptionsMenu();
+            invalidateOptionsMenu();
         });
     }
 }
