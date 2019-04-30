@@ -27,8 +27,8 @@ public class DataModule {
     }
 
     @Provides
-    AppPreferences provideAppPreferences(Context context, Gson gson) {
-        return new AppPreferences(context, gson);
+    AppPreferences provideAppPreferences(Context context) {
+        return new AppPreferences(context);
     }
 
     // repositories
