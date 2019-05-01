@@ -3,11 +3,10 @@ package com.wolasoft.maplenou.data.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wolasoft.maplenou.BuildConfig;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
+import com.wolasoft.maplenou.data.api.interceptors.TokenInterceptor;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,17 +25,37 @@ public class ApiConnector {
 
     private static final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
+    public static <S> S createAuthenticatedRetrofitService(
+            Class<S> serviceClass, TokenInterceptor tokenInterceptor) {
+        return createRetrofitService(serviceClass, tokenInterceptor);
+    }
+
     public static <S> S createRetrofitService(Class<S> serviceClass) {
+        return createRetrofitService(serviceClass, null);
+    }
+
+    private static <S> S createRetrofitService(
+            Class<S> serviceClass, TokenInterceptor tokenInterceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.hostnameVerifier(new HostnameVerifier() {
-            @Override
-            public boolean verify(String hostname, SSLSession session) {
-                return true;
-            }
+        builder.hostnameVerifier((hostname, session) -> true);
+
+        builder.addInterceptor(chain -> {
+            Request initialRequest = chain.request();
+            Request request = initialRequest.newBuilder()
+                    .header("User-Agent", "Maplenou-Android-Application")
+                    .header("Accept", "application/json")
+                    .method(initialRequest.method(), initialRequest.body())
+                    .build();
+
+            return chain.proceed(request);
         });
 
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        if (tokenInterceptor != null) {
+            builder.addInterceptor(tokenInterceptor);
+        }
+
         builder.retryOnConnectionFailure(true);
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(logging);
 
         OkHttpClient client = builder.build();
