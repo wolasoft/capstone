@@ -18,7 +18,7 @@
 
             <EditText
                 android:id="@+id/emailEdit"
-                style="@style/EditText"
+                style="@style/EditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spacer12"
                 android:layout_marginTop="@dimen/spacer6"

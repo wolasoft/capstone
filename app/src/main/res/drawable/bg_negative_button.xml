@@ -8,5 +8,5 @@
         android:color="@color/colorRed"/>
 
     <corners
-        android:radius="4dp"/>
+        android:radius="@dimen/spacer4"/>
 </shape>

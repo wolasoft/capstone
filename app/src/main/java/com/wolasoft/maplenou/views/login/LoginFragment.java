@@ -36,13 +36,16 @@ public class LoginFragment extends SimpleFragment {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
                 container, false);
         setTitle(R.string.login_login_title);
+        initViews();
         return dataBinding.getRoot();
     }
 
-    public void onLoginSucceded() {
-        if (mListener != null) {
-            mListener.onLoginFragmentInteraction();
-        }
+    private void initViews() {
+        dataBinding.createAccountTV.setOnClickListener(v -> {
+            if (mListener != null) {
+                mListener.onSubscribeClicked();
+            }
+        });
     }
 
     @Override
@@ -64,6 +67,7 @@ public class LoginFragment extends SimpleFragment {
 
     public interface OnLoginFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onLoginFragmentInteraction();
+        void onLoginSucceeded();
+        void onSubscribeClicked();
     }
 }

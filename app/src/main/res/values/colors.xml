@@ -17,4 +17,5 @@
     <color name="colorLightGrey">#a6a6a6</color>
     <color name="colorSilver">#EEEEEE</color>
     <color name="colorSilverDark">#dee1e4</color>
+    <color name="colorSuccess">#81C784</color>
 </resources>

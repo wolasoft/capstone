@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- common -->
+    <string name="common_action_validate">Valider</string>
+    <string name="common_action_terminate">Terminate</string>
+    <string name="common_message_success">Success</string>
+    <string name="common_icon_success_description">Success icon</string>
+
     <string name="menu_title_announcement">Post</string>
     <string name="menu_title_favorite">Favorite</string>
     <string name="menu_title_delete">Delete</string>
@@ -12,7 +18,20 @@
     <string name="message_empty_list">No item available</string>
     <string name="message_item_deleted">Annonce supprimé</string>
 
+    <!-- account -->
+    <string name="account_account_title">Account</string>
+    <string name="account_account_creation_title">Create an account</string>
+    <string name="account_subscribe_edittext_email_hint">Email address</string>
+    <string name="account_subscribe_edittext_phone_number_hint">Phone number</string>
+    <string name="account_subscribe_edittext_password_hint">Password</string>
+    <string name="account_subscribe_edittext_last_name_hint">Last name</string>
+    <string name="account_subscribe_edittext_first_name_hint">First name</string>
+    <string name="account_subscribe_password_info">At least 8 characters consisting of numbers, upper and lower case letters and special characters (@#$%^&amp;+=)</string>
+    <string name="account_subscribe_button_subscribe">Subscribe</string>
+    <string name="account_subscribe_message_success">Your account has been created successfully</string>
+
     <!-- announcement -->
+    <string name="announcement_announcement_creation_title">Add an announcement</string>
     <string name="announcement_announcement_list_title">Announcements</string>
 
     <!-- announcement details -->
@@ -33,4 +52,7 @@
     <string name="login_edittext_password_hint">Password</string>
     <string name="login_message_create_account_title">Don\'t have account? <b>Sign up</b></string>
     <string name="login_message_password_forgotten_title">Password forgotten?</string>
+
+    <!-- message -->
+    <string name="message_message_title">Messages</string>
 </resources>

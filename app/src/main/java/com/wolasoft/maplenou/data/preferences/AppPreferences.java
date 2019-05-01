@@ -1,70 +1,55 @@
 package com.wolasoft.maplenou.data.preferences;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-import com.wolasoft.waul.encryptions.Encryption;
+import com.google.gson.reflect.TypeToken;
+import com.wolasoft.maplenou.data.entities.Account;
+import com.wolasoft.maplenou.data.entities.Token;
+import com.wolasoft.waul.utils.BasePreferences;
 
-import java.lang.reflect.Type;
+import java.util.Calendar;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class AppPreferences {
+public class AppPreferences extends BasePreferences {
     private static final String PREFS_NAME = "com.wolasoft.maplenou.preferences";
-
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-    private Gson gson;
+    private static final String KEY_TOKEN = "KEY_TOKEN";
+    private static final String KEY_ACCOUNT = "KEY_ACCOUNT";
 
     @Inject
-    public AppPreferences(Context context, Gson gson) {
-        this.gson = gson;
-        this.preferences = context.getApplicationContext().getSharedPreferences(
-                PREFS_NAME, Context.MODE_PRIVATE);
+    public AppPreferences(Context context) {
+        super(context, PREFS_NAME);
     }
 
-    /**
-     * Save an object to app preference
-     * @param key Value key
-     * @param data Object to save
-     * @param <T> Generic object type
-     */
-    public <T> void saveObject(String key, T data) {
-        String jsonData = this.gson.toJson(data);
-        editor = preferences.edit();
-        editor.putString(Encryption.toBase64(key), Encryption.toBase64(jsonData));
-        editor.apply();
+
+    public void saveToken(Token token) {
+        this.saveObject(KEY_TOKEN, token, new TypeToken<Token>(){}.getType());
     }
 
-    /**
-     * Save an object to app preference
-     * @param key The value key
-     * @param data The object to save
-     * @param type The specific genericized type of the object
-     * @param <T> Generic object type
-     */
-    public <T> void saveObject(String key, T data, Type type) {
-        String jsonData = this.gson.toJson(data, type);
-        editor = preferences.edit();
-        editor.putString(Encryption.toBase64(key), Encryption.toBase64(jsonData));
-        editor.apply();
+    public Token getToken() {
+        return this.getObject(KEY_TOKEN, new TypeToken<Token>(){}.getType(), null);
     }
 
-    /**
-     * Save an object to app preference
-     * @param key The value key
-     * @param type The specific genericized type of the object
-     * @param defaultValue The default value to return if no value found
-     * @param <T> Generic object type
-     * @return
-     */
-    public <T> T getObject(String key, Type type, T defaultValue) {
-        String encryptedData = preferences.getString(Encryption.toBase64(key), null);
-        String decodedData = Encryption.fromBase64(encryptedData);
+    public void saveAccount(Account account) {
+        this.saveObject(KEY_ACCOUNT, account, new TypeToken<Account>(){}.getType());
+    }
 
-        return this.gson.fromJson(decodedData, type);
+    public Account getAccount() {
+        return this.getObject(KEY_ACCOUNT, new TypeToken<Account>(){}.getType(), null);
+    }
+
+    public boolean isAccountConnected() {
+        Token token = this.getToken();
+
+        if (token == null) {
+            return false;
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(token.getExpiresIn());
+
+        return !calendar.after(Calendar.getInstance());
     }
 }

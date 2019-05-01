@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wolasoft.maplenou">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MaplenouApplication"
@@ -23,22 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/AppTheme"
-            android:label=""
             android:name=".views.announcement.details.AnnouncementDetailsActivity"
-            android:parentActivityName=".MainActivity">
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:theme="@style/AppTheme"
-            android:label=""
             android:name=".views.favorite.details.FavoriteDetailsActivity"
-            android:parentActivityName=".MainActivity">
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".views.account.subscribe.SubscribeSuccessActivity"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
