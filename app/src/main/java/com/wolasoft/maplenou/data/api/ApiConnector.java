@@ -22,6 +22,7 @@ public class ApiConnector {
                     .baseUrl(BuildConfig.HOST)
                     .addConverterFactory(GsonConverterFactory.create(gson));
 
+    private static Retrofit retrofit;
 
     private static final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
@@ -59,7 +60,11 @@ public class ApiConnector {
         builder.addInterceptor(logging);
 
         OkHttpClient client = builder.build();
-        Retrofit retrofit = ApiConnector.builder.client(client).build();
+        retrofit = ApiConnector.builder.client(client).build();
         return retrofit.create(serviceClass);
+    }
+
+    public static Retrofit retrofit() {
+        return retrofit;
     }
 }
