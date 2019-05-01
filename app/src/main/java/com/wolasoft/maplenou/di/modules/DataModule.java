@@ -3,9 +3,11 @@ package com.wolasoft.maplenou.di.modules;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
+import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
@@ -14,6 +16,7 @@ import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -37,6 +40,12 @@ public class DataModule {
     AnnouncementRepository provideAnnouncementRepository(
             AnnouncementService service, AnnouncementDao announcementDao) {
         return new AnnouncementRepository(service, announcementDao);
+    }
+
+    @Provides
+    @Singleton
+    AccountRepository provideAccountRepository(AccountService service, AppPreferences preferences) {
+        return new AccountRepository(service, preferences);
     }
 
     // data sources
