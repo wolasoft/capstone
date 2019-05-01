@@ -1,5 +1,6 @@
 package com.wolasoft.maplenou.di;
 
+import com.wolasoft.maplenou.MainActivity;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
@@ -49,4 +50,5 @@ public interface AppComponent {
     void inject(AnnouncementDetailsFragment fragment);
     void inject(FavoriteListFragment fragment);
     void inject(FavoriteDetailsFragment fragment);
+    void inject(MainActivity activity);
 }

@@ -12,6 +12,8 @@
     <string name="message_empty_list">Aucun élément disponible</string>
     <string name="message_item_deleted">Annonce supprimé</string>
 
+    <!-- account -->
+    <string name="account_account_title">Compte</string>
     <!-- label text -->
     <string name="announcement_label_announcement_title" translatable="false">Title</string>
     <string name="announcement_label_announcement_price" translatable="false">1000 F CFA</string>
@@ -22,6 +24,7 @@
     <string name="announcement_label_announcement_user" translatable="false">Kwami K.</string>
 
     <!-- announcement -->
+    <string name="announcement_announcement_creation_title">Ajouter une annonce</string>
     <string name="announcement_announcement_list_title">Announces</string>
 
     <!-- announcement details -->
@@ -42,6 +45,9 @@
     <string name="login_edittext_password_hint">Mot de passe</string>
     <string name="login_message_create_account_title">Pas de compte? <b>S\'inscrire</b></string>
     <string name="login_message_password_forgotten_title">Mot de passe oublié?</string>
+
+    <!-- message -->
+    <string name="message_message_title">Messages</string>
 
     <!-- currency -->
     <string name="large_text" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

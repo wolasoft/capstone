@@ -12,7 +12,9 @@
     <string name="message_empty_list">No item available</string>
     <string name="message_item_deleted">Annonce supprimé</string>
 
+    <string name="account_account_title">Account</string>
     <!-- announcement -->
+    <string name="announcement_announcement_creation_title">Add an announcement</string>
     <string name="announcement_announcement_list_title">Announcements</string>
 
     <!-- announcement details -->
@@ -33,4 +35,7 @@
     <string name="login_edittext_password_hint">Password</string>
     <string name="login_message_create_account_title">Don\'t have account? <b>Sign up</b></string>
     <string name="login_message_password_forgotten_title">Password forgotten?</string>
+
+    <!-- message -->
+    <string name="message_message_title">Messages</string>
 </resources>
