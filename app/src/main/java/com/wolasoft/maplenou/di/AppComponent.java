@@ -10,14 +10,15 @@ import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
-import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
-import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
+import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
-import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
-import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
+import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 
 import javax.inject.Singleton;
 
@@ -50,5 +51,6 @@ public interface AppComponent {
     void inject(AnnouncementDetailsFragment fragment);
     void inject(FavoriteListFragment fragment);
     void inject(FavoriteDetailsFragment fragment);
+    void inject(SubscribeFragment fragment);
     void inject(MainActivity activity);
 }

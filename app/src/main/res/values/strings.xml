@@ -1,4 +1,10 @@
 <resources>
+    <!-- common -->
+    <string name="common_action_validate">Valider</string>
+    <string name="common_action_terminate">Terminer</string>
+    <string name="common_message_success">Succès</string>
+    <string name="common_icon_success_description">Icône succès</string>
+
     <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Post</string>
     <string name="menu_title_favorite">Favoris</string>
@@ -14,6 +20,16 @@
 
     <!-- account -->
     <string name="account_account_title">Compte</string>
+    <string name="account_account_creation_title">Créer un compte</string>
+    <string name="account_subscribe_edittext_email_hint">Adresse mail</string>
+    <string name="account_subscribe_edittext_phone_number_hint">Numéro de téléphone</string>
+    <string name="account_subscribe_edittext_password_hint">Mot de passe</string>
+    <string name="account_subscribe_edittext_last_name_hint">Nom</string>
+    <string name="account_subscribe_edittext_first_name_hint">Prénoms</string>
+    <string name="account_subscribe_password_info">Au moins 8 caractères composé de chiffre, lettres majuscules et minuscules et de caractères spéciaux (@#$%^\&amp;+=)</string>
+    <string name="account_subscribe_button_subscribe">S\'inscrire</string>
+    <string name="account_subscribe_message_success">Votre compte a été créé avec succès</string>
+
     <!-- label text -->
     <string name="announcement_label_announcement_title" translatable="false">Title</string>
     <string name="announcement_label_announcement_price" translatable="false">1000 F CFA</string>

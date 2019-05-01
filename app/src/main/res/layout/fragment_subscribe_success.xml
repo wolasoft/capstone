@@ -1,0 +1,68 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.account.subscribe.SubscribeSuccessFragment">
+
+        <LinearLayout
+            android:id="@+id/imageHolder"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:gravity="center"
+            android:background="@color/colorSuccess"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/common_success_icon_size"
+                android:layout_height="@dimen/common_success_icon_size"
+                android:contentDescription="@string/common_icon_success_description"
+                android:src="@drawable/smile" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/successTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/common_message_success"
+            style="@style/CommonMessageSuccess"
+            android:layout_marginTop="@dimen/spacer4"
+            app:layout_constraintTop_toBottomOf="@id/imageHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/account_subscribe_message_success"
+            style="@style/subhead.text"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacer2"
+            app:layout_constraintTop_toBottomOf="@id/successTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:id="@+id/terminateButton"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/common_action_terminate"
+            android:layout_margin="@dimen/spacer4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
