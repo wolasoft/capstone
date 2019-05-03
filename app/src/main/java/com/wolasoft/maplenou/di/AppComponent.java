@@ -20,6 +20,7 @@ import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
+import com.wolasoft.maplenou.views.login.LoginFragment;
 
 import javax.inject.Singleton;
 
@@ -54,5 +55,6 @@ public interface AppComponent {
     void inject(FavoriteListFragment fragment);
     void inject(FavoriteDetailsFragment fragment);
     void inject(SubscribeFragment fragment);
+    void inject(LoginFragment fragment);
     void inject(MainActivity activity);
 }

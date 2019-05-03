@@ -5,6 +5,7 @@
     <string name="common_action_terminate">Terminate</string>
     <string name="common_message_success">Success</string>
     <string name="common_icon_success_description">Success icon</string>
+    <string name="common_network_error">Network error</string>
 
     <string name="menu_title_announcement">Post</string>
     <string name="menu_title_favorite">Favorite</string>

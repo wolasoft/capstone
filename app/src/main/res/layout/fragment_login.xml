@@ -16,7 +16,7 @@
             android:padding="@dimen/spacer4"
             android:paddingTop="@dimen/spacer16">
 
-            <EditText
+            <com.wolasoft.waul.widgets.CustomEditText
                 android:id="@+id/emailEdit"
                 style="@style/EditTextEmail"
                 android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <com.wolasoft.waul.widgets.CustomEditText
                 android:id="@+id/passwordEdit"
                 style="@style/EditTextPassword"
                 android:layout_width="match_parent"
@@ -68,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacer6"
                 android:text="@string/login_button_login_title"
+                android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -75,20 +76,37 @@
                 app:layout_constraintTop_toBottomOf="@id/passwordForgottenTV" />
 
             <TextView
-                android:id="@+id/createAccountTV"
+                android:id="@+id/errorTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacer12"
+                style="@style/body1.red"
+                tools:text="Error"
                 android:gravity="center"
-                android:text="@string/login_message_create_account_title"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_marginTop="@dimen/spacer4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginButton" />
+
+            <TextView
+                android:id="@+id/createAccountTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_message_create_account_title"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacer8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorTV" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
