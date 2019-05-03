@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements
             restoreFragment(savedInstanceState);
         } else {
             addOrReplaceFragment(
-                    AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG, true);
+                    AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG, false);
         }
     }
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onLoginSucceeded() {
-        // TODO must be implemented
+        navigation.setSelectedItemId(currentTabId);
     }
 
     @Override

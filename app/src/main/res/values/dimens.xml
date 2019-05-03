@@ -22,6 +22,7 @@
     <dimen name="spacer2">8dp</dimen>
     <dimen name="spacer4">16dp</dimen>
     <dimen name="spacer6">24dp</dimen>
+    <dimen name="spacer8">32dp</dimen>
     <dimen name="spacer12">48dp</dimen>
     <dimen name="spacer16">64dp</dimen>
 

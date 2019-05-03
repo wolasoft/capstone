@@ -4,6 +4,7 @@
     <string name="common_action_terminate">Terminer</string>
     <string name="common_message_success">Succès</string>
     <string name="common_icon_success_description">Icône succès</string>
+    <string name="common_network_error">Erreur réseau</string>
 
     <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Post</string>

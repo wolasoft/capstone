@@ -4,6 +4,7 @@ import com.wolasoft.maplenou.data.api.ApiConnector;
 import com.wolasoft.maplenou.data.api.interceptors.TokenInterceptor;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
+import com.wolasoft.maplenou.data.api.services.AuthService;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 
 import javax.inject.Singleton;
@@ -31,5 +32,11 @@ public class ApiModule {
     @Singleton
     AccountService provideAccountService(TokenInterceptor tokenInterceptor) {
         return ApiConnector.createAuthenticatedRetrofitService(AccountService.class, tokenInterceptor);
+    }
+
+    @Provides
+    @Singleton
+    AuthService provideAuthService() {
+        return ApiConnector.createRetrofitService(AuthService.class);
     }
 }
