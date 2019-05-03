@@ -5,10 +5,12 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
+import com.wolasoft.maplenou.data.api.services.AuthService;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
+import com.wolasoft.maplenou.data.repositories.AuthRepository;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteViewModelFactory;
@@ -46,6 +48,12 @@ public class DataModule {
     @Singleton
     AccountRepository provideAccountRepository(AccountService service, AppPreferences preferences) {
         return new AccountRepository(service, preferences);
+    }
+
+    @Provides
+    @Singleton
+    AuthRepository provideAuthRepository(AuthService service) {
+        return new AuthRepository(service);
     }
 
     // data sources
