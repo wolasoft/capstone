@@ -7,11 +7,11 @@
     <string name="common_icon_success_description">Success icon</string>
     <string name="common_network_error">Network error</string>
 
-    <string name="menu_title_announcement">Post</string>
+    <string name="menu_title_announcement">Posts</string>
     <string name="menu_title_favorite">Favorite</string>
     <string name="menu_title_delete">Delete</string>
     <string name="menu_title_add">Add</string>
-    <string name="menu_title_message">Message</string>
+    <string name="menu_title_message">Messages</string>
     <string name="menu_title_person">Account</string>
 
     <!-- message text -->

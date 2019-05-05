@@ -1,16 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-    </style>
 
-    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="AppThemeDark.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppThemeDark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ProgressBar" parent="@style/Widget.AppCompat.ProgressBar">
         <item name="android:layout_width">@dimen/progress_bar_size</item>
@@ -21,13 +21,13 @@
     <style name="title"><item name="android:textSize">@dimen/material_text_title</item></style>
     <style name="title.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="title.main.bold"><item name="android:textStyle">bold</item></style>
-    <style name="title.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="title.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="title.text.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="subhead"><item name="android:textSize">@dimen/material_text_subhead</item></style>
     <style name="subhead.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="subhead.main.bold"><item name="android:textStyle">bold</item></style>
-    <style name="subhead.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="subhead.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="subhead.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="subhead.text.bold"><item name="android:textStyle">bold</item></style>
     <style name="subhead.white"><item name="android:textColor">@color/colorWhite</item></style>
@@ -35,16 +35,16 @@
     <style name="subhead.white.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="body1"><item name="android:textSize">@dimen/material_text_body1</item></style>
-    <style name="body1.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="body1.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="body1.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="body1.red"><item name="android:textColor">@color/colorRed</item></style>
 
     <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
     <style name="body2.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="body2.main.bold"><item name="android:textStyle">bold</item></style>
-    <style name="body2.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="body2.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="body2.text.bold"><item name="android:textStyle">bold</item></style>
-    <style name="body2.light"><item name="android:textColor">@color/colorLight</item></style>
+    <style name="body2.light"><item name="android:textColor">@color/colorSecondaryText</item></style>
     <style name="body2.light.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="body2.white"><item name="android:textColor">@color/colorWhite</item></style>
 
@@ -59,7 +59,7 @@
     <style name="display1"><item name="android:textSize">@dimen/material_text_display1</item></style>
     <style name="display1.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="display1.main.bold"><item name="android:textStyle">bold</item></style>
-    <style name="display1.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="display1.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="display1.text.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="ListItemTitle" parent="subhead.text.medium">
@@ -142,7 +142,7 @@
         <item name="android:textColorHint">@color/colorLightGrey</item>
         <item name="android:textSize">@dimen/material_text_subhead</item>
         <item name="android:inputType">text|textNoSuggestions</item>
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:background">@drawable/bg_edittext</item>
     </style>
 

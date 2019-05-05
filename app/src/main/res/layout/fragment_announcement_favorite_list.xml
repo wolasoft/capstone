@@ -2,39 +2,52 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/list_item_announcement_padding_top"
-        android:paddingStart="@dimen/list_item_announcement_padding"
-        android:paddingLeft="@dimen/list_item_announcement_padding"
-        android:paddingEnd="@dimen/list_item_announcement_padding"
-        android:paddingRight="@dimen/list_item_announcement_padding">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbarStyle="outsideOverlay"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"/>
+        android:layout_height="match_parent">
 
         <include
-            android:id="@+id/emptyListHolder"
+            android:id="@+id/toolbarHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/app_bar"/>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            tools:visibility="visible"
-            layout="@layout/empty_list"/>
+            android:paddingTop="@dimen/list_item_announcement_padding_top"
+            android:paddingStart="@dimen/list_item_announcement_padding"
+            android:paddingLeft="@dimen/list_item_announcement_padding"
+            android:paddingEnd="@dimen/list_item_announcement_padding"
+            android:paddingRight="@dimen/list_item_announcement_padding">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/ProgressBar"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:layout_gravity="center"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:scrollbarStyle="outsideOverlay"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"/>
 
-    </FrameLayout>
+            <include
+                android:id="@+id/emptyListHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                layout="@layout/empty_list"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/ProgressBar"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 </layout>

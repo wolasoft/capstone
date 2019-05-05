@@ -33,7 +33,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:src="@drawable/test"/>
+                tools:src="@drawable/ic_photo_camera_black_24dp"/>
 
             <LinearLayout
                 android:id="@+id/detailHolder"

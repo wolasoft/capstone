@@ -7,6 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
@@ -15,12 +21,6 @@ import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class AnnouncementListFragment extends SimpleFragment implements
         AnnouncementAdapter.OnAnnouncementClickedListener {
@@ -51,7 +51,7 @@ public class AnnouncementListFragment extends SimpleFragment implements
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_announcement,
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
-
+        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.announcement_announcement_list_title);
         initViews();
 
@@ -78,6 +78,7 @@ public class AnnouncementListFragment extends SimpleFragment implements
                         dataBinding.progressBar.setVisibility(View.GONE);
                         return;
                     case ERROR:
+                        dataBinding.progressBar.setVisibility(View.GONE);
                         dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
                         return;
                     case LOADING_MORE:

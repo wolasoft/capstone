@@ -7,11 +7,11 @@
     <string name="common_network_error">Erreur réseau</string>
 
     <string name="app_name" translatable="false">Maplenou</string>
-    <string name="menu_title_announcement">Post</string>
+    <string name="menu_title_announcement">Announces</string>
     <string name="menu_title_favorite">Favoris</string>
     <string name="menu_title_delete">Supprimer</string>
     <string name="menu_title_add">Créer</string>
-    <string name="menu_title_message">Message</string>
+    <string name="menu_title_message">Messages</string>
     <string name="menu_title_person">Compte</string>
 
     <!-- message text -->

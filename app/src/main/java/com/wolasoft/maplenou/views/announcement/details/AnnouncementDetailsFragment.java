@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.ImageListener;
 import com.wolasoft.maplenou.MaplenouApplication;
@@ -26,9 +29,6 @@ import com.wolasoft.waul.utils.NetworkUtils;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
 
 public class AnnouncementDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
@@ -138,12 +138,14 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                 dataBinding.progressBar.setVisibility(View.GONE);
                 switch (loadingState) {
                     case ERROR:
-                        dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
                         dataBinding.contentHolder.setVisibility(View.GONE);
+                        dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+                        dataBinding.progressBar.setVisibility(View.GONE);
                         return;
                     case LOADED:
-                        dataBinding.networkErrorHolder.setVisibility(View.GONE);
                         dataBinding.contentHolder.setVisibility(View.VISIBLE);
+                        dataBinding.networkErrorHolder.setVisibility(View.GONE);
+                        dataBinding.progressBar.setVisibility(View.GONE);
                         return;
                 }
             });
