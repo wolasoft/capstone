@@ -1,4 +1,5 @@
 <resources>
     <!--list item-->
-    <dimen name="fragment_horizontal_margin">300dp</dimen>
+    <dimen name="fragment_horizontal_margin">250dp</dimen>
+    <dimen name="operation_message_image_holder_height">300dp</dimen>
 </resources>

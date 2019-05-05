@@ -1,6 +1,7 @@
 <resources>
     <!--list item-->
     <dimen name="fragment_horizontal_margin">100dp</dimen>
+    <dimen name="operation_message_image_holder_height">350dp</dimen>
 
     <!--list item-->
     <dimen name="list_item_announcement_width">-1dp</dimen>

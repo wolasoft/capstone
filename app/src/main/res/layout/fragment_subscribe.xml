@@ -7,6 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/spacer4"
+        android:layout_marginStart="@dimen/fragment_horizontal_margin"
+        android:layout_marginLeft="@dimen/fragment_horizontal_margin"
+        android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+        android:layout_marginRight="@dimen/fragment_horizontal_margin"
         tools:context=".views.account.subscribe.SubscribeFragment">
 
         <ScrollView

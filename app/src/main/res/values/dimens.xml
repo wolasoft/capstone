@@ -2,6 +2,8 @@
     <!--common-->
     <dimen name="common_success_icon_size">100dp</dimen>
     <dimen name="fragment_horizontal_margin">0dp</dimen>
+    <dimen name="operation_message_image_holder_height">250dp</dimen>
+    <dimen name="progress_bar_size">100dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -26,8 +28,6 @@
     <dimen name="spacer8">32dp</dimen>
     <dimen name="spacer12">48dp</dimen>
     <dimen name="spacer16">64dp</dimen>
-
-    <dimen name="progress_bar_size">125dp</dimen>
 
     <!--font sizes-->
     <dimen name="material_text_button">14sp</dimen>
