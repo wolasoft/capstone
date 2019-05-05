@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_cloud_off_black_24dp"
+        style="@style/body1.text"
+        android:drawableTop="@drawable/cloud_off"
         android:text="@string/message_network_error"
         tools:text="@string/message_network_error"
         android:layout_gravity="center"/>
