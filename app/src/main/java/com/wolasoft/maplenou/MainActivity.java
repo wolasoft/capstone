@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements
     private static final String LOGIN_FRAGMENT_TAG = "LOGIN_FRAGMENT_TAG";
     private static final String MESSAGE_FRAGMENT_TAG = "MESSAGE_FRAGMENT_TAG";
     private static final String SUBSCRIBE_FRAGMENT_TAG = "SUBSCRIBE_FRAGMENT_TAG";
+    private static final String CURRENT_TAB_ID = "CURRENT_TAB_ID";
     public static int ACCOUNT_CREATED_REQUEST_CODE = 1;
     private FragmentManager fragmentManager;
     private BottomNavigationView navigation;
@@ -112,11 +113,10 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(CURRENT_FRAGMENT_TAG)) {
-                currentTag = savedInstanceState.getString(CURRENT_FRAGMENT_TAG);
-            }
+            currentTabId = savedInstanceState.getInt(CURRENT_TAB_ID);
+            currentTag = savedInstanceState.getString(CURRENT_FRAGMENT_TAG);
 
-            restoreFragment(savedInstanceState);
+            restoreFragment();
         } else {
             addOrReplaceFragment(
                     AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG, false);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(CURRENT_FRAGMENT_TAG, currentTag);
-        fragmentManager.putFragment(outState, currentTag, currentFragment);
+        outState.putInt(CURRENT_TAB_ID, currentTabId);
     }
 
     @Override
@@ -169,30 +169,24 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.replace(R.id.fragment_container, fragment, tag);
+        currentTag = tag;
 
         if (addToBackStack) {
             currentFragment = fragment;
             transaction.addToBackStack(null);
-            currentTag = tag;
         }
 
         transaction.commitAllowingStateLoss();
     }
 
-    private void restoreFragment(Bundle bundle) {
-        currentFragment = fragmentManager.getFragment(bundle, currentTag);
+    private void restoreFragment() {
+        navigation.setSelectedItemId(currentTabId);
         switch (currentTag) {
-            case ANNOUNCEMENT_LIST_FRAGMENT_TAG:
-                addOrReplaceFragment(currentFragment, ANNOUNCEMENT_LIST_FRAGMENT_TAG, true);
-                break;
-            case ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG:
-                addOrReplaceFragment(currentFragment, ANNOUNCEMENT_FAVORITE_LIST_FRAGMENT_TAG, true);
-                break;
             case LOGIN_FRAGMENT_TAG:
-                addOrReplaceFragment(currentFragment, LOGIN_FRAGMENT_TAG, true);
+                addOrReplaceFragment(LoginFragment.newInstance(), LOGIN_FRAGMENT_TAG, true);
                 break;
             case SUBSCRIBE_FRAGMENT_TAG:
-                addOrReplaceFragment(currentFragment, SUBSCRIBE_FRAGMENT_TAG, true);
+                addOrReplaceFragment(SubscribeFragment.newInstance(), SUBSCRIBE_FRAGMENT_TAG, true);
                 break;
         }
     }
