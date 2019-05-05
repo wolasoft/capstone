@@ -12,6 +12,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ProgressBar" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">@dimen/progress_bar_size</item>
+        <item name="android:layout_height">@dimen/progress_bar_size</item>
+    </style>
+
     <!-- Font family (size, color) -->
     <style name="title"><item name="android:textSize">@dimen/material_text_title</item></style>
     <style name="title.main"><item name="android:textColor">@color/colorPrimary</item></style>
