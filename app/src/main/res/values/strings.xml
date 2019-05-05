@@ -12,7 +12,7 @@
     <string name="menu_title_delete">Supprimer</string>
     <string name="menu_title_add">Créer</string>
     <string name="menu_title_message">Message</string>
-    <string name="menu_title_person">Utilisateur</string>
+    <string name="menu_title_person">Compte</string>
 
     <!-- message text -->
     <string name="message_network_error">Aucune connexion internet disponible</string>
@@ -30,6 +30,23 @@
     <string name="account_subscribe_password_info">Au moins 8 caractères composé de chiffre, lettres majuscules et minuscules et de caractères spéciaux (@#$%^\&amp;+=)</string>
     <string name="account_subscribe_button_subscribe">S\'inscrire</string>
     <string name="account_subscribe_message_success">Votre compte a été créé avec succès</string>
+    <string name="account_details_birthdate_info">Né(e) le %1$s à %2$s</string>
+    <string name="account_details_account_info_label">Informations du compte</string>
+    <string name="account_details_personal_info_label">Informations personelles</string>
+    <string name="account_details_identity_info_label">Informations d\identités</string>
+    <string name="account_details_profile_description">Image de profile</string>
+    <string name="account_details_email_label">Email: &#032;</string>
+    <string name="account_details_phone_label">Numéro de téléphone: &#032;</string>
+    <string name="account_details_password_label">Mot de passe</string>
+    <string name="account_details_last_login_label">Dernière connexion: &#032;</string>
+    <string name="account_details_certification_label">Compte certifé: &#032;</string>
+    <string name="account_details_status_label">Statut: &#032;</string>
+    <string name="account_details_card_type_label">Type de document: &#032;</string>
+    <string name="account_details_card_number_label">N° de document: &#032;</string>
+    <string name="account_details_card_issue_date_label">Date d\'émission: &#032;</string>
+    <string name="account_details_card_expiration_date_label">Date d\expiration: &#032;</string>
+    <string name="account_details_card_issuing_office_label">Par: &#032;</string>
+    <string name="account_details_card_nationality_label">Nationalité: &#032;</string>
 
     <!-- label text -->
     <string name="announcement_label_announcement_title" translatable="false">Title</string>

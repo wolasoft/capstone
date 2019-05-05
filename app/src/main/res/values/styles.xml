@@ -31,6 +31,7 @@
 
     <style name="body1"><item name="android:textSize">@dimen/material_text_body1</item></style>
     <style name="body1.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="body1.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="body1.red"><item name="android:textColor">@color/colorRed</item></style>
 
     <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
@@ -47,6 +48,8 @@
     <style name="headline.main.bold"><item name="android:textStyle">bold</item></style>
     <style name="headline.text"><item name="android:textColor">@color/colorBlack</item></style>
     <style name="headline.text.bold"><item name="android:textStyle">bold</item></style>
+    <style name="headline.white"><item name="android:textColor">@color/colorWhite</item></style>
+    <style name="headline.white.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="display1"><item name="android:textSize">@dimen/material_text_display1</item></style>
     <style name="display1.main"><item name="android:textColor">@color/colorPrimary</item></style>
@@ -148,5 +151,20 @@
 
     <style name="EditTextPassword" parent="EditText">
         <item name="android:inputType">text|textPassword</item>
+    </style>
+
+    <style name="AccountInfoLine">
+        <item name="android:paddingStart">@dimen/spacer4</item>
+        <item name="android:paddingLeft">@dimen/spacer4</item>
+        <item name="android:paddingEnd">@dimen/spacer4</item>
+        <item name="android:paddingRight">@dimen/spacer4</item>
+        <item name="android:paddingTop">@dimen/spacer2</item>
+        <item name="android:paddingBottom">@dimen/spacer2</item>
+    </style>
+
+    <style name="AccountInfoLabel" parent="body1.text.medium">
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginEnd">@dimen/spacer2</item>
+        <item name="android:layout_marginRight">@dimen/spacer2</item>
     </style>
 </resources>

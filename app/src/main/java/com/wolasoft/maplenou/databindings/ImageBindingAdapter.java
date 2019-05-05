@@ -31,4 +31,18 @@ public class ImageBindingAdapter {
             view.setImageResource(R.drawable.ic_photo_camera_black_24dp);
         }
     }
+
+    @BindingAdapter({"app:profileImage"})
+    public static void loadProfile(ImageView view, String imageUrl) {
+        if (imageUrl != null && !imageUrl.equals("")) {
+            Picasso.get()
+                    .load(imageUrl)
+                    .error(R.drawable.ic_person_black_24dp)
+                    .placeholder(R.drawable.ic_person_black_24dp)
+                    .into(view);
+        } else {
+            view.setImageDrawable(
+                    view.getContext().getResources().getDrawable(R.drawable.ic_person_black_24dp));
+        }
+    }
 }

@@ -12,7 +12,7 @@
     <string name="menu_title_delete">Delete</string>
     <string name="menu_title_add">Add</string>
     <string name="menu_title_message">Message</string>
-    <string name="menu_title_person">Person</string>
+    <string name="menu_title_person">Account</string>
 
     <!-- message text -->
     <string name="message_network_error">No internet connection available</string>
@@ -30,6 +30,23 @@
     <string name="account_subscribe_password_info">At least 8 characters consisting of numbers, upper and lower case letters and special characters (@#$%^&amp;+=)</string>
     <string name="account_subscribe_button_subscribe">Subscribe</string>
     <string name="account_subscribe_message_success">Your account has been created successfully</string>
+    <string name="account_details_birthdate_info">Born on %1$s at %2$s</string>
+    <string name="account_details_account_info_label">Account Information</string>
+    <string name="account_details_personal_info_label">Personal information</string>
+    <string name="account_details_identity_info_label">Identity information</string>
+    <string name="account_details_profile_description">Profile image</string>
+    <string name="account_details_email_label">Email</string>
+    <string name="account_details_phone_label">Phone number</string>
+    <string name="account_details_password_label">Password</string>
+    <string name="account_details_last_login_label">Last connection</string>
+    <string name="account_details_certification_label">Certified account</string>
+    <string name="account_details_status_label">Status</string>
+    <string name="account_details_card_type_label">Type of document: &#032;</string>
+    <string name="account_details_card_number_label">Document no: &#032;</string>
+    <string name="account_details_card_issue_date_label">Issue date: &#032;</string>
+    <string name="account_details_card_expiration_date_label">Expiration Date: &#032;</string>
+    <string name="account_details_card_issuing_office_label">By: &#032;</string>
+    <string name="account_details_card_nationality_label">Nationality: &#032;</string>
 
     <!-- announcement -->
     <string name="announcement_announcement_creation_title">Add an announcement</string>
