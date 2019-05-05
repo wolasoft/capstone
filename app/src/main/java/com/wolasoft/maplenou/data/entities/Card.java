@@ -14,4 +14,48 @@ public class Card {
     private Date creationDate;
     private Date modificationDate;
     private Date deletionDate;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public Date getIssueDate() {
+        return issueDate;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public String getIssuingOffice() {
+        return issuingOffice;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public Date getModificationDate() {
+        return modificationDate;
+    }
+
+    public Date getDeletionDate() {
+        return deletionDate;
+    }
 }

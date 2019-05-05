@@ -13,5 +13,29 @@ public class Person {
     private Date creationDate;
     private Date modificationDate;
     private Date deletionDate;
-    Card card;
+    private Card card;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getBirthdayDate() {
+        return birthdayDate;
+    }
+
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
+    }
+
+    public String fullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    public Card getCard() {
+        return card;
+    }
 }
