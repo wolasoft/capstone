@@ -1,5 +1,8 @@
 <resources>
     <!--list item-->
+    <dimen name="fragment_horizontal_margin">100dp</dimen>
+
+    <!--list item-->
     <dimen name="list_item_announcement_width">-1dp</dimen>
     <dimen name="list_item_announcement_height">300dp</dimen>
     <dimen name="list_item_announcement_padding">@dimen/spacer16</dimen>

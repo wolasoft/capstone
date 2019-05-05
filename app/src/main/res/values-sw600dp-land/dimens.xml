@@ -1,0 +1,4 @@
+<resources>
+    <!--list item-->
+    <dimen name="fragment_horizontal_margin">300dp</dimen>
+</resources>
