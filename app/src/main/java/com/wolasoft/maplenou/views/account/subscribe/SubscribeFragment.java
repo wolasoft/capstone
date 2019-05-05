@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.api.errors.APIError;
@@ -22,8 +24,6 @@ import com.wolasoft.waul.validators.EmailValidator;
 import com.wolasoft.waul.validators.PasswordValidator;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
 
 
 public class SubscribeFragment extends SimpleFragment {
@@ -52,6 +52,7 @@ public class SubscribeFragment extends SimpleFragment {
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscribe,
                 container, false);
+        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.account_account_creation_title);
         MaplenouApplication.app().getAppComponent().inject(this);
 

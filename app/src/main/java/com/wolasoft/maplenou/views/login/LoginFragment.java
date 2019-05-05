@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.api.errors.APIError;
@@ -21,8 +23,6 @@ import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.validators.EmailValidator;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
 
 public class LoginFragment extends SimpleFragment {
     private OnLoginFragmentInteractionListener mListener;
@@ -52,6 +52,7 @@ public class LoginFragment extends SimpleFragment {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
+        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.login_login_title);
         initViews();
         return dataBinding.getRoot();

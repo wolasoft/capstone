@@ -8,6 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
@@ -19,14 +27,6 @@ import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
 import javax.inject.Inject;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class FavoriteListFragment extends SimpleFragment
         implements FavoriteAdapter.OnAnnouncementClickedListener {
@@ -61,6 +61,7 @@ public class FavoriteListFragment extends SimpleFragment
         dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_announcement_favorite_list, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
+        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.announcement_favorite_announcement_list_title);
         initViews();
         setItemTouchHelper();

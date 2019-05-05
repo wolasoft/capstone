@@ -4,10 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
+import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
+import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
@@ -15,16 +25,8 @@ import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
 import com.wolasoft.maplenou.views.message.MessageFragment;
-import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
-import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 
 import javax.inject.Inject;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements
         AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener,
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements
     public static int ACCOUNT_CREATED_REQUEST_CODE = 1;
     private FragmentManager fragmentManager;
     private BottomNavigationView navigation;
+    private ActivityMainBinding dataBinding;
     @Inject
     public AppPreferences preferences;
     private Fragment currentFragment;
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         MaplenouApplication.app().getAppComponent().inject(this);
         navigation = findViewById(R.id.navigation);

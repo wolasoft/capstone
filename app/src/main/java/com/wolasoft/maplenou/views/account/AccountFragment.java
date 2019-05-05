@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Account;
@@ -13,8 +15,6 @@ import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
 
 public class AccountFragment extends SimpleFragment {
 
@@ -40,7 +40,8 @@ public class AccountFragment extends SimpleFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
-        setTitle(R.string.account_account_title);
+        replaceToolbar(dataBinding.toolbar);
+        setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();
         return dataBinding.getRoot();
