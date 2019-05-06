@@ -6,11 +6,13 @@ import com.google.gson.Gson;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.data.repositories.CategoryRepository;
+import com.wolasoft.maplenou.data.repositories.CityRepository;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
 import com.wolasoft.maplenou.views.category.CategoryViewModelFactory;
+import com.wolasoft.maplenou.views.city.CityViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteViewModelFactory;
 
@@ -79,5 +81,11 @@ public class DataModule {
     @Singleton
     CategoryViewModelFactory provideCategoryViewModelFactory(CategoryRepository repository) {
         return new CategoryViewModelFactory(repository);
+    }
+
+    @Provides
+    @Singleton
+    CityViewModelFactory provideCityViewModelFactory(CityRepository repository) {
+        return new CityViewModelFactory(repository);
     }
 }

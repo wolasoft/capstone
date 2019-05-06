@@ -23,6 +23,7 @@ import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFacto
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
 import com.wolasoft.maplenou.views.category.CategoryListFragment;
+import com.wolasoft.maplenou.views.city.CityListFragment;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
@@ -65,5 +66,6 @@ public interface AppComponent {
     void inject(LoginFragment fragment);
     void inject(AccountFragment fragment);
     void inject(CategoryListFragment fragment);
+    void inject(CityListFragment fragment);
     void inject(MainActivity activity);
 }
