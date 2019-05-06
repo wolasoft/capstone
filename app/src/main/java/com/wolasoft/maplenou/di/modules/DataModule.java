@@ -3,22 +3,17 @@ package com.wolasoft.maplenou.di.modules;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.wolasoft.maplenou.data.api.services.AccountService;
-import com.wolasoft.maplenou.data.api.services.AnnouncementService;
-import com.wolasoft.maplenou.data.api.services.AuthService;
-import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
-import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
-import com.wolasoft.maplenou.data.repositories.AuthRepository;
+import com.wolasoft.maplenou.data.repositories.CategoryRepository;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
-import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
-import com.wolasoft.maplenou.views.favorite.list.FavoriteViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementViewModelFactory;
+import com.wolasoft.maplenou.views.category.CategoryViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsViewModelFactory;
+import com.wolasoft.maplenou.views.favorite.list.FavoriteViewModelFactory;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -34,26 +29,6 @@ public class DataModule {
     @Provides
     AppPreferences provideAppPreferences(Context context) {
         return new AppPreferences(context);
-    }
-
-    // repositories
-    @Provides
-    @Singleton
-    AnnouncementRepository provideAnnouncementRepository(
-            AnnouncementService service, AnnouncementDao announcementDao) {
-        return new AnnouncementRepository(service, announcementDao);
-    }
-
-    @Provides
-    @Singleton
-    AccountRepository provideAccountRepository(AccountService service, AppPreferences preferences) {
-        return new AccountRepository(service, preferences);
-    }
-
-    @Provides
-    @Singleton
-    AuthRepository provideAuthRepository(AuthService service) {
-        return new AuthRepository(service);
     }
 
     // data sources
@@ -98,5 +73,11 @@ public class DataModule {
     FavoriteDetailsViewModelFactory provideFavoriteDetailsViewModelFactory(
             AnnouncementRepository repository) {
         return new FavoriteDetailsViewModelFactory(repository);
+    }
+
+    @Provides
+    @Singleton
+    CategoryViewModelFactory provideCategoryViewModelFactory(CategoryRepository repository) {
+        return new CategoryViewModelFactory(repository);
     }
 }
