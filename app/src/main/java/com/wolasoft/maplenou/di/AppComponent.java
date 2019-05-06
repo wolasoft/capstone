@@ -4,6 +4,8 @@ import com.wolasoft.maplenou.MainActivity;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.api.services.AuthService;
+import com.wolasoft.maplenou.data.api.services.CategoryService;
+import com.wolasoft.maplenou.data.api.services.CityService;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.di.modules.ApiModule;
@@ -36,6 +38,8 @@ public interface AppComponent {
     AnnouncementService announcementService();
     AccountService accountService();
     AuthService authService();
+    CategoryService categoryService();
+    CityService cityService();
     // dao
     AnnouncementDao announcementDao();
     // data repositories
