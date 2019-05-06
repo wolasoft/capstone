@@ -51,6 +51,12 @@
     <!-- announcement -->
     <string name="announcement_announcement_creation_title">Add an announcement</string>
     <string name="announcement_announcement_list_title">Announcements</string>
+    <string name="announcement_creation_category_label">Catégory</string>
+    <string name="announcement_creation_title_label">Title</string>
+    <string name="announcement_creation_price_label">Price</string>
+    <string name="announcement_creation_description_label">Description</string>
+    <string name="announcement_creation_city_label">City</string>
+    <string name="announcement_creation_localization_label">Localization</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Removed as favorite</string>

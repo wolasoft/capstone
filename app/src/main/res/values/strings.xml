@@ -60,6 +60,12 @@
     <!-- announcement -->
     <string name="announcement_announcement_creation_title">Ajouter une annonce</string>
     <string name="announcement_announcement_list_title">Announces</string>
+    <string name="announcement_creation_category_label">Catégorie</string>
+    <string name="announcement_creation_title_label">Titre</string>
+    <string name="announcement_creation_price_label">Prix</string>
+    <string name="announcement_creation_description_label">Description</string>
+    <string name="announcement_creation_city_label">Ville</string>
+    <string name="announcement_creation_localization_label">Localisation</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Supprimé comme favoris</string>
