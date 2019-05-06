@@ -19,6 +19,7 @@ import com.wolasoft.maplenou.data.entities.Token;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentSubscribeBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
+import com.wolasoft.waul.utils.PhoneNumberFormattingTextWatcher;
 import com.wolasoft.waul.utils.PhoneNumberUtils;
 import com.wolasoft.waul.validators.EmailValidator;
 import com.wolasoft.waul.validators.PasswordValidator;
@@ -133,43 +134,58 @@ public class SubscribeFragment extends SimpleFragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                dataBinding.emailEdit.setError(!EmailValidator.isValid(s.toString()));
-                enableButton();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                enableButton();
+            }
         };
         dataBinding.emailEdit.addTextChangedListener(emailWatcher);
+        dataBinding.emailEdit.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus && dataBinding.emailEdit.getText().toString().length() > 0) {
+                dataBinding.emailEdit.setError(!EmailValidator.isValid(
+                        dataBinding.emailEdit.getText().toString()));
+            }
+        });
         TextWatcher passwordWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                dataBinding.passwordEdit.setError(!PasswordValidator.isValid(s.toString()));
-                enableButton();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                enableButton();
+            }
         };
         dataBinding.passwordEdit.addTextChangedListener(passwordWatcher);
+        dataBinding.passwordEdit.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus && dataBinding.passwordEdit.getText().toString().length() > 0) {
+                dataBinding.passwordEdit.setError(!PasswordValidator.isValid(
+                        dataBinding.passwordEdit.getText().toString()));
+            }
+        });
         TextWatcher phoneNumberWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                dataBinding.phoneNumberEdit.setError(!PhoneNumberUtils.isValidNumber(s.toString()));
-                enableButton();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                enableButton();
+            }
         };
         dataBinding.phoneNumberEdit.addTextChangedListener(phoneNumberWatcher);
+        dataBinding.phoneNumberEdit.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus && dataBinding.phoneNumberEdit.getText().toString().length() > 0) {
+                dataBinding.phoneNumberEdit.setError(!PhoneNumberUtils.isValidNumber(
+                        dataBinding.phoneNumberEdit.getText().toString()));
+            }
+        });
         TextWatcher idWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -177,16 +193,15 @@ public class SubscribeFragment extends SimpleFragment {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                enableButton();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                enableButton();
             }
         };
-        // TODO format phone number
+        dataBinding.phoneNumberEdit.addTextChangedListener(
+                new PhoneNumberFormattingTextWatcher(PhoneNumberUtils.DIALLING_CODE_TOGO));
         dataBinding.firstNameEdit.addTextChangedListener(idWatcher);
         dataBinding.lastNameEdit.addTextChangedListener(idWatcher);
     }
