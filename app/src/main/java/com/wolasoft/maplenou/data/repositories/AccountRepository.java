@@ -1,5 +1,6 @@
 package com.wolasoft.maplenou.data.repositories;
 
+import com.google.gson.JsonObject;
 import com.wolasoft.maplenou.data.api.errors.ErrorUtils;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.CallBack;
@@ -27,8 +28,14 @@ public class AccountRepository implements IAccountRepository {
     @Override
     public void create(String email, String phoneNumber, String password, String lastName,
                        String firstName, CallBack<Token> callBack) {
-        this.accountService.create(email, password, phoneNumber, lastName, firstName)
-                .enqueue(new Callback<Token>() {
+        JsonObject body = new JsonObject();
+        body.addProperty("email", email);
+        body.addProperty("phoneNumber", phoneNumber);
+        body.addProperty("password", password);
+        body.addProperty("lastName", lastName);
+        body.addProperty("firstName", firstName);
+
+        this.accountService.create(body).enqueue(new Callback<Token>() {
             @Override
             public void onResponse(Call<Token> call, Response<Token> response) {
                 if (response.isSuccessful()) {
