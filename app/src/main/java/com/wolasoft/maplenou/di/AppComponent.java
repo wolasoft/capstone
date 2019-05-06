@@ -12,6 +12,7 @@ import com.wolasoft.maplenou.di.modules.ApiModule;
 import com.wolasoft.maplenou.di.modules.ContextModule;
 import com.wolasoft.maplenou.di.modules.DataModule;
 import com.wolasoft.maplenou.di.modules.DatabaseModule;
+import com.wolasoft.maplenou.di.modules.RepositoryModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
 import com.wolasoft.maplenou.views.account.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
@@ -32,7 +33,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {
         ApiModule.class, ContextModule.class, DataModule.class, DatabaseModule.class,
-        UtilsModule.class})
+        RepositoryModule.class, UtilsModule.class})
 public interface AppComponent {
     // api service
     AnnouncementService announcementService();
