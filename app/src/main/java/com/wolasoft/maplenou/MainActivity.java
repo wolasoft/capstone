@@ -1,6 +1,5 @@
 package com.wolasoft.maplenou;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -163,9 +162,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            navigation.setSelectedItemId(currentTabId);
-        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void addOrReplaceFragment(Fragment fragment, String tag, boolean addToBackStack) {
