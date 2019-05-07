@@ -74,6 +74,12 @@
     <!-- favorite announcement -->
     <string name="announcement_favorite_announcement_list_title">Favoris</string>
 
+    <!-- category -->
+    <string name="category_list_title">Catégories</string>
+
+    <!-- city -->
+    <string name="city_list_title">Villes</string>
+
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
     <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>

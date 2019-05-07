@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +15,12 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Category;
 import com.wolasoft.maplenou.databinding.FragmentCategoryListBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
-public class CategoryListFragment extends Fragment
+public class CategoryListFragment extends SimpleFragment
         implements CategoryAdapter.OnCategoryClickedListener {
 
     private OnFragmentCategoryListInteractionListener mListener;
@@ -49,6 +49,8 @@ public class CategoryListFragment extends Fragment
                 inflater, R.layout.fragment_category_list, container, false);
 
         MaplenouApplication.app().getAppComponent().inject(this);
+
+        setTitle(R.string.category_list_title);
 
         initViews();
 

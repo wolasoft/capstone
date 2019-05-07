@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +15,12 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.City;
 import com.wolasoft.maplenou.databinding.FragmentCityListBinding;
+import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
-public class CityListFragment extends Fragment implements CityAdapter.OnCityClickedListener {
+public class CityListFragment extends SimpleFragment implements CityAdapter.OnCityClickedListener {
 
     private OnFragmentCityListInteractionListener mListener;
     private FragmentCityListBinding dataBinding;
@@ -44,11 +44,12 @@ public class CityListFragment extends Fragment implements CityAdapter.OnCityClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_city_list, container, false);
 
         MaplenouApplication.app().getAppComponent().inject(this);
+
+        setTitle(R.string.city_list_title);
 
         initViews();
 
