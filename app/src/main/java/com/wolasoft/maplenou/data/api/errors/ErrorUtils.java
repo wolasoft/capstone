@@ -19,7 +19,7 @@ public class ErrorUtils {
         try {
             error = converter.convert((response.errorBody()));
         } catch (IOException e) {
-            return new APIError();
+            return null;
         }
 
         return error;

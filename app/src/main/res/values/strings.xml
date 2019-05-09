@@ -5,6 +5,11 @@
     <string name="common_message_success">Succès</string>
     <string name="common_icon_success_description">Icône succès</string>
     <string name="common_network_error">Erreur réseau</string>
+    <string name="common_image_picker_title">Sélectionner une image</string>
+    <string name="common_understand">J\ai compris</string>
+    <string name="common_success">Succès</string>
+    <string name="common_failure">Echec</string>
+    <string name="common_required">Obligatoire</string>
 
     <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Announces</string>
@@ -18,6 +23,9 @@
     <string name="message_network_error">Aucune connexion internet disponible</string>
     <string name="message_empty_list">Aucun élément disponible</string>
     <string name="message_item_deleted">Annonce supprimé</string>
+    <string name="message_image_source">Source de l\'image</string>
+    <string name="message_choose_photo_from_gallery">Galerie photo</string>
+    <string name="message_take_photo">Prendre une photo</string>
 
     <!-- account -->
     <string name="account_account_title">Compte</string>
@@ -60,6 +68,15 @@
     <!-- announcement -->
     <string name="announcement_announcement_creation_title">Ajouter une annonce</string>
     <string name="announcement_announcement_list_title">Announces</string>
+    <string name="announcement_creation_category_label">Catégorie</string>
+    <string name="announcement_creation_title_label">Titre</string>
+    <string name="announcement_creation_price_label">Prix</string>
+    <string name="announcement_creation_description_label">Description</string>
+    <string name="announcement_creation_city_label">Ville</string>
+    <string name="announcement_creation_localization_label">Localisation</string>
+    <string name="announcement_creation_success_description">Votre annonce a été créé avec succès</string>
+    <string name="announcement_creation_city_required">Vous devez sélectionner une ville</string>
+    <string name="announcement_creation_category_required">Vous devez sélectionner une catégorie</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Supprimé comme favoris</string>
@@ -68,9 +85,18 @@
     <!-- favorite announcement -->
     <string name="announcement_favorite_announcement_list_title">Favoris</string>
 
+    <!-- category -->
+    <string name="category_list_title">Catégories</string>
+
+    <!-- city -->
+    <string name="city_list_title">Villes</string>
+
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
     <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>
+
+    <!-- http errors-->
+    <string name="http_error_505_message">Erreur inconnu</string>
 
     <!-- login -->
     <string name="login_login_title">Se connecter</string>
@@ -105,5 +131,14 @@
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
         anim id est laborum.
     </string>
+
+    <!-- permissions -->
+    <string name="permission_camera_explanation_message">
+        Maplenou a besoin d\accéder à votre camera pour prendre une photo.\nSi vous êtes d\'accord cliquez sur autoriser sur le prochain écran.
+    </string>
+    <string name="permission_gallery_explanation_message">
+        Maplenou a besoin d\'accéder à votre gallerie photo pour sélectionner une photo.\nSi vous êtes d\'accord cliquez sur autoriser sur le prochain écran.
+    </string>
+    <string name="permission_message_refused">Permission refusée</string>
 
 </resources>
