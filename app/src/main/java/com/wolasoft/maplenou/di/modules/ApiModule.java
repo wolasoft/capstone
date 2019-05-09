@@ -26,8 +26,9 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    AnnouncementService provideAnnouncementService() {
-        return ApiConnector.createRetrofitService(AnnouncementService.class);
+    AnnouncementService provideAnnouncementService(TokenInterceptor tokenInterceptor) {
+        return ApiConnector.createAuthenticatedRetrofitService(
+                AnnouncementService.class, tokenInterceptor);
     }
 
     @Provides
