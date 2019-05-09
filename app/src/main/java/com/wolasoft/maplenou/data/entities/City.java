@@ -35,6 +35,10 @@ public class City implements Parcelable {
         return name;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
     @Override
     public int describeContents() {
         return 0;

@@ -16,6 +16,7 @@ import com.wolasoft.maplenou.di.modules.RepositoryModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
 import com.wolasoft.maplenou.views.account.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
+import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
@@ -67,5 +68,6 @@ public interface AppComponent {
     void inject(AccountFragment fragment);
     void inject(CategoryListFragment fragment);
     void inject(CityListFragment fragment);
+    void inject(CreateAnnouncementFragment fragment);
     void inject(MainActivity activity);
 }
