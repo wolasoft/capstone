@@ -40,7 +40,6 @@ public class AccountFragment extends SimpleFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
-        replaceToolbar(dataBinding.toolbar);
         setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();

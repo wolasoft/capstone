@@ -37,12 +37,12 @@ public class ImageBindingAdapter {
         if (imageUrl != null && !imageUrl.equals("")) {
             Picasso.get()
                     .load(imageUrl)
-                    .error(R.drawable.ic_person_black_24dp)
-                    .placeholder(R.drawable.ic_person_black_24dp)
+                    .error(R.drawable.ic_person_white_24dp)
+                    .placeholder(R.drawable.ic_person_white_24dp)
                     .into(view);
         } else {
             view.setImageDrawable(
-                    view.getContext().getResources().getDrawable(R.drawable.ic_person_black_24dp));
+                    view.getContext().getResources().getDrawable(R.drawable.ic_person_white_24dp));
         }
     }
 }

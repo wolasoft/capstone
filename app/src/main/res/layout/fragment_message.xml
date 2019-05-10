@@ -2,34 +2,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        tools:context="com.wolasoft.maplenou.views.message.MessageFragment">
 
-        <include
-            android:id="@+id/toolbarHolder"
-            android:layout_width="match_parent"
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/app_bar"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_gravity="center"
-            tools:context="com.wolasoft.maplenou.views.message.MessageFragment">
+            android:gravity="center"
+            android:drawableTop="@drawable/message"
+            android:text="@string/message_message_title" />
 
-            <!-- TODO: Update blank fragment layout -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:drawableTop="@drawable/message"
-                android:text="@string/message_message_title" />
-
-        </FrameLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </layout>

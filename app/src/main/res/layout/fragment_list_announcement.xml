@@ -3,60 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/list_item_announcement_padding_top"
+        android:paddingStart="@dimen/list_item_announcement_padding"
+        android:paddingLeft="@dimen/list_item_announcement_padding"
+        android:paddingEnd="@dimen/list_item_announcement_padding"
+        android:paddingRight="@dimen/list_item_announcement_padding">
 
-        <include
-            android:id="@+id/toolbarHolder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/app_bar"/>
-
-        <FrameLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/list_item_announcement_padding_top"
-            android:paddingStart="@dimen/list_item_announcement_padding"
-            android:paddingLeft="@dimen/list_item_announcement_padding"
-            android:paddingEnd="@dimen/list_item_announcement_padding"
-            android:paddingRight="@dimen/list_item_announcement_padding">
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:scrollbarStyle="outsideOverlay"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"/>
+        <include
+            android:id="@+id/networkErrorHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible"
+            layout="@layout/network_error"/>
 
-            <include
-                android:id="@+id/networkErrorHolder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                tools:visibility="visible"
-                layout="@layout/network_error"/>
+        <include
+            android:id="@+id/emptyListHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible"
+            layout="@layout/empty_list"/>
 
-            <include
-                android:id="@+id/emptyListHolder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                tools:visibility="visible"
-                layout="@layout/empty_list"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/ProgressBar"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_gravity="center"/>
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="@style/ProgressBar"
-                android:visibility="gone"
-                tools:visibility="visible"
-                android:layout_gravity="center"/>
-
-        </FrameLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </layout>

@@ -32,7 +32,6 @@ public class MessageFragment extends SimpleFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false);
-        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.message_message_title);
 
         return dataBinding.getRoot();

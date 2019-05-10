@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        setSupportActionBar(dataBinding.appBar.toolbar);
+
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState != null) {

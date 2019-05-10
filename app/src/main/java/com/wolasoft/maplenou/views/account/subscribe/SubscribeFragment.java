@@ -53,7 +53,6 @@ public class SubscribeFragment extends SimpleFragment {
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscribe,
                 container, false);
-        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.account_account_creation_title);
         MaplenouApplication.app().getAppComponent().inject(this);
 

@@ -52,7 +52,6 @@ public class LoginFragment extends SimpleFragment {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
-        replaceToolbar(dataBinding.toolbarHolder.toolbar);
         setTitle(R.string.login_login_title);
         initViews();
         return dataBinding.getRoot();
