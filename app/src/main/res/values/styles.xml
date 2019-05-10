@@ -44,6 +44,8 @@
     <style name="body1.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="body1.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="body1.red"><item name="android:textColor">@color/colorRed</item></style>
+    <style name="body1.white"><item name="android:textColor">@color/colorWhite</item></style>
+    <style name="body1.white.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
 
     <style name="body2"><item name="android:textSize">@dimen/material_text_body2</item></style>
     <style name="body2.main"><item name="android:textColor">@color/colorPrimary</item></style>
