@@ -3,22 +3,31 @@ package com.wolasoft.maplenou.views.favorite.details;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wolasoft.maplenou.R;
+import com.wolasoft.maplenou.databinding.ActivityAnnouncementDetailsBinding;
+import com.wolasoft.waul.activities.BaseActivity;
 
-import java.util.Objects;
+public class FavoriteDetailsActivity extends BaseActivity {
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-public class FavoriteDetailsActivity extends AppCompatActivity {
+    private ActivityAnnouncementDetailsBinding dataBinding;
+    public static final String ARG_ANNOUNCEMENT_UUID = "UUID";
+    private String uuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_announcement_details);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_announcement_details);
+        setSupportActionBar(dataBinding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (getIntent().hasExtra(ARG_ANNOUNCEMENT_UUID)) {
+            uuid = getIntent().getStringExtra(ARG_ANNOUNCEMENT_UUID);
+        }
+
+        replaceFragment(
+                R.id.detailsFragment, FavoriteDetailsFragment.newInstance(uuid), "", false);
     }
 
     @Override

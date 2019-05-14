@@ -136,14 +136,16 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onAnnouncementListFragmentInteraction(Announcement announcement) {
+    public void onAnnouncementClicked(Announcement announcement) {
         Intent intent = new Intent(this, AnnouncementDetailsActivity.class);
+        intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
         startActivity(intent);
     }
 
     @Override
-    public void onFavoriteListFragmentInteraction(Announcement announcement) {
+    public void onFavoriteAnnouncementSelected(Announcement announcement) {
         Intent intent = new Intent(this, FavoriteDetailsActivity.class);
+        intent.putExtra(FavoriteDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
         startActivity(intent);
     }
 
