@@ -11,6 +11,12 @@
     <string name="common_success">Success</string>
     <string name="common_failure">Failure</string>
     <string name="common_required">Required</string>
+    <string name="common_action_call">Call</string>
+    <string name="common_action_sms">Sms</string>
+    <string name="common_action_email">Mail</string>
+    <string name="common_title_send_email">Send an e-mail</string>
+    <string name="common_title_send_sms">Send a sms</string>
+    <string name="common_title_make_call">Make a call</string>
 
     <string name="menu_title_announcement">Posts</string>
     <string name="menu_title_favorite">Favorite</string>

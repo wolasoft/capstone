@@ -10,6 +10,12 @@
     <string name="common_success">Succès</string>
     <string name="common_failure">Echec</string>
     <string name="common_required">Obligatoire</string>
+    <string name="common_action_call">Appel</string>
+    <string name="common_action_sms">Sms</string>
+    <string name="common_action_email">Mail</string>
+    <string name="common_title_send_email">Envoyer un e-mail</string>
+    <string name="common_title_send_sms">Envoyer un sms</string>
+    <string name="common_title_make_call">Appeler</string>
 
     <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Announces</string>
