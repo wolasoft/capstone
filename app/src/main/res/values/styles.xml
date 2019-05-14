@@ -41,6 +41,7 @@
     <style name="subhead.white.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="body1"><item name="android:textSize">@dimen/material_text_body1</item></style>
+    <style name="body1.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="body1.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="body1.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="body1.red"><item name="android:textColor">@color/colorRed</item></style>

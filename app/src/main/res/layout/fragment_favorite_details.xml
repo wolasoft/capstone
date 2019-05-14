@@ -98,6 +98,59 @@
                     app:layout_constraintTop_toTopOf="@id/creationDate"
                     tools:text="@string/announcement_label_announcement_user" />
 
+                <LinearLayout
+                    android:id="@+id/contactLayout"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacer2"
+                    android:layout_marginTop="@dimen/spacer4"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toLeftOf="@id/creationDate"
+                    app:layout_constraintStart_toStartOf="@id/creationDate"
+                    app:layout_constraintTop_toBottomOf="@id/creationDate">
+
+                    <TextView
+                        android:id="@+id/phoneTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body1.main"
+                        android:text="@string/common_action_call"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/ic_phone_24dp"/>
+
+                    <TextView
+                        android:id="@+id/smsTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body1.main"
+                        android:text="@string/common_action_sms"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/ic_sms_24dp"/>
+
+                    <TextView
+                        android:id="@+id/emailTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/common_action_email"
+                        style="@style/body1.main"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/ic_email_24dp"/>
+
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/descriptionLabel"
                     style="@style/DetailsItemDescriptionLabel"
@@ -105,9 +158,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacer4"
                     android:text="@string/announcement_label_announcement_description"
-                    app:layout_constraintLeft_toLeftOf="@id/creationDate"
-                    app:layout_constraintStart_toStartOf="@id/creationDate"
-                    app:layout_constraintTop_toBottomOf="@id/creationDate"
+                    app:layout_constraintLeft_toLeftOf="@id/contactLayout"
+                    app:layout_constraintStart_toStartOf="@id/contactLayout"
+                    app:layout_constraintTop_toBottomOf="@id/contactLayout"
                     tools:text="@string/announcement_label_announcement_description" />
 
                 <TextView

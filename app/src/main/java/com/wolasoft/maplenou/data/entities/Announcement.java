@@ -22,6 +22,7 @@ public class Announcement {
     private List<Photo> photos;
     private City city;
     private Category category;
+    private Account account;
 
     public int getId() {
         return id;
@@ -125,6 +126,14 @@ public class Announcement {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

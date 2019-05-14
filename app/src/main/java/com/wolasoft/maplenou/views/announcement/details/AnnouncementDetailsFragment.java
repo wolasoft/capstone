@@ -1,6 +1,8 @@
 package com.wolasoft.maplenou.views.announcement.details;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +25,7 @@ import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
+import com.wolasoft.waul.utils.DeviceUtils;
 import com.wolasoft.waul.utils.ExecutorUtils;
 import com.wolasoft.waul.utils.NetworkUtils;
 
@@ -131,7 +134,19 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                 setImageListener(announcement.getPhotos());
                 dataBinding.images.setPageCount(announcement.getPhotos().size());
                 dataBinding.setAnnouncement(announcement);
-                dataBinding.creationDate.setText(DateUtilities.format(announcement.getCreationDate(), getContext()));
+                dataBinding.creationDate.setText(DateUtilities.format(announcement.getCreationDate(),
+                        getContext()));
+
+                dataBinding.emailTV.setOnClickListener(v -> sendMail());
+                dataBinding.emailTV.setVisibility(View.VISIBLE);
+
+                if (DeviceUtils.hasPhoneCapability(getContext())) {
+                    dataBinding.smsTV.setOnClickListener(v -> sendSms());
+                    dataBinding.phoneTV.setOnClickListener(v -> call());
+                    dataBinding.smsTV.setVisibility(View.VISIBLE);
+                    dataBinding.phoneTV.setVisibility(View.VISIBLE);
+                }
+
             });
 
             viewModel.getProgressLiveStatus().observe(this, loadingState -> {
@@ -181,5 +196,36 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
             }
             invalidateOptionsMenu();
         });
+    }
+
+    private void call() {
+        if (DeviceUtils.hasPhoneCapability(getContext())) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + retrievedAnnouncement.getAccount().getPhoneNumber()));
+            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_send_sms));
+            if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(chooser);
+            }
+        }
+    }
+
+    private void sendSms() {
+        if (DeviceUtils.hasPhoneCapability(getContext())) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("smsto:" + retrievedAnnouncement.getAccount().getPhoneNumber()));
+            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_send_sms));
+            if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(chooser);
+            }
+        }
+    }
+
+    private void sendMail() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("mailto:" + retrievedAnnouncement.getAccount().getEmail()));
+        Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_send_email));
+        if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(chooser);
+        }
     }
 }
