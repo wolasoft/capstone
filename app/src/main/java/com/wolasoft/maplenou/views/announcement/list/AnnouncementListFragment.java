@@ -131,11 +131,11 @@ public class AnnouncementListFragment extends SimpleFragment implements
     @Override
     public void announcementClicked(Announcement announcement) {
         if (mListener != null) {
-            mListener.onAnnouncementListFragmentInteraction(announcement);
+            mListener.onAnnouncementClicked(announcement);
         }
     }
 
     public interface OnAnnouncementListFragmentInteractionListener {
-        void onAnnouncementListFragmentInteraction(Announcement announcement);
+        void onAnnouncementClicked(Announcement announcement);
     }
 }

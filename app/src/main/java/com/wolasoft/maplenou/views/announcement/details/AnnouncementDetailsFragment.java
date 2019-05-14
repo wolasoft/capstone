@@ -127,8 +127,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
         } else {
             AnnouncementDetailsViewModel viewModel = ViewModelProviders.of(this, factory)
                     .get(AnnouncementDetailsViewModel.class);
-            // TODO replace 1 with uuid variable
-            viewModel.init("1");
+            viewModel.init(uuid);
             viewModel.getAnnouncementLiveData().observe(this, announcement -> {
                 retrievedAnnouncement = announcement;
                 setImageListener(announcement.getPhotos());
@@ -202,7 +201,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
         if (DeviceUtils.hasPhoneCapability(getContext())) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:" + retrievedAnnouncement.getAccount().getPhoneNumber()));
-            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_send_sms));
+            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_make_call));
             if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
                 startActivity(chooser);
             }

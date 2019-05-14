@@ -142,11 +142,11 @@ public class FavoriteListFragment extends SimpleFragment
     @Override
     public void announcementClicked(Announcement announcement) {
         if (listener != null) {
-            listener.onFavoriteListFragmentInteraction(announcement);
+            listener.onFavoriteAnnouncementSelected(announcement);
         }
     }
 
     public interface OnFavoriteListFragmentInteractionListener {
-        void onFavoriteListFragmentInteraction(Announcement announcement);
+        void onFavoriteAnnouncementSelected(Announcement announcement);
     }
 }

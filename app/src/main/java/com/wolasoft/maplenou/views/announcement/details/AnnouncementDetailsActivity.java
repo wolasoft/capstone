@@ -3,20 +3,31 @@ package com.wolasoft.maplenou.views.announcement.details;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wolasoft.maplenou.R;
+import com.wolasoft.maplenou.databinding.ActivityAnnouncementDetailsBinding;
+import com.wolasoft.waul.activities.BaseActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+public class AnnouncementDetailsActivity extends BaseActivity {
 
-public class AnnouncementDetailsActivity extends AppCompatActivity {
+    private ActivityAnnouncementDetailsBinding dataBinding;
+    public static final String ARG_ANNOUNCEMENT_UUID = "UUID";
+    private String uuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_announcement_details);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_announcement_details);
+        setSupportActionBar(dataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (getIntent().hasExtra(ARG_ANNOUNCEMENT_UUID)) {
+            uuid = getIntent().getStringExtra(ARG_ANNOUNCEMENT_UUID);
+        }
+
+        replaceFragment(
+                R.id.detailsFragment, AnnouncementDetailsFragment.newInstance(uuid), "", false);
     }
 
     @Override

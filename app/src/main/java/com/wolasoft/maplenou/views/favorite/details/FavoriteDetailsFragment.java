@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.ImageListener;
 import com.wolasoft.maplenou.MaplenouApplication;
@@ -28,9 +31,6 @@ import com.wolasoft.waul.utils.ExecutorUtils;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
 
 public class FavoriteDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
@@ -123,8 +123,7 @@ public class FavoriteDetailsFragment extends SimpleFragment {
         FavoriteDetailsViewModel viewModel = ViewModelProviders
                 .of(this, factory)
                 .get(FavoriteDetailsViewModel.class);
-        // TODO replace 1 with uuid variable
-        viewModel.init("1");
+        viewModel.init(uuid);
         viewModel.getAnnouncementLiveData().observe(this, announcement -> {
             dataBinding.progressBar.setVisibility(View.GONE);
             retrievedAnnouncement = announcement;
@@ -169,7 +168,7 @@ public class FavoriteDetailsFragment extends SimpleFragment {
         if (DeviceUtils.hasPhoneCapability(getContext())) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:" + retrievedAnnouncement.getAccount().getPhoneNumber()));
-            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_send_sms));
+            Intent chooser = Intent.createChooser(intent, getString(R.string.common_title_make_call));
             if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
                 startActivity(chooser);
             }
