@@ -2,6 +2,7 @@ package com.wolasoft.maplenou.data.database;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.entities.Category;
 import com.wolasoft.maplenou.data.entities.City;
 import com.wolasoft.maplenou.data.entities.Photo;
@@ -86,6 +87,25 @@ public class DataTypeConverter {
         if (photos != null) {
             Type type = new TypeToken<List<Photo>>(){}.getType();
             return this.gson.toJson(photos, type);
+        }
+
+        return "";
+    }
+
+    @TypeConverter
+    public Account stringToAccount(String data) {
+        if (data != null) {
+            Type type = new TypeToken<Account>(){}.getType();
+            return this.gson.fromJson(data, type);
+        }
+
+        return null;
+    }
+
+    @TypeConverter
+    public String accountToString(Account account) {
+        if (account != null) {
+            return this.gson.toJson(account);
         }
 
         return "";
