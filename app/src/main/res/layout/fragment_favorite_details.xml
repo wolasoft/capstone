@@ -158,8 +158,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacer4"
                     android:text="@string/announcement_label_announcement_description"
-                    app:layout_constraintLeft_toLeftOf="@id/contactLayout"
-                    app:layout_constraintStart_toStartOf="@id/contactLayout"
+                    app:layout_constraintLeft_toLeftOf="@id/title"
+                    app:layout_constraintStart_toStartOf="@id/title"
                     app:layout_constraintTop_toBottomOf="@id/contactLayout"
                     tools:text="@string/announcement_label_announcement_description" />
 
