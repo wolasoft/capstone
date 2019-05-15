@@ -18,7 +18,10 @@ import retrofit2.http.Query;
 
 public interface AnnouncementService {
     @GET("announcements")
-    Call<ApiResponse<Announcement>> getAll(@Query("page") int page);
+    Call<ApiResponse<Announcement>> getAll(@Query("page") int page,
+                                           @Query("title") String title,
+                                           @Query("categoryUuid") String categoryUuid,
+                                           @Query("cityUuid") String cityUuid);
     @GET("announcements/{uuid}")
     Call<Announcement> getOne(@Path("uuid") String uuid);
     @Multipart

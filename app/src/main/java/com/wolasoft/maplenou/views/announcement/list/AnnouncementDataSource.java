@@ -2,6 +2,7 @@ package com.wolasoft.maplenou.views.announcement.list;
 
 import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.api.LoadingState;
+import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 
@@ -20,6 +21,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
     private static final int FIRST_PAGE = 1;
     private AnnouncementRepository repository;
     private MutableLiveData<LoadingState> progressLiveStatus;
+    private Search searchParams;
 
     @Inject
     public AnnouncementDataSource(AnnouncementRepository repository) {
@@ -31,10 +33,14 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
         return progressLiveStatus;
     }
 
+    public void setSearchParams(Search searchParams) {
+        this.searchParams = searchParams;
+    }
+
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Announcement> callback) {
         progressLiveStatus.postValue(LoadingState.LOADING);
-        this.repository.fetchAllFromApi(FIRST_PAGE)
+        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {
@@ -55,7 +61,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
-        this.repository.fetchAllFromApi(FIRST_PAGE)
+        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {
@@ -75,7 +81,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
     @Override
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
         progressLiveStatus.postValue(LoadingState.LOADING_MORE);
-        this.repository.fetchAllFromApi(FIRST_PAGE)
+        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {

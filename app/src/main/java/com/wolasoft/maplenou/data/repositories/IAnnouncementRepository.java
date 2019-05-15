@@ -2,6 +2,7 @@ package com.wolasoft.maplenou.data.repositories;
 
 import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.api.services.CallBack;
+import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import retrofit2.Call;
 
 public interface IAnnouncementRepository {
-    Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage);
+    Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage, Search search);
     LiveData<Announcement> fetchOneFromApi(final String uuid);
     void saveToDb(final Announcement announcement);
     LiveData<Announcement> fetchOneFromDb(String uuid);

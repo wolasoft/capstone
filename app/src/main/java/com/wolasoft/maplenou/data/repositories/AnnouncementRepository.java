@@ -8,6 +8,7 @@ import com.wolasoft.maplenou.data.api.errors.ErrorUtils;
 import com.wolasoft.maplenou.data.api.services.AnnouncementService;
 import com.wolasoft.maplenou.data.api.services.CallBack;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
+import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 
@@ -44,8 +45,22 @@ public class AnnouncementRepository implements IAnnouncementRepository{
         this.fetchOneLiveStatus = new MutableLiveData<>();
     }
 
-    public Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage) {
-        return this.announcementService.getAll(firstPage);
+    public Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage, Search search) {
+        String title = null;
+        String categoryUuid = null;
+        String cityUuid = null;
+
+        if (search != null) {
+            title = search.getTitle();
+            categoryUuid = search.getCategory() != null ? search.getCategory().getUuid() : null;
+            cityUuid = search.getCity() != null ? search.getCity().getUuid() : null;
+        }
+
+        return this.announcementService.getAll(
+                firstPage,
+                title,
+                categoryUuid,
+                cityUuid);
     }
 
     @Override
