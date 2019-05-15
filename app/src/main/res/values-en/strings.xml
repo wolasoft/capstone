@@ -17,6 +17,7 @@
     <string name="common_title_send_email">Send an e-mail</string>
     <string name="common_title_send_sms">Send a sms</string>
     <string name="common_title_make_call">Make a call</string>
+    <string name="common_title_search">Search</string>
 
     <string name="menu_title_announcement">Posts</string>
     <string name="menu_title_favorite">Favorite</string>
@@ -24,6 +25,9 @@
     <string name="menu_title_add">Add</string>
     <string name="menu_title_message">Messages</string>
     <string name="menu_title_person">Account</string>
+
+    <!-- action -->
+    <string name="action_search">Search</string>
 
     <!-- message text -->
     <string name="message_network_error">No internet connection available</string>
@@ -74,6 +78,7 @@
     <string name="announcement_creation_success_description">VYour announcement has been created successfully</string>
     <string name="announcement_creation_city_required">You must choose a city</string>
     <string name="announcement_creation_category_required">You must choose a category</string>
+    <string name="announcement_search_title">Search</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Removed as favorite</string>
@@ -81,9 +86,11 @@
 
     <!-- category -->
     <string name="category_list_title">Categories</string>
+    <string name="category_choose_category_title">Choose a category</string>
 
     <!-- city -->
     <string name="city_list_title">Cities</string>
+    <string name="city_choose_city_title">Choose a city</string>
 
     <!-- favorite announcement -->
     <string name="announcement_favorite_announcement_list_title">Favorites</string>
