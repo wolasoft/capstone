@@ -19,6 +19,7 @@ import com.wolasoft.maplenou.data.entities.Token;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.data.repositories.AuthRepository;
 import com.wolasoft.maplenou.databinding.FragmentLoginBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.validators.EmailValidator;
 
@@ -31,6 +32,8 @@ public class LoginFragment extends SimpleFragment {
     public AuthRepository authRepository;
     @Inject
     public AccountRepository accountRepository;
+    @Inject
+    public Tracker tracker;
 
     public LoginFragment() { }
 
@@ -52,6 +55,7 @@ public class LoginFragment extends SimpleFragment {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_LOGIN_FRAGMENT);
         setTitle(R.string.login_login_title);
         initViews();
         return dataBinding.getRoot();
@@ -123,6 +127,9 @@ public class LoginFragment extends SimpleFragment {
                 @Override
                 public void onSuccess(Account data) {
                     accountRepository.saveAccount(data);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Tracker.Params.PARAM_LOGIN_STATE, "success");
+                    tracker.sendEvent(Tracker.Event.EVENT_LOGIN, bundle);
                     dataBinding.progressBar.setVisibility(View.GONE);
 
                     if (mListener != null) {
@@ -132,6 +139,9 @@ public class LoginFragment extends SimpleFragment {
 
                 @Override
                 public void onError(APIError error) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Tracker.Params.PARAM_LOGIN_STATE, "failed");
+                    tracker.sendEvent(Tracker.Event.EVENT_LOGIN, bundle);
                     handleError(error);
                 }
             };

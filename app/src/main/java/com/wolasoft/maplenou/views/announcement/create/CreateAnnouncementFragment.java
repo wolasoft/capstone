@@ -29,6 +29,7 @@ import com.wolasoft.maplenou.data.entities.Category;
 import com.wolasoft.maplenou.data.entities.City;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentCreateAnnouncementBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.maplenou.views.category.CategoryListActivity;
 import com.wolasoft.maplenou.views.city.CityListActivity;
 import com.wolasoft.maplenou.views.common.ErrorFeedBackActivity;
@@ -57,6 +58,8 @@ public class CreateAnnouncementFragment extends SimpleFragment {
     private FragmentCreateAnnouncementBinding dataBinding;
     @Inject
     public AnnouncementRepository repository;
+    @Inject
+    public Tracker tracker;
     private int numberOfImage = 0;
     private List<File> photos;
     private Category category;
@@ -83,6 +86,7 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                 inflater, R.layout.fragment_create_announcement, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
         setTitle(R.string.announcement_announcement_creation_title);
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_CREATE_ANOUNCEMENT_FRAGMENT);
 
         initViews();
 
@@ -133,11 +137,17 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                                         R.string.announcement_creation_success_description));
                                 Intent intent = new Intent(getContext(), FeedBackActivity.class);
                                 dataBinding.progressBar.setVisibility(View.GONE);
+                                Bundle bundle = new Bundle();
+                                bundle.putString(Tracker.Params.PARAM_CREATION_STATE, "success");
+                                tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_CREATION, bundle);
                                 startActivity(intent);
                             }
 
                             @Override
                             public void onError(APIError error) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString(Tracker.Params.PARAM_CREATION_STATE, "failed");
+                                tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_CREATION, bundle);
                                 Intent intent = new Intent(getContext(), ErrorFeedBackActivity.class);
                                 intent.putExtra(ErrorFeedBackActivity.API_ERROR_KEY, error);
                                 dataBinding.progressBar.setVisibility(View.GONE);

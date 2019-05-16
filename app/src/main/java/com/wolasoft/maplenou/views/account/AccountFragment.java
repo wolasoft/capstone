@@ -90,6 +90,7 @@ public class AccountFragment extends SimpleFragment {
         super.onDetach();
         mListener = null;
     }
+
     private void initViews() {
         Account account = this.repository.getAccount();
         dataBinding.setAccount(account);

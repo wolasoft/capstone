@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -18,6 +19,7 @@ import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.entities.Token;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentSubscribeBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.PhoneNumberFormattingTextWatcher;
 import com.wolasoft.waul.utils.PhoneNumberUtils;
@@ -33,6 +35,8 @@ public class SubscribeFragment extends SimpleFragment {
     private FragmentSubscribeBinding dataBinding;
     @Inject
     public AccountRepository repository;
+    @Inject
+    public Tracker tracker;
 
     public SubscribeFragment() { }
 
@@ -55,6 +59,7 @@ public class SubscribeFragment extends SimpleFragment {
                 container, false);
         setTitle(R.string.account_account_creation_title);
         MaplenouApplication.app().getAppComponent().inject(this);
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_SUBSCRIBE_FRAGMENT);
 
         initViews();
 
@@ -88,12 +93,19 @@ public class SubscribeFragment extends SimpleFragment {
             @Override
             public void onSuccess(Token data) {
                 repository.saveToken(data);
+                Bundle bundle = new Bundle();
+                bundle.putString(Tracker.Params.PARAM_SUBSCRIBE_STATE, "success");
+                tracker.sendEvent(Tracker.Event.EVENT_SUBSCRIBE, bundle);
                 getCreatedAccount();
             }
 
             @Override
             public void onError(APIError error) {
                 // TODO handle error
+                dataBinding.progressBar.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString(Tracker.Params.PARAM_SUBSCRIBE_STATE, "failed");
+                tracker.sendEvent(Tracker.Event.EVENT_SUBSCRIBE, bundle);
             }
         };
 

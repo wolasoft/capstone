@@ -11,14 +11,18 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Category;
 import com.wolasoft.maplenou.data.entities.City;
 import com.wolasoft.maplenou.databinding.FragmentSearchBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.maplenou.views.category.CategoryListActivity;
 import com.wolasoft.maplenou.views.city.CityListActivity;
 import com.wolasoft.waul.utils.NetworkUtils;
+
+import javax.inject.Inject;
 
 public class SearchFragment extends Fragment {
 
@@ -29,6 +33,8 @@ public class SearchFragment extends Fragment {
     private Category category;
     private City city;
     private Search searchParams;
+    @Inject
+    public Tracker tracker;
 
     public SearchFragment() { }
 
@@ -52,10 +58,12 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
+        MaplenouApplication.app().getAppComponent().inject(this);
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_SEARCH_FRAGMENT);
 
         initViews();
 
-    return dataBinding.getRoot();
+        return dataBinding.getRoot();
     }
 
     @Override
@@ -105,6 +113,17 @@ public class SearchFragment extends Fragment {
                     searchParams.setTitle(dataBinding.titleEdit.getText().toString());
                 }
 
+                Bundle bundle = new Bundle();
+                bundle.putString(
+                        Tracker.Values.VALUE_SEARCH_TITLE,
+                        dataBinding.titleEdit.getText().toString());
+                bundle.putString(
+                        Tracker.Values.VALUE_SEARCH_CATEGORY,
+                        dataBinding.categoryTV.getText().toString());
+                bundle.putString(
+                        Tracker.Values.VALUE_SEARCH_CITY,
+                        dataBinding.cityTV.getText().toString());
+                tracker.sendEvent(Tracker.Event.EVENT_SEARCH, bundle);
                 if (mListener != null) {
                     mListener.onSearchButtonCLicked(searchParams);
                 }
