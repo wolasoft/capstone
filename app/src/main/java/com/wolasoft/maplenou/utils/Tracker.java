@@ -27,13 +27,16 @@ public class Tracker {
     public static class Event {
         public static final String EVENT_FRAGMENT_OPEN = "fragment_open";
         public static final String EVENT_SEARCH = "event_search";
+        public static final String EVENT_LOGIN = "event_login";
     }
 
     public static class Params {
         public static final String PARAM_FRAGMENT_NAME = "param_fragment_name";
+        public static final String PARAM_LOGIN_STATE = "param_login_state";
     }
 
     public static class Values {
+        public static final String VALUE_LOGIN_FRAGMENT = "login_fragment";
         public static final String VALUE_SEARCH_FRAGMENT = "search_fragment";
         public static final String VALUE_SEARCH_TITLE = "search_title";
         public static final String VALUE_SEARCH_CATEGORY = "search_category";
