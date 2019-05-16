@@ -10,6 +10,7 @@ public interface IAccountRepository {
             CallBack<Token> callBack);
     void getOne(CallBack<Account> callBack);
     void saveToken(Token token);
+    void clearUserData();
     Account getAccount();
     void saveAccount(Account account);
 }
