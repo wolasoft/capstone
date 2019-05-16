@@ -1,9 +1,14 @@
 package com.wolasoft.maplenou.views.account;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -21,6 +26,7 @@ public class AccountFragment extends SimpleFragment {
     private FragmentAccountBinding dataBinding;
     @Inject
     public AccountRepository repository;
+    private OnFragmentAccountInteractionListener mListener;
 
     public AccountFragment() { }
 
@@ -34,6 +40,7 @@ public class AccountFragment extends SimpleFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -46,6 +53,43 @@ public class AccountFragment extends SimpleFragment {
         return dataBinding.getRoot();
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.account, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                Toast.makeText(getContext(), R.string.message_disconnection_success, Toast.LENGTH_SHORT).show();
+                repository.clearUserData();
+                if (mListener != null) {
+                    mListener.onDisconnect();
+                }
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentAccountInteractionListener) {
+            mListener = (OnFragmentAccountInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentAccountInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
     private void initViews() {
         Account account = this.repository.getAccount();
         dataBinding.setAccount(account);
@@ -56,5 +100,9 @@ public class AccountFragment extends SimpleFragment {
             dataBinding.birthInfo.setText(birthInfo);
             dataBinding.birthInfo.setVisibility(View.VISIBLE);
         }
+    }
+
+    public interface OnFragmentAccountInteractionListener {
+        void onDisconnect();
     }
 }

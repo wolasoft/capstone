@@ -28,6 +28,7 @@
 
     <!-- action -->
     <string name="action_search">Search</string>
+    <string name="action_logout">Logout</string>
 
     <!-- message text -->
     <string name="message_network_error">No internet connection available</string>
@@ -36,6 +37,7 @@
     <string name="message_image_source">Image Source</string>
     <string name="message_choose_photo_from_gallery">Photo Gallery</string>
     <string name="message_take_photo">Take a photo</string>
+    <string name="message_disconnection_success">You have been disconnected</string>
 
     <!-- account -->
     <string name="account_account_title">Account</string>
