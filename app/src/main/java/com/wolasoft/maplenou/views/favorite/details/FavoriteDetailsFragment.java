@@ -24,6 +24,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentFavoriteDetailsBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.DeviceUtils;
@@ -43,6 +44,8 @@ public class FavoriteDetailsFragment extends SimpleFragment {
     public AnnouncementRepository announcementRepository;
     @Inject
     public ExecutorUtils executorUtils;
+    @Inject
+    public Tracker tracker;
     private MenuItem favoriteMenu;
     private String uuid;
     private Announcement retrievedAnnouncement;
@@ -74,7 +77,7 @@ public class FavoriteDetailsFragment extends SimpleFragment {
                 container, false);
 
         MaplenouApplication.app().getAppComponent().inject(this);
-
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_FAVORITE_DETAILS_FRAGMENT);
         initViews();
 
         return dataBinding.getRoot();

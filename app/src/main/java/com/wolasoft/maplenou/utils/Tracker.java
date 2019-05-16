@@ -40,6 +40,7 @@ public class Tracker {
     public static class Values {
         public static final String VALUE_LOGIN_FRAGMENT = "login_fragment";
         public static final String VALUE_SUBSCRIBE_FRAGMENT = "subscribe_fragment";
+        public static final String VALUE_FAVORITE_DETAILS_FRAGMENT = "favorite_details_fragment";
         public static final String VALUE_SEARCH_FRAGMENT = "search_fragment";
         public static final String VALUE_SEARCH_TITLE = "search_title";
         public static final String VALUE_SEARCH_CATEGORY = "search_category";
