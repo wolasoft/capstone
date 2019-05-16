@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
@@ -115,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(dataBinding.appBar.toolbar);
+
+        MobileAds.initialize(this, getString(R.string.admob_id));
 
         fragmentManager = getSupportFragmentManager();
 

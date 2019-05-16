@@ -51,9 +51,9 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${rootProject.ext.supportLibraryVersion}"
     implementation "androidx.cardview:cardview:${rootProject.ext.supportLibraryVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.ext.supportLibraryVersion}"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.1"
 
     // custom libraries
     implementation project(":waul")
@@ -70,7 +70,7 @@ dependencies {
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.8.0"
 
     // picasso
     implementation "com.squareup.picasso:picasso:${rootProject.ext.picassoVersion}"
@@ -86,6 +86,7 @@ dependencies {
 
     // others
     implementation "org.apache.commons:commons-lang3:3.0"
-    implementation 'com.synnapps:carouselview:0.1.5'
+    implementation "com.synnapps:carouselview:0.1.5"
     implementation "de.hdodenhof:circleimageview:3.0.0"
+    implementation "com.google.android.gms:play-services-ads:17.2.0"
 }
