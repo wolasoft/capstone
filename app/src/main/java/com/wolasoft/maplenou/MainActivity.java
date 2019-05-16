@@ -13,9 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.maplenou.views.account.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements
     private ActivityMainBinding dataBinding;
     @Inject
     public AppPreferences preferences;
+    @Inject
+    public Tracker tracker;
     private Fragment currentFragment;
     private String currentTag;
     private int currentTabId;
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         MaplenouApplication.app().getAppComponent().inject(this);
+        tracker.sendEvent(FirebaseAnalytics.Event.APP_OPEN, null);
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -190,6 +195,8 @@ public class MainActivity extends AppCompatActivity implements
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.replace(R.id.fragment_container, fragment, tag);
         currentTag = tag;
+
+        tracker.sendFragmentOpenEvent(tag);
 
         if (addToBackStack) {
             currentFragment = fragment;

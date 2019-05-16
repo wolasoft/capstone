@@ -1,6 +1,9 @@
 package com.wolasoft.maplenou.di.modules;
 
 
+import android.content.Context;
+
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.utils.ExecutorUtils;
 
 import javax.inject.Singleton;
@@ -14,5 +17,11 @@ public class UtilsModule {
     @Provides
     ExecutorUtils provideExecutorUtils() {
         return new ExecutorUtils();
+    }
+
+    @Singleton
+    @Provides
+    Tracker provideTracker(Context context) {
+        return new Tracker(context);
     }
 }

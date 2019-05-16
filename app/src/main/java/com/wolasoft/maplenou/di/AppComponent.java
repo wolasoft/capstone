@@ -16,6 +16,7 @@ import com.wolasoft.maplenou.di.modules.RepositoryModule;
 import com.wolasoft.maplenou.di.modules.UtilsModule;
 import com.wolasoft.maplenou.views.account.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
+import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessFragment;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
@@ -28,6 +29,7 @@ import com.wolasoft.maplenou.views.city.CityListFragment;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsFragment;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
+import com.wolasoft.maplenou.views.search.SearchFragment;
 
 import javax.inject.Singleton;
 
@@ -69,5 +71,7 @@ public interface AppComponent {
     void inject(CategoryListFragment fragment);
     void inject(CityListFragment fragment);
     void inject(CreateAnnouncementFragment fragment);
+    void inject(SubscribeSuccessFragment fragment);
+    void inject(SearchFragment fragment);
     void inject(MainActivity activity);
 }
