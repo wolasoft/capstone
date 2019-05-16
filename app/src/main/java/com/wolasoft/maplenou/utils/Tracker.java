@@ -29,6 +29,7 @@ public class Tracker {
         public static final String EVENT_SEARCH = "event_search";
         public static final String EVENT_LOGIN = "event_login";
         public static final String EVENT_SUBSCRIBE = "event_subscribe";
+        public static final String EVENT_ANNOUNCEMENT_SAVED = "event_announcement_saved";
     }
 
     public static class Params {
@@ -41,6 +42,7 @@ public class Tracker {
         public static final String VALUE_LOGIN_FRAGMENT = "login_fragment";
         public static final String VALUE_SUBSCRIBE_FRAGMENT = "subscribe_fragment";
         public static final String VALUE_FAVORITE_DETAILS_FRAGMENT = "favorite_details_fragment";
+        public static final String VALUE_ANNOUNCEMENT_DETAILS_FRAGMENT = "announcement_details_fragment";
         public static final String VALUE_SEARCH_FRAGMENT = "search_fragment";
         public static final String VALUE_SEARCH_TITLE = "search_title";
         public static final String VALUE_SEARCH_CATEGORY = "search_category";

@@ -24,6 +24,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
+import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.DeviceUtils;
@@ -44,6 +45,8 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
     public AnnouncementRepository announcementRepository;
     @Inject
     public ExecutorUtils executorUtils;
+    @Inject
+    public Tracker tracker;
     private MenuItem favoriteMenu;
     private String uuid;
     private boolean isAnnouncementSaved;
@@ -75,7 +78,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                 container, false);
 
         MaplenouApplication.app().getAppComponent().inject(this);
-
+        tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_ANNOUNCEMENT_DETAILS_FRAGMENT);
         initViews();
 
         return dataBinding.getRoot();
@@ -93,9 +96,15 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
-                String message = isAnnouncementSaved
-                        ? getString(R.string.announcement_details_message_announcement_unsaved)
-                        : getString(R.string.announcement_details_message_announcement_saved);
+                String message;
+
+                if (isAnnouncementSaved) {
+                    message = getString(R.string.announcement_details_message_announcement_unsaved);
+                    tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_SAVED, null);
+                } else {
+                    message = getString(R.string.announcement_details_message_announcement_saved);
+                }
+
                 Toast mToast = Toast.makeText(getContext(), message, Toast.LENGTH_SHORT);
                 mToast.show();
                 saveAnnouncement();
