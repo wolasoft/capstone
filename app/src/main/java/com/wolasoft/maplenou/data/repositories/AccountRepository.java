@@ -87,6 +87,12 @@ public class AccountRepository implements IAccountRepository {
     }
 
     @Override
+    public void clearUserData() {
+        this.preferences.clearToken();
+        this.preferences.clearAccount();
+    }
+
+    @Override
     public Account getAccount() {
         return this.preferences.getAccount();
     }

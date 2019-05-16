@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements
         AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener,
         FavoriteListFragment.OnFavoriteListFragmentInteractionListener,
         LoginFragment.OnLoginFragmentInteractionListener,
-        SubscribeFragment.OnFragmentSubscribeInteractionListener {
+        SubscribeFragment.OnFragmentSubscribeInteractionListener,
+        AccountFragment.OnFragmentAccountInteractionListener {
 
     private static final String ACCOUNT_FRAGMENT_TAG = "ACCOUNT_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_CREATION_FRAGMENT_TAG
@@ -163,6 +164,11 @@ public class MainActivity extends AppCompatActivity implements
     public void onAccountCreated() {
         Intent intent = new Intent(this, SubscribeSuccessActivity.class);
         startActivityForResult(intent, ACCOUNT_CREATED_REQUEST_CODE);
+    }
+
+    @Override
+    public void onDisconnect() {
+        addOrReplaceFragment(LoginFragment.newInstance(), LOGIN_FRAGMENT_TAG, false);
     }
 
     @Override

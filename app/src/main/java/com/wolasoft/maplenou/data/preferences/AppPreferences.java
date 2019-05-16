@@ -32,6 +32,14 @@ public class AppPreferences extends BasePreferences {
         return this.getObject(KEY_TOKEN, new TypeToken<Token>(){}.getType(), null);
     }
 
+    public void clearToken() {
+        this.remove(KEY_TOKEN);
+    }
+
+    public void clearAccount() {
+        this.remove(KEY_ACCOUNT);
+    }
+
     public void saveAccount(Account account) {
         this.saveObject(KEY_ACCOUNT, account, new TypeToken<Account>(){}.getType());
     }
