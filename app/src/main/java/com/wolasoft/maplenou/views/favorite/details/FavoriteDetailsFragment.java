@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.ads.AdRequest;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.ImageListener;
 import com.wolasoft.maplenou.MaplenouApplication;
@@ -145,6 +146,9 @@ public class FavoriteDetailsFragment extends SimpleFragment {
             }
             dataBinding.setAnnouncement(announcement);
         });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        dataBinding.adView.loadAd(adRequest);
     }
 
     private void setImageListener(List<Photo> images) {

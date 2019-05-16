@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.ads.AdRequest;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.ImageListener;
 import com.wolasoft.maplenou.MaplenouApplication;
@@ -124,6 +125,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
     private void initViews() {
         if (!NetworkUtils.isInternetAvailable(getContext())) {
             dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+            dataBinding.progressBar.setVisibility(View.GONE);
         } else {
             AnnouncementDetailsViewModel viewModel = ViewModelProviders.of(this, factory)
                     .get(AnnouncementDetailsViewModel.class);
@@ -169,6 +171,9 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                 invalidateOptionsMenu();
             });
         }
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        dataBinding.adView.loadAd(adRequest);
     }
 
     private void setImageListener(List<Photo> images) {
