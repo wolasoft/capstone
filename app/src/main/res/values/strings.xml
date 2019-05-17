@@ -76,6 +76,8 @@
     <string name="announcement_label_announcement_creation_date" translatable="false">02/04/2019 à 23:45</string>
     <string name="announcement_label_announcement_description" translatable="false">Description</string>
     <string name="announcement_label_announcement_user" translatable="false">Kwami K.</string>
+    <string name="announcement_details_announcer_label" translatable="true">Annonceur</string>
+    <string name="announcement_details_location_label" translatable="true">Localisation</string>
 
     <!-- announcement -->
     <string name="announcement_announcement_creation_title">Ajouter une annonce</string>

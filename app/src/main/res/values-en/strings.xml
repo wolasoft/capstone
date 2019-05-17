@@ -81,6 +81,8 @@
     <string name="announcement_creation_city_required">You must choose a city</string>
     <string name="announcement_creation_category_required">You must choose a category</string>
     <string name="announcement_search_title">Search</string>
+    <string name="announcement_details_announcer_label" translatable="true">Annoncer</string>
+    <string name="announcement_details_location_label" translatable="true">Location</string>
 
     <!-- announcement details -->
     <string name="announcement_details_message_announcement_unsaved">Removed as favorite</string>
