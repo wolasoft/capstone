@@ -60,8 +60,10 @@
 
     <style name="headline"><item name="android:textSize">@dimen/material_text_headline</item></style>
     <style name="headline.main"><item name="android:textColor">@color/colorPrimary</item></style>
+    <style name="headline.main.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="headline.main.bold"><item name="android:textStyle">bold</item></style>
     <style name="headline.text"><item name="android:textColor">@color/colorBlack</item></style>
+    <style name="headline.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="headline.text.bold"><item name="android:textStyle">bold</item></style>
     <style name="headline.white"><item name="android:textColor">@color/colorWhite</item></style>
     <style name="headline.white.bold"><item name="android:textStyle">bold</item></style>
@@ -70,6 +72,7 @@
     <style name="display1.main"><item name="android:textColor">@color/colorPrimary</item></style>
     <style name="display1.main.bold"><item name="android:textStyle">bold</item></style>
     <style name="display1.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
+    <style name="display1.text.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
     <style name="display1.text.bold"><item name="android:textStyle">bold</item></style>
 
     <style name="ListItemTitle" parent="subhead.text.medium">
@@ -97,9 +100,9 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="DetailsItemTitle" parent="title.text.bold"/>
+    <style name="DetailsItemTitle" parent="headline.text.medium"/>
 
-    <style name="DetailsItemPrice" parent="headline.main.bold">
+    <style name="DetailsItemPrice" parent="subhead.main.bold">
         <item name="android:maxLines">1</item>
     </style>
 
@@ -111,7 +114,7 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="DetailsItemDate" parent="body2.main">
+    <style name="DetailsItemDate" parent="body2.text">
         <item name="android:maxLines">1</item>
     </style>
 
@@ -181,5 +184,16 @@
         <item name="android:maxLines">1</item>
         <item name="android:layout_marginEnd">@dimen/spacer2</item>
         <item name="android:layout_marginRight">@dimen/spacer2</item>
+    </style>
+
+    <style name="AnnouncementInfoLine" parent="subhead.main.bold">
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@drawable/bg_border_bottom</item>
+        <item name="android:paddingTop">@dimen/spacer2</item>
+        <item name="android:paddingBottom">@dimen/spacer2</item>
+        <item name="android:paddingStart">@dimen/spacer4</item>
+        <item name="android:paddingLeft">@dimen/spacer4</item>
+        <item name="android:paddingEnd">@dimen/spacer4</item>
+        <item name="android:paddingRight">@dimen/spacer4</item>
     </style>
 </resources>
