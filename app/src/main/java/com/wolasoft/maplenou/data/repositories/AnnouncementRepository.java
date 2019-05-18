@@ -10,7 +10,6 @@ import com.wolasoft.maplenou.data.api.services.CallBack;
 import com.wolasoft.maplenou.data.database.dao.AnnouncementDao;
 import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
-import com.wolasoft.maplenou.data.entities.Photo;
 
 import javax.inject.Inject;
 
@@ -24,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +43,7 @@ public class AnnouncementRepository implements IAnnouncementRepository{
         this.fetchOneLiveStatus = new MutableLiveData<>();
     }
 
-    public Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage, Search search) {
+    public Call<ApiResponse<Announcement>> fetchAllRemote(final int firstPage, Search search) {
         String title = null;
         String categoryUuid = null;
         String cityUuid = null;
@@ -91,7 +89,7 @@ public class AnnouncementRepository implements IAnnouncementRepository{
     }
 
     @Override
-    public void saveToDb(final Announcement announcement) {
+    public void save(final Announcement announcement) {
         Log.d(TAG, "Saving announcement");
         this.announcementDao.insert(announcement);
     }
@@ -103,13 +101,18 @@ public class AnnouncementRepository implements IAnnouncementRepository{
     }
 
     @Override
-    public void deleteFromDb(final Announcement announcement) {
+    public void delete(final Announcement announcement) {
         Log.d(TAG, "Deleting announcement");
         this.announcementDao.delete(announcement);
     }
 
     @Override
-    public DataSource.Factory<Integer, Announcement> fetchAllFromDb() {
+    public void delete(String uuid) {
+        this.announcementDao.delete(uuid);
+    }
+
+    @Override
+    public DataSource.Factory<Integer, Announcement> fetchAllLocal() {
         Log.d(TAG, "fetching paginated announcements from db");
         return this.announcementDao.getAllPaged();
     }

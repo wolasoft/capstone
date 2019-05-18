@@ -40,7 +40,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Announcement> callback) {
         progressLiveStatus.postValue(LoadingState.LOADING);
-        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
+        this.repository.fetchAllRemote(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {
@@ -61,7 +61,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
-        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
+        this.repository.fetchAllRemote(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {
@@ -81,7 +81,7 @@ public class AnnouncementDataSource extends PageKeyedDataSource<Integer, Announc
     @Override
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
         progressLiveStatus.postValue(LoadingState.LOADING_MORE);
-        this.repository.fetchAllFromApi(FIRST_PAGE, this.searchParams)
+        this.repository.fetchAllRemote(FIRST_PAGE, this.searchParams)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {

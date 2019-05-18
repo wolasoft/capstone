@@ -15,12 +15,13 @@ import java.util.List;
 import retrofit2.Call;
 
 public interface IAnnouncementRepository {
-    Call<ApiResponse<Announcement>> fetchAllFromApi(final int firstPage, Search search);
+    Call<ApiResponse<Announcement>> fetchAllRemote(final int firstPage, Search search);
     LiveData<Announcement> fetchOneFromApi(final String uuid);
-    void saveToDb(final Announcement announcement);
+    void save(final Announcement announcement);
     LiveData<Announcement> fetchOneFromDb(String uuid);
-    void deleteFromDb(final Announcement announcement);
-    DataSource.Factory<Integer, Announcement> fetchAllFromDb();
+    void delete(final Announcement announcement);
+    void delete(final String uuid);
+    DataSource.Factory<Integer, Announcement> fetchAllLocal();
     void create(String title, String price, String description, String localization, String cityUuid,
                 String categoryUuid, List<File> photos, CallBack<Announcement> callBack);
 }
