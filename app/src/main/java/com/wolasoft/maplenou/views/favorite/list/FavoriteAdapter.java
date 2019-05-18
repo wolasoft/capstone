@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.ListItemAnnouncementBinding;
+import com.wolasoft.maplenou.databinding.ListItemFavoriteBinding;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -30,8 +31,8 @@ public class FavoriteAdapter extends
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        ListItemAnnouncementBinding dataBinding =
-                DataBindingUtil.inflate(inflater, R.layout.list_item_announcement, viewGroup, false);
+        ListItemFavoriteBinding dataBinding =
+                DataBindingUtil.inflate(inflater, R.layout.list_item_favorite, viewGroup, false);
         return new ViewHolder(dataBinding);
     }
 
@@ -58,9 +59,9 @@ public class FavoriteAdapter extends
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ListItemAnnouncementBinding dataBinding;
+        private ListItemFavoriteBinding dataBinding;
 
-        ViewHolder(@NonNull ListItemAnnouncementBinding dataBinding) {
+        ViewHolder(@NonNull ListItemFavoriteBinding dataBinding) {
             super(dataBinding.getRoot());
             this.dataBinding = dataBinding;
             itemView.setOnClickListener(this);

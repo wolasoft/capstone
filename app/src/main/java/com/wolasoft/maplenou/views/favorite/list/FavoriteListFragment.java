@@ -19,12 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Announcement;
+import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
+import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.ExecutorUtils;
+import com.wolasoft.waul.utils.ImageUtils;
 
 import javax.inject.Inject;
 
@@ -113,8 +116,17 @@ public class FavoriteListFragment extends SimpleFragment
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 Announcement announcement = adapter.getCurrentList().get(position);
-                executorUtils.diskIO().execute(
-                        () -> announcementRepository.deleteFromDb(announcement));
+                executorUtils.diskIO().execute(() -> {
+
+                    for (Photo photo: announcement.getPhotos()) {
+                        String localImageName = photo.getUuid() + Constants.LOCAL_IMAGE_EXT;
+                        ImageUtils.deleteFromDisk(
+                                getActivity().getApplicationContext(),
+                                Constants.LOCAL_IMAGE_DIR,localImageName);
+                    }
+
+                    announcementRepository.delete(announcement);
+                });
             }
         };
 
