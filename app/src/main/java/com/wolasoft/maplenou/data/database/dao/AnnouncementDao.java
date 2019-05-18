@@ -18,6 +18,8 @@ public interface AnnouncementDao {
     LiveData<Announcement> getByUuid(String uuid);
     @Delete()
     void delete(Announcement announcement);
+    @Query("DELETE FROM announcements WHERE uuid = :uuid")
+    void delete(String uuid);
     @Query("SELECT * FROM announcements ORDER BY id DESC")
     DataSource.Factory<Integer, Announcement> getAllPaged();
 }

@@ -17,7 +17,7 @@ public class FavoriteViewModel extends ViewModel {
     public FavoriteViewModel(AnnouncementRepository repository) {
         this.repository = repository;
         favoriteAnnouncements = new LivePagedListBuilder<>(
-                this.repository.fetchAllFromDb(), Constants.PAGE_SIZE).build();
+                this.repository.fetchAllLocal(), Constants.PAGE_SIZE).build();
     }
 
     public LiveData<PagedList<Announcement>> getFavoriteAnnouncements() {

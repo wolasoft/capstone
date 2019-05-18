@@ -4,6 +4,7 @@ package com.wolasoft.maplenou.views.favorite.details;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,12 +25,15 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentFavoriteDetailsBinding;
+import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.DeviceUtils;
 import com.wolasoft.waul.utils.ExecutorUtils;
+import com.wolasoft.waul.utils.ImageUtils;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -155,17 +159,30 @@ public class FavoriteDetailsFragment extends SimpleFragment {
     }
 
     private void setImageListener(List<Photo> images) {
-        ImageListener listener = (position, imageView) -> Picasso.get()
-                .load(images.get(position).getFile())
-                .error(R.drawable.ic_photo_camera_black_24dp)
-                .placeholder(R.drawable.ic_photo_camera_black_24dp)
-                .into(imageView);
+        ImageListener listener = (position, imageView) -> {
+            File imageFile = ImageUtils.loadImageFromDisk(getActivity().getApplicationContext(),
+                    Constants.LOCAL_IMAGE_DIR, images.get(position).getFile());
+            Log.d("IMAGEFILE", imageFile.getAbsolutePath());
+            Picasso.get()
+                    .load(imageFile)
+                    .error(R.drawable.ic_person_white_24dp)
+                    .placeholder(R.drawable.ic_photo_camera_black_24dp)
+                    .into(imageView);
+        };
         dataBinding.images.setImageListener(listener);
     }
 
     private void deleteAnnouncement() {
         this.executorUtils.diskIO().execute(() -> {
-            announcementRepository.deleteFromDb(retrievedAnnouncement);
+            for (Photo photo: retrievedAnnouncement.getPhotos()) {
+                String localImageName = photo.getUuid();
+                ImageUtils.deleteFromDisk(
+                        getActivity().getApplicationContext(),
+                        Constants.LOCAL_IMAGE_DIR,
+                        localImageName);
+            }
+
+            announcementRepository.delete(retrievedAnnouncement);
             isAnnouncementDeleted = true;
             invalidateOptionsMenu();
         });

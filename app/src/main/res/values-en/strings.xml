@@ -124,5 +124,9 @@
     <string name="permission_gallery_explanation_message">
         Maplenou needs to access your photo gallery to select a photo.\nIf you agree, click on authorize on the next screen.
     </string>
+    <string name="permission_write_storage_explanation_message">
+        Maplenou needs to access your local storage to save photos.\nIf you agree, click on authorize on the next screen.
+    </string>
+    <string name="permission_message_granted">Permission granted</string>
     <string name="permission_message_refused">Permission refused</string>
 </resources>
