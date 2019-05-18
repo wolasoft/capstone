@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "announcements")
 public class Announcement {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String uuid;
     private String title;
