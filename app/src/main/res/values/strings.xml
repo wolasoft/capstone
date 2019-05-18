@@ -156,6 +156,10 @@
     <string name="permission_gallery_explanation_message">
         Maplenou a besoin d\'accéder à votre gallerie photo pour sélectionner une photo.\nSi vous êtes d\'accord cliquez sur autoriser sur le prochain écran.
     </string>
+    <string name="permission_write_storage_explanation_message">
+        Maplenou a besoin d\'accéder à votre disque local pour enrégistrer les photos.\nSi vous êtes d\'accord cliquez sur autoriser sur le prochain écran.
+    </string>
+    <string name="permission_message_granted">Permission accordée</string>
     <string name="permission_message_refused">Permission refusée</string>
 
 </resources>

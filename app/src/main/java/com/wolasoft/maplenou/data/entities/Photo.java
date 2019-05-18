@@ -20,6 +20,10 @@ public class Photo {
         return uuid;
     }
 
+    public void setFile(String file) {
+        this.file = file;
+    }
+
     public String getMimetype() {
         return mimetype;
     }
