@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -23,6 +24,7 @@ import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
@@ -135,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements
             addOrReplaceFragment(
                     AnnouncementListFragment.newInstance(), ANNOUNCEMENT_LIST_FRAGMENT_TAG, false);
         }
+
+        handleAppLink(getIntent());
     }
 
     @Override
@@ -232,5 +236,16 @@ public class MainActivity extends AppCompatActivity implements
 
     private void mustLogin() {
         addOrReplaceFragment(LoginFragment.newInstance(), LOGIN_FRAGMENT_TAG, false);
+    }
+
+    private void handleAppLink(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
+            String announcementUuid = appLinkData.getLastPathSegment();
+            Intent details = new Intent(this, AnnouncementDetailsActivity.class);
+            details.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcementUuid);
+            startActivity(details);
+        }
     }
 }

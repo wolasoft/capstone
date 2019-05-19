@@ -9,7 +9,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".MaplenouApplication"
@@ -19,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".services.UpdateWidgetService" android:exported="false" />
+        <service
+            android:name=".services.UpdateWidgetService"
+            android:exported="false" />
 
         <receiver android:name=".views.widgets.AppWidget">
             <intent-filter>
@@ -33,11 +37,11 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_id"/>
+            android:value="@string/admob_id" />
 
         <activity
             android:name=".views.search.SearchActivity"
-            android:label="@string/announcement_search_title"/>
+            android:label="@string/announcement_search_title" />
         <activity android:name=".views.common.FeedBackActivity" />
         <activity android:name=".views.common.ErrorFeedBackActivity" />
         <activity
@@ -63,6 +67,17 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="maplenou.wolasoft.com"
+                    android:pathPattern="/announcements" />
             </intent-filter>
         </activity>
         <activity
