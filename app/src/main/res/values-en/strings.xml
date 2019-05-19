@@ -102,6 +102,9 @@
     <!-- image view content description text -->
     <string name="content_description_list_item_announcement_thumbnail">Announcement image</string>
     <string name="content_description_list_item_announcement_images">Announcement images</string>
+    <string name="content_description_last_favorite_images">An image of last announcement added as favorite</string>
+    <string name="content_description_add_images">Add images to your announcement</string>
+    <string name="content_description_added_image">Added photo to your announcement</string>
 
     <!-- http errors-->
     <string name="http_error_505_message">Unknown inconnu</string>

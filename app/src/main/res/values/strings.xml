@@ -109,8 +109,11 @@
     <string name="city_choose_city_title">Choisir une ville</string>
 
     <!-- image view content description text -->
-    <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
-    <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>
+    <string name="content_description_list_item_announcement_thumbnail">Image de l\'annonce</string>
+    <string name="content_description_list_item_announcement_images">Les image de l\'annonce</string>
+    <string name="content_description_last_favorite_images">Une image du dernier annonce ajouté comme favoris</string>
+    <string name="content_description_add_images">Ajouter des images à votre annonce</string>
+    <string name="content_description_added_image">Photo ajoutée à votre annonce</string>
 
     <!-- http errors-->
     <string name="http_error_505_message">Erreur inconnu</string>

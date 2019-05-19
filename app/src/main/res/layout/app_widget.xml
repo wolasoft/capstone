@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/content_description_list_item_announcement_images"
+        android:contentDescription="@string/content_description_last_favorite_images"
         android:src="@drawable/no_image" />
 
     <TextView
