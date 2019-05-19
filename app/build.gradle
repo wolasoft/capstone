@@ -16,13 +16,27 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "HOST", "\"http://5cadd57a845049001423bfe0.mockapi.io/api/v1/\""
         }
 
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        prod {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.prod"
             buildConfigField "String", "HOST", "\"http://5cadd57a845049001423bfe0.mockapi.io/api/v1/\""
+        }
+
+        local {
+            dimension 'version'
+            applicationId "com.wolasoft.maplenou.local"
+            buildConfigField "String", "HOST", "\"http://192.168.0.14:80/\""
         }
     }
 
