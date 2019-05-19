@@ -62,7 +62,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/images"
-                    tools:text="@string/announcement_label_announcement_title" />
+                    tools:text="Title" />
 
                 <TextView
                     android:id="@+id/price"
@@ -75,7 +75,7 @@
                     app:layout_constraintRight_toRightOf="@id/title"
                     app:layout_constraintStart_toStartOf="@id/title"
                     app:layout_constraintTop_toBottomOf="@id/title"
-                    tools:text="@string/announcement_label_announcement_price" />
+                    tools:text="1000 F CFA" />
 
                 <TextView
                     android:id="@+id/creationDate"
@@ -87,7 +87,7 @@
                     app:layout_constraintLeft_toLeftOf="@id/title"
                     app:layout_constraintStart_toStartOf="@id/title"
                     app:layout_constraintTop_toBottomOf="@id/price"
-                    tools:text="@string/announcement_label_announcement_creation_date" />
+                    tools:text="02/04/2019 at 23:45" />
 
                 <TextView
                     android:id="@+id/category"
@@ -100,7 +100,7 @@
                     app:layout_constraintEnd_toEndOf="@id/title"
                     app:layout_constraintRight_toRightOf="@id/title"
                     app:layout_constraintTop_toTopOf="@id/creationDate"
-                    tools:text="@string/announcement_label_announcement_user" />
+                    tools:text="House" />
 
                 <LinearLayout
                     android:id="@+id/contactLayout"
@@ -160,13 +160,13 @@
                     android:id="@+id/descriptionLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/announcement_label_announcement_description"
+                    android:text="@string/announcement_description_label"
                     style="@style/DetailsItemDescriptionLabel"
                     android:layout_marginTop="@dimen/spacer4"
                     app:layout_constraintLeft_toLeftOf="@id/creationDate"
                     app:layout_constraintStart_toStartOf="@id/creationDate"
                     app:layout_constraintTop_toBottomOf="@id/contactLayout"
-                    tools:text="@string/announcement_label_announcement_description" />
+                    tools:text="Description" />
 
                 <TextView
                     android:id="@+id/description"
@@ -320,7 +320,7 @@
                         style="@style/subhead.text.medium"
                         android:layout_marginTop="@dimen/spacer2"
                         android:gravity="center"
-                        tools:text="@string/announcement_label_announcement_user" />
+                        tools:text="Paul Smith" />
 
                 </LinearLayout>
 

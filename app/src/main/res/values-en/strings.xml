@@ -69,8 +69,8 @@
     <string name="account_details_card_nationality_label">Nationality: &#032;</string>
 
     <!-- announcement -->
-    <string name="announcement_announcement_creation_title">Add an announcement</string>
-    <string name="announcement_announcement_list_title">Announcements</string>
+    <string name="announcement_creation_title">Add an announcement</string>
+    <string name="announcement_list_title">Announcements</string>
     <string name="announcement_creation_category_label">Catégory</string>
     <string name="announcement_creation_title_label">Title</string>
     <string name="announcement_creation_price_label">Price</string>
@@ -110,7 +110,7 @@
     <string name="http_error_505_message">Unknown inconnu</string>
 
     <!-- login -->
-    <string name="login_login_title">Sign in</string>
+    <string name="login_title">Sign in</string>
     <string name="login_button_login_title">Login</string>
     <string name="login_edittext_email_hint">Email address</string>
     <string name="login_edittext_password_hint">Password</string>
@@ -118,7 +118,7 @@
     <string name="login_message_password_forgotten_title">Password forgotten?</string>
 
     <!-- message -->
-    <string name="message_message_title">Messages</string>
+    <string name="message_title">Messages</string>
 
     <!-- permissions -->
     <string name="permission_camera_explanation_message">

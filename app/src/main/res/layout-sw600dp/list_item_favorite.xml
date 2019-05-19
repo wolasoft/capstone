@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     style="@style/ListItemPrice"
                     app:amount="@{announcement.price}"
-                    tools:text="@string/announcement_label_announcement_price"/>
+                    tools:text="1000 F CFA"/>
 
                 <TextView
                     android:id="@+id/category"
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     style="@style/ListItemCategory"
                     android:text="@{announcement.category.name}"
-                    tools:text="@string/announcement_label_announcement_category"/>
+                    tools:text="1000 F CFA"/>
 
                 <TextView
                     android:id="@+id/city"
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     style="@style/ListItemLocation"
                     android:text="@{announcement.city.name}"
-                    tools:text="@string/announcement_label_announcement_city"/>
+                    tools:text="Lomé"/>
 
                 <TextView
                     android:id="@+id/creationDate"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     style="@style/ListItemDate"
                     app:date="@{announcement.creationDate}"
-                    tools:text="@string/announcement_label_announcement_creation_date"/>
+                    tools:text="02/04/2019 at 23:45"/>
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
