@@ -15,6 +15,9 @@
     <dimen name="list_item_announcement_padding">0dp</dimen>
     <dimen name="list_item_announcement_padding_top">0dp</dimen>
 
+    <!--account-->
+    <dimen name="account_profile_image_size">60dp</dimen>
+
     <!--announcement-->
     <dimen name="announcement_details_image_width">0dp</dimen>
     <dimen name="announcement_details_image_height">350dp</dimen>

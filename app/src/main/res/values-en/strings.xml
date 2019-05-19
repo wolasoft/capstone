@@ -67,6 +67,7 @@
     <string name="account_details_card_expiration_date_label">Expiration Date: &#032;</string>
     <string name="account_details_card_issuing_office_label">By: &#032;</string>
     <string name="account_details_card_nationality_label">Nationality: &#032;</string>
+    <string name="account_details_my_announcements_title">My announcements</string>
 
     <!-- announcement -->
     <string name="announcement_creation_title">Add an announcement</string>

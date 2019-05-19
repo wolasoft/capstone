@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.views.account.details;
+package com.wolasoft.maplenou.views.account;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,23 +16,22 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
-import com.wolasoft.maplenou.databinding.FragmentAccountDetailsBinding;
-import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
 
 import javax.inject.Inject;
 
-public class AccountDetailsFragment extends SimpleFragment {
+public class AccountFragment extends SimpleFragment {
 
-    private FragmentAccountDetailsBinding dataBinding;
+    private FragmentAccountBinding dataBinding;
     @Inject
     public AccountRepository repository;
-    private AccountFragment.OnFragmentAccountInteractionListener mListener;
+    private OnFragmentAccountInteractionListener mListener;
 
-    public AccountDetailsFragment() { }
+    public AccountFragment() { }
 
-    public static AccountDetailsFragment newInstance() {
-        AccountDetailsFragment fragment = new AccountDetailsFragment();
+    public static AccountFragment newInstance() {
+        AccountFragment fragment = new AccountFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -47,7 +46,7 @@ public class AccountDetailsFragment extends SimpleFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account_details, container, false);
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
         setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();
@@ -78,8 +77,8 @@ public class AccountDetailsFragment extends SimpleFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof AccountFragment.OnFragmentAccountInteractionListener) {
-            mListener = (AccountFragment.OnFragmentAccountInteractionListener) context;
+        if (context instanceof OnFragmentAccountInteractionListener) {
+            mListener = (OnFragmentAccountInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentAccountInteractionListener");
@@ -102,5 +101,16 @@ public class AccountDetailsFragment extends SimpleFragment {
             dataBinding.birthInfo.setText(birthInfo);
             dataBinding.birthInfo.setVisibility(View.VISIBLE);
         }
+
+        dataBinding.imageHolder.setOnClickListener(v -> {
+            if (mListener != null) {
+                mListener.onMoreUserInfoClicked();
+            }
+        });
+    }
+
+    public interface OnFragmentAccountInteractionListener {
+        void onDisconnect();
+        void onMoreUserInfoClicked();
     }
 }

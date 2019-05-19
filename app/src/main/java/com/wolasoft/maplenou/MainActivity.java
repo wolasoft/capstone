@@ -18,6 +18,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
+import com.wolasoft.maplenou.views.account.AccountFragment;
 import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
@@ -36,9 +37,10 @@ public class MainActivity extends AppCompatActivity implements
         FavoriteListFragment.OnFavoriteListFragmentInteractionListener,
         LoginFragment.OnLoginFragmentInteractionListener,
         SubscribeFragment.OnFragmentSubscribeInteractionListener,
-        AccountDetailsFragment.OnFragmentAccountDetailsInteractionListener {
+        AccountFragment.OnFragmentAccountInteractionListener {
 
     private static final String ACCOUNT_FRAGMENT_TAG = "ACCOUNT_FRAGMENT_TAG";
+    private static final String ACCOUNT_FRAGMENT_DETAILS_TAG = "ACCOUNT_DETAILS_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_CREATION_FRAGMENT_TAG
             = "ANNOUNCEMENT_CREATION_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
@@ -96,14 +98,14 @@ public class MainActivity extends AppCompatActivity implements
                                 MessageFragment.newInstance(),
                                 MESSAGE_FRAGMENT_TAG, false);
                         return true;
-                    case R.id.navigation_person:
-                        currentTabId = R.id.navigation_person;
+                    case R.id.navigation_account:
+                        currentTabId = R.id.navigation_account;
                         if (!preferences.isAccountConnected()) {
                             mustLogin();
                             return true;
                         }
                         addOrReplaceFragment(
-                                AccountDetailsFragment.newInstance(),
+                                AccountFragment.newInstance(),
                                 ACCOUNT_FRAGMENT_TAG, false);
                         return true;
                 }
@@ -177,6 +179,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onDisconnect() {
         addOrReplaceFragment(LoginFragment.newInstance(), LOGIN_FRAGMENT_TAG, false);
+    }
+
+    @Override
+    public void onMoreUserInfoClicked() {
+        addOrReplaceFragment(AccountDetailsFragment.newInstance(), ACCOUNT_FRAGMENT_DETAILS_TAG, true);
     }
 
     @Override

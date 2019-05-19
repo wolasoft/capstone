@@ -68,6 +68,7 @@
     <string name="account_details_card_expiration_date_label">Date d\expiration: &#032;</string>
     <string name="account_details_card_issuing_office_label">Par: &#032;</string>
     <string name="account_details_card_nationality_label">Nationalité: &#032;</string>
+    <string name="account_details_my_announcements_title">Mes annonces</string>
 
     <!-- label text -->
     <string name="announcement_description_label" translatable="false">Description</string>

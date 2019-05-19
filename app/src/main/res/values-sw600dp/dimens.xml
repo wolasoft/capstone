@@ -13,6 +13,9 @@
 
     <!--font sizes-->
 
+    <!--account-->
+    <dimen name="account_profile_image_size">80dp</dimen>
+
     <!--announcement-->
     <dimen name="announcement_details_image_height">400dp</dimen>
     <dimen name="announcement_details_padding">@dimen/spacer16</dimen>

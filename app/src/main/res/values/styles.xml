@@ -30,6 +30,8 @@
     <style name="title.main.bold"><item name="android:textStyle">bold</item></style>
     <style name="title.text"><item name="android:textColor">@color/colorPrimaryText</item></style>
     <style name="title.text.bold"><item name="android:textStyle">bold</item></style>
+    <style name="title.white"><item name="android:textColor">@color/colorWhite</item></style>
+    <style name="title.white.medium"><item name="android:fontFamily">sans-serif-medium</item></style>
 
     <style name="subhead"><item name="android:textSize">@dimen/material_text_subhead</item></style>
     <style name="subhead.main"><item name="android:textColor">@color/colorPrimary</item></style>
