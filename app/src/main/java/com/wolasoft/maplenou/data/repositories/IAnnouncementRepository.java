@@ -22,6 +22,7 @@ public interface IAnnouncementRepository {
     void delete(final Announcement announcement);
     void delete(final String uuid);
     DataSource.Factory<Integer, Announcement> fetchAllLocal();
+    Announcement getLatest();
     void create(String title, String price, String description, String localization, String cityUuid,
                 String categoryUuid, List<File> photos, CallBack<Announcement> callBack);
 }

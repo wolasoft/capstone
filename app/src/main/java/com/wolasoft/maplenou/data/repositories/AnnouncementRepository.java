@@ -118,6 +118,11 @@ public class AnnouncementRepository implements IAnnouncementRepository{
     }
 
     @Override
+    public Announcement getLatest() {
+        return this.announcementDao.getLatest();
+    }
+
+    @Override
     public void create(
             String title, String price, String description, String localization, String cityUuid,
             String categoryUuid, List<File> photos, CallBack<Announcement> callBack) {

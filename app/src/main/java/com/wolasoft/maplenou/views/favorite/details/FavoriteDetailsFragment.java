@@ -4,7 +4,6 @@ package com.wolasoft.maplenou.views.favorite.details;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +24,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentFavoriteDetailsBinding;
+import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
@@ -162,7 +162,6 @@ public class FavoriteDetailsFragment extends SimpleFragment {
         ImageListener listener = (position, imageView) -> {
             File imageFile = ImageUtils.loadImageFromDisk(getActivity().getApplicationContext(),
                     Constants.LOCAL_IMAGE_DIR, images.get(position).getFile());
-            Log.d("IMAGEFILE", imageFile.getAbsolutePath());
             Picasso.get()
                     .load(imageFile)
                     .error(R.drawable.ic_person_white_24dp)
@@ -185,6 +184,7 @@ public class FavoriteDetailsFragment extends SimpleFragment {
             announcementRepository.delete(retrievedAnnouncement);
             isAnnouncementDeleted = true;
             invalidateOptionsMenu();
+            updateAppWidget();
         });
     }
 
@@ -217,5 +217,11 @@ public class FavoriteDetailsFragment extends SimpleFragment {
         if (chooser.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(chooser);
         }
+    }
+
+    private void updateAppWidget() {
+        Intent appWidgetService = new Intent(getContext(), UpdateWidgetService.class);
+        appWidgetService.setAction(UpdateWidgetService.SHOW_LAST_FAVORITE);
+        getActivity().startService(appWidgetService);
     }
 }

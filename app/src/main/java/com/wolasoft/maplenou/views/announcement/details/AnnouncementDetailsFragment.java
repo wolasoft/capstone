@@ -30,6 +30,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
+import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.waul.fragments.SimpleFragment;
@@ -267,6 +268,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
             });
 
             invalidateOptionsMenu();
+            updateAppWidget();
         });
     }
 
@@ -339,5 +341,11 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
         } else {
             saveAnnouncement();
         }
+    }
+
+    private void updateAppWidget() {
+        Intent appWidgetService = new Intent(getContext(), UpdateWidgetService.class);
+        appWidgetService.setAction(UpdateWidgetService.SHOW_LAST_FAVORITE);
+        getActivity().startService(appWidgetService);
     }
 }

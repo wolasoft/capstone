@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/thumbnailIMG"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_description_list_item_announcement_images"
+        android:src="@drawable/no_image" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/announcement_creation_title_label"
+        tools:text="@string/announcement_creation_title_label"
+        style="@style/body1.white.medium"
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/spacer4"
+        android:paddingLeft="@dimen/spacer4"
+        android:paddingEnd="@dimen/spacer4"
+        android:paddingRight="@dimen/spacer4"
+        android:paddingTop="@dimen/spacer4"/>
+
+    <TextView
+        android:id="@+id/priceTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/announcement_creation_price_label"
+        style="@style/body1.white"
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/spacer4"
+        android:paddingLeft="@dimen/spacer4"
+        android:paddingEnd="@dimen/spacer4"
+        android:paddingRight="@dimen/spacer4" />
+
+    <TextView
+        android:id="@+id/creationDateTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/account_details_card_expiration_date_label"
+        style="@style/body1.white"
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/spacer4"
+        android:paddingLeft="@dimen/spacer4"
+        android:paddingEnd="@dimen/spacer4"
+        android:paddingRight="@dimen/spacer4"
+        android:paddingBottom="@dimen/spacer4"/>
+
+</LinearLayout>
