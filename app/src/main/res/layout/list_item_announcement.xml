@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginRight="@dimen/spacer4"
             android:layout_marginEnd="@dimen/spacer4"
-            tools:src="@drawable/ic_photo_camera_black_24dp"/>
+            tools:src="@drawable/no_image"/>
 
         <TextView
             android:id="@+id/title"
