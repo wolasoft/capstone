@@ -357,7 +357,6 @@ public class CreateAnnouncementFragment extends SimpleFragment {
         switch (requestCode) {
             case GALLERY_PERMISSION_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("GALLERY", "YESSSSS");
                     openImageGallery();
                 } else {
                     toast = Toast.makeText(
@@ -368,7 +367,6 @@ public class CreateAnnouncementFragment extends SimpleFragment {
             }
             case CAMERA_PERMISSION_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("CAMERA", "YESSSSS");
                     openCamera();
                 } else {
                     toast = Toast.makeText(
