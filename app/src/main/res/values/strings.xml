@@ -1,4 +1,6 @@
 <resources>
+    <string name="app_name" translatable="false">Maplenou</string>
+
     <!-- common -->
     <string name="common_action_validate">Valider</string>
     <string name="common_action_terminate">Terminer</string>
@@ -18,7 +20,6 @@
     <string name="common_title_make_call">Appeler</string>
     <string name="common_title_search">Rechercher</string>
 
-    <string name="app_name" translatable="false">Maplenou</string>
     <string name="menu_title_announcement">Announces</string>
     <string name="menu_title_favorite">Favoris</string>
     <string name="menu_title_delete">Supprimer</string>
@@ -69,19 +70,13 @@
     <string name="account_details_card_nationality_label">Nationalité: &#032;</string>
 
     <!-- label text -->
-    <string name="announcement_label_announcement_title" translatable="false">Title</string>
-    <string name="announcement_label_announcement_price" translatable="false">1000 F CFA</string>
-    <string name="announcement_label_announcement_category" translatable="false">Decoration</string>
-    <string name="announcement_label_announcement_city" translatable="false">Lomé</string>
-    <string name="announcement_label_announcement_creation_date" translatable="false">02/04/2019 à 23:45</string>
-    <string name="announcement_label_announcement_description" translatable="false">Description</string>
-    <string name="announcement_label_announcement_user" translatable="false">Kwami K.</string>
+    <string name="announcement_description_label" translatable="false">Description</string>
     <string name="announcement_details_announcer_label" translatable="true">Annonceur</string>
     <string name="announcement_details_location_label" translatable="true">Localisation</string>
 
     <!-- announcement -->
-    <string name="announcement_announcement_creation_title">Ajouter une annonce</string>
-    <string name="announcement_announcement_list_title">Announces</string>
+    <string name="announcement_creation_title">Ajouter une annonce</string>
+    <string name="announcement_list_title">Announces</string>
     <string name="announcement_creation_category_label">Catégorie</string>
     <string name="announcement_creation_title_label">Titre</string>
     <string name="announcement_creation_price_label">Prix</string>
@@ -109,14 +104,17 @@
     <string name="city_choose_city_title">Choisir une ville</string>
 
     <!-- image view content description text -->
-    <string name="content_description_list_item_announcement_thumbnail">Image de l\'announcement</string>
-    <string name="content_description_list_item_announcement_images">les image de l\'announcement</string>
+    <string name="content_description_list_item_announcement_thumbnail">Image de l\'annonce</string>
+    <string name="content_description_list_item_announcement_images">Les image de l\'annonce</string>
+    <string name="content_description_last_favorite_images">Une image du dernier annonce ajouté comme favoris</string>
+    <string name="content_description_add_images">Ajouter des images à votre annonce</string>
+    <string name="content_description_added_image">Photo ajoutée à votre annonce</string>
 
     <!-- http errors-->
     <string name="http_error_505_message">Erreur inconnu</string>
 
     <!-- login -->
-    <string name="login_login_title">Se connecter</string>
+    <string name="login_title">Se connecter</string>
     <string name="login_button_login_title">Connexion</string>
     <string name="login_edittext_email_hint">Adresse email</string>
     <string name="login_edittext_password_hint">Mot de passe</string>
@@ -124,7 +122,7 @@
     <string name="login_message_password_forgotten_title">Mot de passe oublié?</string>
 
     <!-- message -->
-    <string name="message_message_title">Messages</string>
+    <string name="message_title">Messages</string>
 
     <!-- currency -->
     <string name="large_text" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

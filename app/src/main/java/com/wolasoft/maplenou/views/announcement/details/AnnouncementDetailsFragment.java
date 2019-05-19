@@ -218,8 +218,8 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
     private void setImageListener(List<Photo> images) {
         ImageListener listener = (position, imageView) -> Picasso.get()
                 .load(images.get(position).getFile())
-                .error(R.drawable.ic_photo_camera_black_24dp)
-                .placeholder(R.drawable.ic_photo_camera_black_24dp)
+                .error(R.drawable.no_image)
+                .placeholder(R.drawable.no_image)
                 .into(imageView);
         dataBinding.images.setImageListener(listener);
     }

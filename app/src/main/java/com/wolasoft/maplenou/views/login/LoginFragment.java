@@ -56,7 +56,7 @@ public class LoginFragment extends SimpleFragment {
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
         tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_LOGIN_FRAGMENT);
-        setTitle(R.string.login_login_title);
+        setTitle(R.string.login_title);
         initViews();
         return dataBinding.getRoot();
     }

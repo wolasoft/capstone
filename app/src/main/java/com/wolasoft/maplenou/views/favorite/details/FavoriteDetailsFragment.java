@@ -165,7 +165,7 @@ public class FavoriteDetailsFragment extends SimpleFragment {
             Picasso.get()
                     .load(imageFile)
                     .error(R.drawable.ic_person_white_24dp)
-                    .placeholder(R.drawable.ic_photo_camera_black_24dp)
+                    .placeholder(R.drawable.no_image)
                     .into(imageView);
         };
         dataBinding.images.setImageListener(listener);

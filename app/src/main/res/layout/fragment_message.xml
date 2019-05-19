@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:drawableTop="@drawable/message"
-            android:text="@string/message_message_title" />
+            android:text="@string/message_title" />
 
     </FrameLayout>
 

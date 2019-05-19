@@ -32,7 +32,7 @@ public class MessageFragment extends SimpleFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false);
-        setTitle(R.string.message_message_title);
+        setTitle(R.string.message_title);
 
         return dataBinding.getRoot();
     }
