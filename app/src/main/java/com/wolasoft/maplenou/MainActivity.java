@@ -18,7 +18,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
-import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
         FavoriteListFragment.OnFavoriteListFragmentInteractionListener,
         LoginFragment.OnLoginFragmentInteractionListener,
         SubscribeFragment.OnFragmentSubscribeInteractionListener,
-        AccountFragment.OnFragmentAccountInteractionListener {
+        AccountDetailsFragment.OnFragmentAccountDetailsInteractionListener {
 
     private static final String ACCOUNT_FRAGMENT_TAG = "ACCOUNT_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_CREATION_FRAGMENT_TAG
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements
                             return true;
                         }
                         addOrReplaceFragment(
-                                AccountFragment.newInstance(),
+                                AccountDetailsFragment.newInstance(),
                                 ACCOUNT_FRAGMENT_TAG, false);
                         return true;
                 }

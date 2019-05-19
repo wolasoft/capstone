@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.views.account;
+package com.wolasoft.maplenou.views.account.details;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,22 +16,22 @@ import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
-import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
+import com.wolasoft.maplenou.databinding.FragmentAccountDetailsBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
 
 import javax.inject.Inject;
 
-public class AccountFragment extends SimpleFragment {
+public class AccountDetailsFragment extends SimpleFragment {
 
-    private FragmentAccountBinding dataBinding;
+    private FragmentAccountDetailsBinding dataBinding;
     @Inject
     public AccountRepository repository;
-    private OnFragmentAccountInteractionListener mListener;
+    private OnFragmentAccountDetailsInteractionListener mListener;
 
-    public AccountFragment() { }
+    public AccountDetailsFragment() { }
 
-    public static AccountFragment newInstance() {
-        AccountFragment fragment = new AccountFragment();
+    public static AccountDetailsFragment newInstance() {
+        AccountDetailsFragment fragment = new AccountDetailsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -46,7 +46,7 @@ public class AccountFragment extends SimpleFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account_details, container, false);
         setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();
@@ -77,11 +77,11 @@ public class AccountFragment extends SimpleFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentAccountInteractionListener) {
-            mListener = (OnFragmentAccountInteractionListener) context;
+        if (context instanceof OnFragmentAccountDetailsInteractionListener) {
+            mListener = (OnFragmentAccountDetailsInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentAccountInteractionListener");
+                    + " must implement OnFragmentAccountDetailsInteractionListener");
         }
     }
 
@@ -103,7 +103,7 @@ public class AccountFragment extends SimpleFragment {
         }
     }
 
-    public interface OnFragmentAccountInteractionListener {
+    public interface OnFragmentAccountDetailsInteractionListener {
         void onDisconnect();
     }
 }
