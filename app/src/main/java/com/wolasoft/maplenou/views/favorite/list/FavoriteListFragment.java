@@ -2,6 +2,7 @@ package com.wolasoft.maplenou.views.favorite.list;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Photo;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding;
+import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
@@ -126,6 +128,7 @@ public class FavoriteListFragment extends SimpleFragment
                     }
 
                     announcementRepository.delete(announcement);
+                    updateAppWidget();
                 });
             }
         };
@@ -156,6 +159,12 @@ public class FavoriteListFragment extends SimpleFragment
         if (listener != null) {
             listener.onFavoriteAnnouncementSelected(announcement);
         }
+    }
+
+    private void updateAppWidget() {
+        Intent appWidgetService = new Intent(getContext(), UpdateWidgetService.class);
+        appWidgetService.setAction(UpdateWidgetService.SHOW_LAST_FAVORITE);
+        getActivity().startService(appWidgetService);
     }
 
     public interface OnFavoriteListFragmentInteractionListener {
