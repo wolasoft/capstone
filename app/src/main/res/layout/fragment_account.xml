@@ -7,133 +7,127 @@
         <variable name="account" type="com.wolasoft.maplenou.data.entities.Account" />
     </data>
 
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageHolder"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/bg_account_person"
+            android:padding="@dimen/spacer4">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/imageHolder"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@drawable/bg_account_person"
-                android:padding="@dimen/spacer4">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile"
-                    android:layout_width="@dimen/account_profile_image_size"
-                    android:layout_height="@dimen/account_profile_image_size"
-                    app:profileImage="@{account.imageUrl}"
-                    app:civ_border_width="1dp"
-                    app:civ_border_color="@color/colorWhite"
-                    tools:src="@drawable/ic_person_white_24dp"
-                    android:contentDescription="@string/account_details_profile_description"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
-
-                <TextView
-                    android:id="@+id/nameTV"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    style="@style/title.white.medium"
-                    android:layout_marginTop="@dimen/spacer1"
-                    android:layout_marginStart="@dimen/spacer4"
-                    android:layout_marginLeft="@dimen/spacer4"
-                    android:text="@{account.person.fullName()}"
-                    tools:text="Komi Wolanyo KOUDO"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/profile"
-                    app:layout_constraintLeft_toRightOf="@id/profile"
-                    app:layout_constraintEnd_toStartOf="@+id/moreDetailsIMG"
-                    app:layout_constraintRight_toLeftOf="@+id/moreDetailsIMG"/>
-
-                <TextView
-                    android:id="@+id/birthInfo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    style="@style/body2.white"
-                    android:layout_marginTop="@dimen/spacer1"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Né le 10/10/1900 à Strasbourg"
-                    app:layout_constraintTop_toBottomOf="@id/nameTV"
-                    app:layout_constraintStart_toStartOf="@id/nameTV"
-                    app:layout_constraintLeft_toLeftOf="@id/nameTV"
-                    app:layout_constraintEnd_toStartOf="@+id/moreDetailsIMG"
-                    app:layout_constraintRight_toLeftOf="@+id/moreDetailsIMG"/>
-
-                <ImageView
-                    android:id="@+id/moreDetailsIMG"
-                    android:layout_width="20dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    android:tint="@color/colorWhite"
-                    android:layout_marginStart="@dimen/spacer4"
-                    android:layout_marginLeft="@dimen/spacer4"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile"
+                android:layout_width="@dimen/account_profile_image_size"
+                android:layout_height="@dimen/account_profile_image_size"
+                app:profileImage="@{account.imageUrl}"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/colorWhite"
+                tools:src="@drawable/ic_person_white_24dp"
+                android:contentDescription="@string/account_details_profile_description"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
-                android:id="@+id/announcementsTV"
-                android:layout_width="match_parent"
+                android:id="@+id/nameTV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/account_details_my_announcements_title"
-                style="@style/subhead.main.bold"
-                android:padding="@dimen/spacer4"
-                android:background="@drawable/bg_account_section_border"
+                style="@style/title.white.medium"
+                android:layout_marginTop="@dimen/spacer1"
+                android:layout_marginStart="@dimen/spacer4"
+                android:layout_marginLeft="@dimen/spacer4"
+                android:text="@{account.person.fullName()}"
+                tools:text="Komi Wolanyo KOUDO"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profile"
+                app:layout_constraintLeft_toRightOf="@id/profile"
+                app:layout_constraintEnd_toStartOf="@+id/moreDetailsIMG"
+                app:layout_constraintRight_toLeftOf="@+id/moreDetailsIMG"/>
+
+            <TextView
+                android:id="@+id/birthInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/body2.white"
+                android:layout_marginTop="@dimen/spacer1"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="Né le 10/10/1900 à Strasbourg"
+                app:layout_constraintTop_toBottomOf="@id/nameTV"
+                app:layout_constraintStart_toStartOf="@id/nameTV"
+                app:layout_constraintLeft_toLeftOf="@id/nameTV"
+                app:layout_constraintEnd_toStartOf="@+id/moreDetailsIMG"
+                app:layout_constraintRight_toLeftOf="@+id/moreDetailsIMG"/>
+
+            <ImageView
+                android:id="@+id/moreDetailsIMG"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_chevron_right_black_24dp"
+                android:tint="@color/colorWhite"
+                android:layout_marginStart="@dimen/spacer4"
+                android:layout_marginLeft="@dimen/spacer4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
-            <FrameLayout
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/announcementsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account_details_my_announcements_title"
+            style="@style/subhead.main.bold"
+            android:padding="@dimen/spacer4"
+            android:background="@drawable/bg_account_section_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+            <include
+                android:id="@+id/networkErrorHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                layout="@layout/network_error"/>
 
-                <include
-                    android:id="@+id/networkErrorHolder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    layout="@layout/network_error"/>
+            <include
+                android:id="@+id/emptyListHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                layout="@layout/empty_list"/>
 
-                <include
-                    android:id="@+id/emptyListHolder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    layout="@layout/empty_list"/>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/ProgressBar"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:layout_gravity="center"/>
+        </FrameLayout>
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="@style/ProgressBar"
-                    android:visibility="visible"
-                    tools:visibility="visible"
-                    android:layout_gravity="center"/>
-            </FrameLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </layout>

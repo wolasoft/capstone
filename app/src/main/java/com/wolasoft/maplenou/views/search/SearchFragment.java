@@ -106,10 +106,13 @@ public class SearchFragment extends Fragment {
             }
 
             dataBinding.searchButton.setOnClickListener(v -> {
-                if (!dataBinding.titleEdit.getText().toString().equals("")) {
-                    if (searchParams == null) {
-                        searchParams = new Search();
-                    }
+                if (searchParams == null) {
+                    searchParams = new Search();
+                }
+
+                if (dataBinding.titleEdit.getText().toString().equals("")) {
+                    searchParams.setTitle(null);
+                } else {
                     searchParams.setTitle(dataBinding.titleEdit.getText().toString());
                 }
 

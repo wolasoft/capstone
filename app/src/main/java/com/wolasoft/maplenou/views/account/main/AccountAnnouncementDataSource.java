@@ -61,7 +61,7 @@ public class AccountAnnouncementDataSource extends PageKeyedDataSource<Integer, 
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
-        this.repository.getAnnouncements(this.accountUuid, FIRST_PAGE)
+        this.repository.getAnnouncements(this.accountUuid, params.key)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {
@@ -81,7 +81,7 @@ public class AccountAnnouncementDataSource extends PageKeyedDataSource<Integer, 
     @Override
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Announcement> callback) {
         progressLiveStatus.postValue(LoadingState.LOADING_MORE);
-        this.repository.getAnnouncements(this.accountUuid, FIRST_PAGE)
+        this.repository.getAnnouncements(this.accountUuid, params.key)
                 .enqueue(new Callback<ApiResponse<Announcement>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<Announcement>> call, Response<ApiResponse<Announcement>> response) {

@@ -27,6 +27,8 @@ import com.wolasoft.maplenou.views.search.SearchActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 public class AnnouncementListFragment extends SimpleFragment implements
@@ -39,6 +41,7 @@ public class AnnouncementListFragment extends SimpleFragment implements
     private AnnouncementAdapter adapter;
     private AnnouncementViewModel announcementViewModel;
     private Search searchParams;
+    private List<Announcement> retrivedAnnouncements;
 
     public AnnouncementListFragment() { }
 
@@ -120,7 +123,10 @@ public class AnnouncementListFragment extends SimpleFragment implements
 
     private void startObserving() {
         announcementViewModel.getItemPagedList()
-                .observe(this, announcements -> adapter.submitList(announcements));
+                .observe(this, announcements -> {
+                    retrivedAnnouncements = announcements;
+                    adapter.submitList(announcements);
+                });
 
         announcementViewModel.getProgressLiveStatus().observe(this, loadingState -> {
             switch (loadingState) {
@@ -129,6 +135,11 @@ public class AnnouncementListFragment extends SimpleFragment implements
                     return;
                 case LOADED:
                     dataBinding.progressBar.setVisibility(View.GONE);
+                    if (retrivedAnnouncements == null || retrivedAnnouncements.size() <= 0) {
+                        dataBinding.emptyListHolder.setVisibility(View.VISIBLE);
+                    } else {
+                        dataBinding.emptyListHolder.setVisibility(View.GONE);
+                    }
                     return;
                 case ERROR:
                     dataBinding.progressBar.setVisibility(View.GONE);
