@@ -1,7 +1,6 @@
 package com.wolasoft.maplenou.views.announcement.list;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.FragmentListAnnouncementBinding;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.search.SearchActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
@@ -34,7 +34,6 @@ public class AnnouncementListFragment extends SimpleFragment implements
 
     private static final int SEARCH_REQUEST_CODE = 1;
     private FragmentListAnnouncementBinding dataBinding;
-    private OnAnnouncementListFragmentInteractionListener mListener;
     @Inject
     public AnnouncementViewModelFactory factory;
     private AnnouncementAdapter adapter;
@@ -154,27 +153,10 @@ public class AnnouncementListFragment extends SimpleFragment implements
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnAnnouncementListFragmentInteractionListener) {
-            mListener = (OnAnnouncementListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnAnnouncementListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    @Override
     public void announcementClicked(Announcement announcement) {
-        if (mListener != null) {
-            mListener.onAnnouncementClicked(announcement);
-        }
+        Intent intent = new Intent(getContext(), AnnouncementDetailsActivity.class);
+        intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
+        startActivity(intent);
     }
 
     @Override
@@ -188,7 +170,5 @@ public class AnnouncementListFragment extends SimpleFragment implements
         return;
     }
 
-    public interface OnAnnouncementListFragmentInteractionListener {
-        void onAnnouncementClicked(Announcement announcement);
-    }
+    public interface OnAnnouncementListFragmentInteractionListener { }
 }

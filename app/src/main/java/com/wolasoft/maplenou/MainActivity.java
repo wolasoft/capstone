@@ -14,18 +14,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
-import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
+import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
-import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
-import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
 import com.wolasoft.maplenou.views.message.MessageFragment;
@@ -144,20 +141,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onSaveInstanceState(outState);
         outState.putString(CURRENT_FRAGMENT_TAG, currentTag);
         outState.putInt(CURRENT_TAB_ID, currentTabId);
-    }
-
-    @Override
-    public void onAnnouncementClicked(Announcement announcement) {
-        Intent intent = new Intent(this, AnnouncementDetailsActivity.class);
-        intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
-        startActivity(intent);
-    }
-
-    @Override
-    public void onFavoriteAnnouncementSelected(Announcement announcement) {
-        Intent intent = new Intent(this, FavoriteDetailsActivity.class);
-        intent.putExtra(FavoriteDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
-        startActivity(intent);
     }
 
     @Override

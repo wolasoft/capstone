@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.views.account.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
@@ -103,7 +105,11 @@ public class AccountFragment extends SimpleFragment
     }
 
     @Override
-    public void announcementClicked(Announcement announcement) { }
+    public void announcementClicked(Announcement announcement) {
+        Intent intent = new Intent(getContext(), AnnouncementDetailsActivity.class);
+        intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
+        startActivity(intent);
+    }
 
     private void initViews() {
         account = this.repository.getAccount();
