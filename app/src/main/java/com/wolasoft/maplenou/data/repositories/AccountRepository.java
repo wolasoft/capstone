@@ -1,10 +1,12 @@
 package com.wolasoft.maplenou.data.repositories;
 
 import com.google.gson.JsonObject;
+import com.wolasoft.maplenou.data.api.ApiResponse;
 import com.wolasoft.maplenou.data.api.errors.ErrorUtils;
 import com.wolasoft.maplenou.data.api.services.AccountService;
 import com.wolasoft.maplenou.data.api.services.CallBack;
 import com.wolasoft.maplenou.data.entities.Account;
+import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.entities.Token;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 
@@ -79,6 +81,11 @@ public class AccountRepository implements IAccountRepository {
                 }
             }
         });
+    }
+
+    @Override
+    public Call<ApiResponse<Announcement>> getAnnouncements(String uuid, int page) {
+        return this.accountService.getAnnouncements(uuid, page);
     }
 
     @Override

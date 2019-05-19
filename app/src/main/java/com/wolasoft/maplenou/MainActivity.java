@@ -2,6 +2,7 @@ package com.wolasoft.maplenou;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,17 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
-import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
+import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
-import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
-import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
 import com.wolasoft.maplenou.views.message.MessageFragment;
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements
         AccountFragment.OnFragmentAccountInteractionListener {
 
     private static final String ACCOUNT_FRAGMENT_TAG = "ACCOUNT_FRAGMENT_TAG";
+    private static final String ACCOUNT_FRAGMENT_DETAILS_TAG = "ACCOUNT_DETAILS_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_CREATION_FRAGMENT_TAG
             = "ANNOUNCEMENT_CREATION_FRAGMENT_TAG";
     private static final String ANNOUNCEMENT_LIST_FRAGMENT_TAG = "ANNOUNCEMENT_LIST_FRAGMENT_TAG";
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements
                                 MessageFragment.newInstance(),
                                 MESSAGE_FRAGMENT_TAG, false);
                         return true;
-                    case R.id.navigation_person:
-                        currentTabId = R.id.navigation_person;
+                    case R.id.navigation_account:
+                        currentTabId = R.id.navigation_account;
                         if (!preferences.isAccountConnected()) {
                             mustLogin();
                             return true;
@@ -145,17 +145,22 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onAnnouncementClicked(Announcement announcement) {
-        Intent intent = new Intent(this, AnnouncementDetailsActivity.class);
-        intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
-        startActivity(intent);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onFavoriteAnnouncementSelected(Announcement announcement) {
-        Intent intent = new Intent(this, FavoriteDetailsActivity.class);
-        intent.putExtra(FavoriteDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
-        startActivity(intent);
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (fragmentManager.getBackStackEntryCount() == 0) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
     }
 
     @Override
@@ -177,6 +182,13 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onDisconnect() {
         addOrReplaceFragment(LoginFragment.newInstance(), LOGIN_FRAGMENT_TAG, false);
+    }
+
+    @Override
+    public void onMoreUserInfoClicked() {
+        addOrReplaceFragment(AccountDetailsFragment.newInstance(), ACCOUNT_FRAGMENT_DETAILS_TAG, true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override

@@ -23,7 +23,7 @@
         android:title="@string/menu_title_message" />
 
     <item
-        android:id="@+id/navigation_person"
+        android:id="@+id/navigation_account"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/menu_title_person" />
 

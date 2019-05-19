@@ -1,7 +1,6 @@
 package com.wolasoft.maplenou.views.favorite.list;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -26,7 +25,7 @@ import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding
 import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
-import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
+import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.ExecutorUtils;
 import com.wolasoft.waul.utils.ImageUtils;
@@ -37,7 +36,6 @@ public class FavoriteListFragment extends SimpleFragment
         implements FavoriteAdapter.OnAnnouncementClickedListener {
 
     private FragmentAnnouncementFavoriteListBinding dataBinding;
-    private OnFavoriteListFragmentInteractionListener listener;
     @Inject
     public FavoriteViewModelFactory factory;
     private FavoriteAdapter adapter;
@@ -138,27 +136,10 @@ public class FavoriteListFragment extends SimpleFragment
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof AnnouncementListFragment.OnAnnouncementListFragmentInteractionListener) {
-            listener = (FavoriteListFragment.OnFavoriteListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFavoriteListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
-    @Override
     public void announcementClicked(Announcement announcement) {
-        if (listener != null) {
-            listener.onFavoriteAnnouncementSelected(announcement);
-        }
+        Intent intent = new Intent(getContext(), FavoriteDetailsActivity.class);
+        intent.putExtra(FavoriteDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
+        startActivity(intent);
     }
 
     private void updateAppWidget() {
@@ -167,7 +148,5 @@ public class FavoriteListFragment extends SimpleFragment
         getActivity().startService(appWidgetService);
     }
 
-    public interface OnFavoriteListFragmentInteractionListener {
-        void onFavoriteAnnouncementSelected(Announcement announcement);
-    }
+    public interface OnFavoriteListFragmentInteractionListener { }
 }

@@ -1,0 +1,287 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="account" type="com.wolasoft.maplenou.data.entities.Account" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/imageHolder"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/spacer4">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:profileImage="@{account.imageUrl}"
+                    app:civ_border_width="3dp"
+                    app:civ_border_color="@color/colorWhite"
+                    tools:src="@drawable/ic_person_white_24dp"
+                    android:contentDescription="@string/account_details_profile_description"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/headline.white.bold"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacer4"
+                    android:text="@{account.person.fullName()}"
+                    tools:text="Komi Wolanyo KOUDO"/>
+
+                <TextView
+                    android:id="@+id/birthInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/body1.white"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacer1"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    tools:text="Né le 10/10/1900 à Strasbourg"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/accountInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account_details_account_info_label"
+                style="@style/subhead.main.bold"
+                android:padding="@dimen/spacer4"
+                android:background="@drawable/bg_account_section_border"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/emailInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/accountInfo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_email_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.email}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/phoneNumberInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/emailInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_phone_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.phoneNumber}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/lastLoginInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_last_login_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:date="@{account.lastLogin}"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/identityInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account_details_identity_info_label"
+                style="@style/subhead.main.bold"
+                android:padding="@dimen/spacer4"
+                android:background="@drawable/bg_account_section_border"
+                app:layout_constraintTop_toBottomOf="@id/lastLoginInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardTypeInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/identityInfo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_type_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.person.card.type}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardNumberInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/cardTypeInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_number_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.person.card.number}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardIssueDateInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/cardNumberInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_issue_date_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:date="@{account.person.card.issueDate}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardExpirationDateInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/cardIssueDateInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_expiration_date_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:date="@{account.person.card.expirationDate}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardIssuingOfficeInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/cardExpirationDateInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_issuing_office_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.person.card.issuingOffice}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/cardNationalityInfoHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AccountInfoLine"
+                app:layout_constraintTop_toBottomOf="@id/cardIssuingOfficeInfoHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AccountInfoLabel"
+                    android:text="@string/account_details_card_nationality_label"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{account.person.card.nationality}"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
