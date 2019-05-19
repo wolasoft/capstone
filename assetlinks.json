@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.wolasoft.maplenou",
+    "sha256_cert_fingerprints":
+    ["03:0C:95:9A:64:02:5B:7F:5F:90:CE:E8:BE:16:4C:4E:F1:45:7E:B9:3A:DD:32:9C:40:72:4F:71:B5:CB:45:7F"]
+  }
+}]
