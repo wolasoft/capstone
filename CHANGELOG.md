@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 - Add google analytics to analyze how users use the application
 - As a user i can see announcer address in an announcement details view
 - When adding an announcement as favorite, it images are saved locally
+- As user i can see my published announcements in account section 
 
 ### Changed
 - **NA**

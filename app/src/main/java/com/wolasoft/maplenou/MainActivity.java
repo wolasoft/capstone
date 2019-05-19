@@ -2,6 +2,7 @@ package com.wolasoft.maplenou;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -144,6 +145,25 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (fragmentManager.getBackStackEntryCount() == 0) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
+
+    @Override
     public void onLoginSucceeded() {
         navigation.setSelectedItemId(currentTabId);
     }
@@ -167,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onMoreUserInfoClicked() {
         addOrReplaceFragment(AccountDetailsFragment.newInstance(), ACCOUNT_FRAGMENT_DETAILS_TAG, true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
