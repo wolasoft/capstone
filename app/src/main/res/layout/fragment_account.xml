@@ -99,6 +99,39 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <include
+                    android:id="@+id/networkErrorHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    layout="@layout/network_error"/>
+
+                <include
+                    android:id="@+id/emptyListHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    layout="@layout/empty_list"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/ProgressBar"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
         </LinearLayout>
 
     </ScrollView>

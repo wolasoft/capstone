@@ -17,7 +17,7 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentAccountDetailsBinding;
-import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.waul.fragments.SimpleFragment;
 
 import javax.inject.Inject;

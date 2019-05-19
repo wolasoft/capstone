@@ -18,7 +18,7 @@ import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
-import com.wolasoft.maplenou.views.account.AccountFragment;
+import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;

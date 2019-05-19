@@ -4,9 +4,13 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
+import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.data.repositories.CategoryRepository;
 import com.wolasoft.maplenou.data.repositories.CityRepository;
+import com.wolasoft.maplenou.views.account.main.AccountAnnouncementDataSource;
+import com.wolasoft.maplenou.views.account.main.AccountAnnouncementDataSourceFactory;
+import com.wolasoft.maplenou.views.account.main.AccountAnnouncementViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsViewModelFactory;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSource;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementDataSourceFactory;
@@ -40,6 +44,12 @@ public class DataModule {
         return new AnnouncementDataSource(repository);
     }
 
+    @Provides
+    @Singleton
+    AccountAnnouncementDataSource provideAccountAnnouncementDataSource(AccountRepository repository) {
+        return new AccountAnnouncementDataSource(repository);
+    }
+
     // data source factories
     @Provides
     @Singleton
@@ -48,12 +58,26 @@ public class DataModule {
         return new AnnouncementDataSourceFactory(dataSource);
     }
 
+    @Provides
+    @Singleton
+    AccountAnnouncementDataSourceFactory provideAccountAnnouncementDataSourceFactory(
+            AccountAnnouncementDataSource dataSource) {
+        return new AccountAnnouncementDataSourceFactory(dataSource);
+    }
+
     // view model factories
     @Provides
     @Singleton
     AnnouncementViewModelFactory provideAnnouncementViewModelFactory(
             AnnouncementDataSourceFactory factory) {
         return new AnnouncementViewModelFactory(factory);
+    }
+
+    @Provides
+    @Singleton
+    AccountAnnouncementViewModelFactory provideAccountAnnouncementViewModelFactory(
+            AccountAnnouncementDataSourceFactory factory) {
+        return new AccountAnnouncementViewModelFactory(factory);
     }
 
     @Provides

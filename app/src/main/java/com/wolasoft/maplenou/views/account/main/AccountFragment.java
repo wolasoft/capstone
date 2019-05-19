@@ -1,4 +1,4 @@
-package com.wolasoft.maplenou.views.account;
+package com.wolasoft.maplenou.views.account.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,22 +11,33 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.wolasoft.maplenou.MaplenouApplication;
 import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.entities.Account;
+import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
 import com.wolasoft.waul.fragments.SimpleFragment;
+import com.wolasoft.waul.utils.NetworkUtils;
 
 import javax.inject.Inject;
 
-public class AccountFragment extends SimpleFragment {
+public class AccountFragment extends SimpleFragment
+        implements AccountAnnouncementAdapter.OnAnnouncementClickedListener {
 
     private FragmentAccountBinding dataBinding;
     @Inject
     public AccountRepository repository;
+    @Inject
+    public AccountAnnouncementViewModelFactory factory;
+    private AccountAnnouncementAdapter adapter;
+    private AccountAnnouncementViewModel announcementViewModel;
     private OnFragmentAccountInteractionListener mListener;
+    private Account account;
 
     public AccountFragment() { }
 
@@ -91,8 +102,11 @@ public class AccountFragment extends SimpleFragment {
         mListener = null;
     }
 
+    @Override
+    public void announcementClicked(Announcement announcement) { }
+
     private void initViews() {
-        Account account = this.repository.getAccount();
+        account = this.repository.getAccount();
         dataBinding.setAccount(account);
         String birthDate = account.getPerson().getBirthdayDate();
         String placeOfBirth = account.getPerson().getPlaceOfBirth();
@@ -107,6 +121,49 @@ public class AccountFragment extends SimpleFragment {
                 mListener.onMoreUserInfoClicked();
             }
         });
+
+        initAccountAnnouncement();
+    }
+
+    private void initAccountAnnouncement() {
+        if (!NetworkUtils.isInternetAvailable(getContext())) {
+            dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+        } else {
+            dataBinding.networkErrorHolder.setVisibility(View.GONE);
+            adapter = new AccountAnnouncementAdapter(this);
+            announcementViewModel = ViewModelProviders
+                            .of(this, factory).get(AccountAnnouncementViewModel.class);
+
+            announcementViewModel.getItemPagedList(account.getUuid())
+                    .observe(this, announcements -> adapter.submitList(announcements));
+
+            announcementViewModel.getProgressLiveStatus().observe(this, loadingState -> {
+                switch (loadingState) {
+                    case LOADING:
+                        dataBinding.progressBar.setVisibility(View.VISIBLE);
+                        return;
+                    case LOADED:
+                        dataBinding.progressBar.setVisibility(View.GONE);
+                        return;
+                    case ERROR:
+                        dataBinding.progressBar.setVisibility(View.GONE);
+                        dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+                        return;
+                    case LOADING_MORE:
+                        return;
+                    case LOADED_MORE:
+                        return;
+                    case ERROR_LOADING_MORE:
+                        return;
+                }
+            });
+
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
+                    getContext(), RecyclerView.VERTICAL, false);
+            dataBinding.recyclerView.setLayoutManager(layoutManager);
+            dataBinding.recyclerView.setAdapter(adapter);
+            dataBinding.recyclerView.setHasFixedSize(true);
+        }
     }
 
     public interface OnFragmentAccountInteractionListener {
