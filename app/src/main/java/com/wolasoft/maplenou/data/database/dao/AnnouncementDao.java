@@ -10,6 +10,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import java.util.List;
+
 @Dao
 public interface AnnouncementDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -22,4 +24,6 @@ public interface AnnouncementDao {
     void delete(String uuid);
     @Query("SELECT * FROM announcements ORDER BY id DESC")
     DataSource.Factory<Integer, Announcement> getAllPaged();
+    @Query("SELECT * FROM announcements ORDER BY id DESC LIMIT 1 OFFSET 0")
+    Announcement getLatest();
 }
