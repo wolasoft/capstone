@@ -22,6 +22,7 @@
             android:layout_height="@dimen/list_item_announcement_height"
             android:contentDescription="@string/content_description_list_item_announcement_thumbnail"
             app:localImageUrl="@{announcement.photos}"
+            android:transitionName="thumbnailTransition"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

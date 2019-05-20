@@ -71,7 +71,7 @@ public class FavoriteAdapter extends
         public void onClick(View v) {
             int position = getAdapterPosition();
             Announcement announcement = getItem(position);
-            listener.announcementClicked(announcement);
+            listener.announcementClicked(announcement, dataBinding.thumbnail);
         }
 
         void bind(Announcement announcement) {
@@ -80,6 +80,6 @@ public class FavoriteAdapter extends
     }
 
     public interface OnAnnouncementClickedListener {
-        void announcementClicked(Announcement announcement);
+        void announcementClicked(Announcement announcement, View imageView);
     }
 }
