@@ -4,8 +4,4 @@
         <domain includeSubdomains="true">pythonanywhere.com</domain>
     </domain-config>
 
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">pythonanywhere.com</domain>
-    </domain-config>
-
 </network-security-config>
