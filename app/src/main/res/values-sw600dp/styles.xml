@@ -35,4 +35,15 @@
     <style name="DetailsItemDescription" parent="title.text">
         <item name="android:lineSpacingExtra">5dp</item>
     </style>
+
+    <style name="AnnouncementInfoLine" parent="headline.main.bold">
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@drawable/bg_border_bottom</item>
+        <item name="android:paddingTop">@dimen/spacer2</item>
+        <item name="android:paddingBottom">@dimen/spacer2</item>
+        <item name="android:paddingStart">@dimen/spacer4</item>
+        <item name="android:paddingLeft">@dimen/spacer4</item>
+        <item name="android:paddingEnd">@dimen/spacer4</item>
+        <item name="android:paddingRight">@dimen/spacer4</item>
+    </style>
 </resources>

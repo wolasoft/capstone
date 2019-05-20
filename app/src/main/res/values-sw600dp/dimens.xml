@@ -18,5 +18,5 @@
 
     <!--announcement-->
     <dimen name="announcement_details_image_height">400dp</dimen>
-    <dimen name="announcement_details_padding">@dimen/spacer16</dimen>
+    <dimen name="announcement_details_margin">@dimen/spacer16</dimen>
 </resources>
