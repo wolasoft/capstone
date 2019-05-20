@@ -2,4 +2,7 @@
     <!--list item-->
     <dimen name="fragment_horizontal_margin">250dp</dimen>
     <dimen name="operation_message_image_holder_height">300dp</dimen>
+
+    <!--announcement-->
+    <dimen name="announcement_details_margin">@dimen/spacer32</dimen>
 </resources>

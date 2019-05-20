@@ -4,7 +4,7 @@
     <dimen name="operation_message_image_holder_height">350dp</dimen>
 
     <!--list item-->
-    <dimen name="list_item_announcement_width">-1dp</dimen>
+    <dimen name="list_item_announcement_width">0dp</dimen>
     <dimen name="list_item_announcement_height">300dp</dimen>
     <dimen name="list_item_announcement_padding">@dimen/spacer16</dimen>
     <dimen name="list_item_announcement_padding_top">@dimen/spacer1</dimen>
@@ -18,5 +18,5 @@
 
     <!--announcement-->
     <dimen name="announcement_details_image_height">400dp</dimen>
-    <dimen name="announcement_details_padding">@dimen/spacer16</dimen>
+    <dimen name="announcement_details_margin">@dimen/spacer16</dimen>
 </resources>
