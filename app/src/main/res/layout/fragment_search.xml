@@ -11,6 +11,10 @@
             android:id="@+id/mainContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginLeft="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginRight="@dimen/fragment_horizontal_margin"
             tools:context="com.wolasoft.maplenou.views.search.SearchFragment">
 
             <com.google.android.material.textfield.TextInputLayout
