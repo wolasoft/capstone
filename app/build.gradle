@@ -47,7 +47,7 @@ android {
         prod {
             dimension 'version'
             applicationId "com.wolasoft.maplenou.prod"
-            buildConfigField "String", "HOST", "\"http://5cadd57a845049001423bfe0.mockapi.io/api/v1/\""
+            buildConfigField "String", "HOST", "\"http://wolasoft.pythonanywhere.com/\""
         }
 
         local {
