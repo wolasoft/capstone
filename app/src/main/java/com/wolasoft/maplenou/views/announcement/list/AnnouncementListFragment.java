@@ -66,7 +66,6 @@ public class AnnouncementListFragment extends SimpleFragment implements
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_announcement,
                 container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
-        setTitle(R.string.announcement_list_title);
         initViews();
 
         return dataBinding.getRoot();

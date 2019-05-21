@@ -88,7 +88,6 @@ public class CreateAnnouncementFragment extends SimpleFragment {
         dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_create_announcement, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
-        setTitle(R.string.announcement_creation_title);
         tracker.sendFragmentOpenEvent(Tracker.Values.VALUE_CREATE_ANOUNCEMENT_FRAGMENT);
 
         initViews();

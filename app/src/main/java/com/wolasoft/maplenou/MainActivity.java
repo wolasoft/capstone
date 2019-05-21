@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
+        setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         tracker.sendEvent(FirebaseAnalytics.Event.APP_OPEN, null);
         navigation = findViewById(R.id.navigation);
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onSubscribeClicked() {
-        addOrReplaceFragment(SubscribeFragment.newInstance(), SUBSCRIBE_FRAGMENT_TAG, false);
+        addOrReplaceFragment(SubscribeFragment.newInstance(), SUBSCRIBE_FRAGMENT_TAG, true);
     }
 
     @Override

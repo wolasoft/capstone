@@ -61,7 +61,6 @@ public class AccountFragment extends SimpleFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
-        setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
         initViews();
         return dataBinding.getRoot();

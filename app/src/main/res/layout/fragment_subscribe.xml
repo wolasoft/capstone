@@ -22,6 +22,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_account_creation_title"
+                    style="@style/display1.main.bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <com.wolasoft.waul.widgets.CustomEditText
                     android:id="@+id/emailEdit"
                     android:layout_width="match_parent"
@@ -29,7 +41,7 @@
                     style="@style/EditTextEmail"
                     android:hint="@string/account_subscribe_edittext_email_hint"
                     android:layout_marginTop="@dimen/spacer6"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
