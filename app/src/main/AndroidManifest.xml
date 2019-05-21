@@ -22,6 +22,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".views.fullscreen.FullScreenActivity"
+            android:label=""/>
+
         <service
             android:name=".services.UpdateWidgetService"
             android:exported="false" />

@@ -27,6 +27,7 @@ import com.wolasoft.maplenou.databinding.FragmentFavoriteDetailsBinding;
 import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.Tracker;
+import com.wolasoft.maplenou.views.fullscreen.FullScreenActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.DeviceUtils;
@@ -34,6 +35,7 @@ import com.wolasoft.waul.utils.ExecutorUtils;
 import com.wolasoft.waul.utils.ImageUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -149,6 +151,17 @@ public class FavoriteDetailsFragment extends SimpleFragment {
                     dataBinding.phoneTV.setOnClickListener(v -> call());
                     dataBinding.smsTV.setVisibility(View.VISIBLE);
                     dataBinding.phoneTV.setVisibility(View.VISIBLE);
+                }
+
+                if (announcement.getPhotos().size() > 0) {
+                    dataBinding.images.setImageClickListener(position -> {
+                        List<Photo> photos = announcement.getPhotos();
+                        Intent intent = new Intent(getContext(), FullScreenActivity.class);
+                        intent.putParcelableArrayListExtra(
+                                FullScreenActivity.ARG_PHOTOS, new ArrayList<>(photos));
+                        intent.putExtra(FullScreenActivity.ARG_IS_LOCAL_PHOTOS, true);
+                        startActivity(intent);
+                    });
                 }
             }
             dataBinding.setAnnouncement(announcement);
