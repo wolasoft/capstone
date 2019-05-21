@@ -135,11 +135,13 @@ public class SearchFragment extends Fragment {
             dataBinding.categoryTV.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), CategoryListActivity.class);
                 startActivityForResult(intent, CATEGORY_LIST_REQUEST_CODE);
+                getActivity().overridePendingTransition(R.anim.enter, R.anim.exit);
             });
 
             dataBinding.cityTV.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), CityListActivity.class);
                 startActivityForResult(intent, CITY_LIST_REQUEST_CODE);
+                getActivity().overridePendingTransition(R.anim.enter, R.anim.exit);
             });
         }
     }
