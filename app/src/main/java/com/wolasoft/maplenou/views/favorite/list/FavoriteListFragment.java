@@ -70,7 +70,6 @@ public class FavoriteListFragment extends SimpleFragment
         dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_announcement_favorite_list, container, false);
         MaplenouApplication.app().getAppComponent().inject(this);
-        setTitle(R.string.announcement_favorite_announcement_list_title);
         initViews();
         setItemTouchHelper();
 
