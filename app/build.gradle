@@ -75,8 +75,10 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${rootProject.ext.supportLibraryVersion}"
     implementation "androidx.cardview:cardview:${rootProject.ext.supportLibraryVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.ext.supportLibraryVersion}"
+    // tests
     testImplementation "junit:junit:4.12"
     androidTestImplementation "androidx.test:runner:1.1.1"
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation "androidx.test.espresso:espresso-core:3.1.1"
 
     // custom libraries
