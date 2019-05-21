@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements
     private Fragment currentFragment;
     private String currentTag;
     private int currentTabId;
+    private InterstitialAd mInterstitialAd;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -122,13 +126,16 @@ public class MainActivity extends AppCompatActivity implements
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setTitle("");
         MaplenouApplication.app().getAppComponent().inject(this);
+
+        MobileAds.initialize(this, getString(R.string.admob_id));
+
+        showInterstitial();
+
         tracker.sendEvent(FirebaseAnalytics.Event.APP_OPEN, null);
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(dataBinding.appBar.toolbar);
-
-        MobileAds.initialize(this, getString(R.string.admob_id));
 
         fragmentManager = getSupportFragmentManager();
 
@@ -289,5 +296,21 @@ public class MainActivity extends AppCompatActivity implements
             details.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcementUuid);
             startActivity(details);
         }
+    }
+
+    private void showInterstitial() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.ad_unit_id));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+        });
+
     }
 }
