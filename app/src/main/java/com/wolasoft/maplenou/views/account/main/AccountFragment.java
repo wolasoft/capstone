@@ -24,6 +24,7 @@ import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
 import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
+import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsFragment;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
 
@@ -112,19 +113,13 @@ public class AccountFragment extends SimpleFragment
     public void announcementClicked(Announcement announcement) {
         Intent intent = new Intent(getContext(), AnnouncementDetailsActivity.class);
         intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
+        intent.putExtra(AnnouncementDetailsFragment.ARG_IS_USER_ANNOUNCEMENT, true);
         startActivity(intent);
     }
 
     private void initViews() {
         account = this.repository.getAccount();
         dataBinding.setAccount(account);
-        String birthDate = account.getPerson().getBirthdayDate();
-        String placeOfBirth = account.getPerson().getPlaceOfBirth();
-        if (birthDate != null) {
-            String birthInfo = getString(R.string.account_details_birthdate_info, birthDate, placeOfBirth);
-            dataBinding.birthInfo.setText(birthInfo);
-            dataBinding.birthInfo.setVisibility(View.VISIBLE);
-        }
 
         dataBinding.imageHolder.setOnClickListener(v -> {
             if (mListener != null) {
@@ -138,6 +133,7 @@ public class AccountFragment extends SimpleFragment
     private void initAccountAnnouncement() {
         if (!NetworkUtils.isInternetAvailable(getContext())) {
             dataBinding.networkErrorHolder.setVisibility(View.VISIBLE);
+            dataBinding.progressBar.setVisibility(View.GONE);
         } else {
             dataBinding.networkErrorHolder.setVisibility(View.GONE);
             adapter = new AccountAnnouncementAdapter(this);

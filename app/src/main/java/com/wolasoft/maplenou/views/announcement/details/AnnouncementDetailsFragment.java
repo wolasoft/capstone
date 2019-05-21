@@ -49,6 +49,7 @@ import javax.inject.Inject;
 
 public class AnnouncementDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
+    public static final String ARG_IS_USER_ANNOUNCEMENT = "is_user_announcement";
     private static final int WRITE_PERMISSION_REQUEST_CODE = 1;
 
     private FragmentAnnouncementDetailsBinding dataBinding;
@@ -62,15 +63,17 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
     public Tracker tracker;
     private MenuItem favoriteMenu;
     private String uuid;
+    private boolean isUserAnnouncement;
     private boolean isAnnouncementSaved;
     private Announcement retrievedAnnouncement;
 
     public AnnouncementDetailsFragment() { }
 
-    public static AnnouncementDetailsFragment newInstance(String uuid) {
+    public static AnnouncementDetailsFragment newInstance(String uuid, boolean isUserAnnouncement) {
         AnnouncementDetailsFragment fragment = new AnnouncementDetailsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_ANNOUNCEMENT_UUID, uuid);
+        args.putBoolean(ARG_IS_USER_ANNOUNCEMENT, isUserAnnouncement);
         fragment.setArguments(args);
         return fragment;
     }
@@ -81,6 +84,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
         setHasOptionsMenu(true);
         if (getArguments() != null) {
             uuid = getArguments().getString(ARG_ANNOUNCEMENT_UUID);
+            isUserAnnouncement = getArguments().getBoolean(ARG_IS_USER_ANNOUNCEMENT, false);
         }
     }
 
@@ -159,6 +163,10 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
 
         } else {
             favoriteMenu.setIcon(R.drawable.ic_star_border_white_24dp);
+        }
+
+        if (isUserAnnouncement) {
+            favoriteMenu.setVisible(false);
         }
     }
 
