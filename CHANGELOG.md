@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - When adding an announcement as favorite, it images are saved locally
 - As user i can see my published announcements in account section
 - Add deep linking
+- Add custom app launcher icon
 
 ### Changed
 - **NA**
