@@ -23,6 +23,7 @@ import com.wolasoft.maplenou.R;
 import com.wolasoft.maplenou.data.dto.Search;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.databinding.FragmentListAnnouncementBinding;
+import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.search.SearchActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
@@ -81,9 +82,13 @@ public class AnnouncementListFragment extends SimpleFragment implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                intent.putExtra(SearchActivity.ARG_SEARCH_PARAMS, searchParams);
-                startActivityForResult(intent, SEARCH_REQUEST_CODE);
+                Intent search = new Intent(getActivity(), SearchActivity.class);
+                search.putExtra(SearchActivity.ARG_SEARCH_PARAMS, searchParams);
+                startActivityForResult(search, SEARCH_REQUEST_CODE);
+                break;
+            case R.id.action_about:
+                Intent about = new Intent(getContext(), AboutActivity.class);
+                startActivity(about);
                 break;
         }
 

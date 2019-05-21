@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -26,6 +29,7 @@ import com.wolasoft.maplenou.databinding.FragmentAnnouncementFavoriteListBinding
 import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.SwipeToDeleteCallback;
+import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.favorite.details.FavoriteDetailsActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.ExecutorUtils;
@@ -57,6 +61,7 @@ public class FavoriteListFragment extends SimpleFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -70,6 +75,24 @@ public class FavoriteListFragment extends SimpleFragment
         setItemTouchHelper();
 
         return dataBinding.getRoot();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.favorite_list, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                Intent intent = new Intent(getContext(), AboutActivity.class);
+                startActivity(intent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void initViews() {
