@@ -14,6 +14,7 @@ public class AnnouncementDetailsActivity extends BaseActivity {
     private ActivityAnnouncementDetailsBinding dataBinding;
     public static final String ARG_ANNOUNCEMENT_UUID = "UUID";
     private String uuid;
+    private boolean isUserAnnouncement = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,15 @@ public class AnnouncementDetailsActivity extends BaseActivity {
         setSupportActionBar(dataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (getIntent().hasExtra(ARG_ANNOUNCEMENT_UUID)) {
+        if (getIntent().getExtras() != null) {
             uuid = getIntent().getStringExtra(ARG_ANNOUNCEMENT_UUID);
+            isUserAnnouncement = getIntent().getBooleanExtra(
+                    AnnouncementDetailsFragment.ARG_IS_USER_ANNOUNCEMENT, false);
         }
 
         replaceFragment(
-                R.id.detailsFragment, AnnouncementDetailsFragment.newInstance(uuid), "", false);
+                R.id.detailsFragment,
+                AnnouncementDetailsFragment.newInstance(uuid, isUserAnnouncement), "", false);
     }
 
     @Override
