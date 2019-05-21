@@ -34,6 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/announcement_details_image_height"
                     android:contentDescription="@string/content_description_list_item_announcement_images"
+                    android:transitionName="thumbnailTransition"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"

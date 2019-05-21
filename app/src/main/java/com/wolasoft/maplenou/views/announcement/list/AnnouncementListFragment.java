@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -154,6 +155,7 @@ public class AnnouncementListFragment extends SimpleFragment implements
             }
         });
     }
+
     private void search() {
         if (searchParams == null) {
             return;
@@ -164,10 +166,13 @@ public class AnnouncementListFragment extends SimpleFragment implements
     }
 
     @Override
-    public void announcementClicked(Announcement announcement) {
+    public void announcementClicked(Announcement announcement, View imageView) {
         Intent intent = new Intent(getContext(), AnnouncementDetailsActivity.class);
         intent.putExtra(AnnouncementDetailsActivity.ARG_ANNOUNCEMENT_UUID, announcement.getUuid());
-        startActivity(intent);
+        ActivityOptionsCompat optionsCompat =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(), imageView, "thumbnailTransition");
+        startActivity(intent, optionsCompat.toBundle());
     }
 
     @Override
