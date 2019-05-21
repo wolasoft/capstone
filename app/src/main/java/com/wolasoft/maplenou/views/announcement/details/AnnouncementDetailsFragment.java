@@ -33,6 +33,7 @@ import com.wolasoft.maplenou.databinding.FragmentAnnouncementDetailsBinding;
 import com.wolasoft.maplenou.services.UpdateWidgetService;
 import com.wolasoft.maplenou.utils.Constants;
 import com.wolasoft.maplenou.utils.Tracker;
+import com.wolasoft.maplenou.views.fullscreen.FullScreenActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DateUtilities;
 import com.wolasoft.waul.utils.DeviceUtils;
@@ -41,13 +42,13 @@ import com.wolasoft.waul.utils.ImageUtils;
 import com.wolasoft.waul.utils.NetworkUtils;
 import com.wolasoft.waul.widgets.WDialogBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 public class AnnouncementDetailsFragment extends SimpleFragment {
     private static final String ARG_ANNOUNCEMENT_UUID = "UUID";
-    public static final String ARG_ANNOUNCEMENT = "announcement";
     private static final int WRITE_PERMISSION_REQUEST_CODE = 1;
 
     private FragmentAnnouncementDetailsBinding dataBinding;
@@ -185,6 +186,17 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                     dataBinding.phoneTV.setOnClickListener(v -> call());
                     dataBinding.smsTV.setVisibility(View.VISIBLE);
                     dataBinding.phoneTV.setVisibility(View.VISIBLE);
+                }
+
+                if (announcement.getPhotos().size() > 0) {
+                    dataBinding.images.setImageClickListener(position -> {
+                        List<Photo> photos = announcement.getPhotos();
+                        Intent intent = new Intent(getContext(), FullScreenActivity.class);
+                        intent.putParcelableArrayListExtra(
+                                FullScreenActivity.ARG_PHOTOS, new ArrayList<>(photos));
+                        intent.putExtra(FullScreenActivity.ARG_IS_LOCAL_PHOTOS, false);
+                        startActivity(intent);
+                    });
                 }
 
             });
