@@ -124,7 +124,7 @@ public class AccountFragment extends SimpleFragment
 
         dataBinding.imageHolder.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onMoreUserInfoClicked();
+                mListener.onUserDetailsClicked(dataBinding.imageHolder, "layoutTransition");
             }
         });
 
@@ -174,6 +174,6 @@ public class AccountFragment extends SimpleFragment
 
     public interface OnFragmentAccountInteractionListener {
         void onDisconnect();
-        void onMoreUserInfoClicked();
+        void onUserDetailsClicked(View transitionView, String transitionName);
     }
 }

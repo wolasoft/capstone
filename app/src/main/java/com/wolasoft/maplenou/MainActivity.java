@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -189,8 +190,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onMoreUserInfoClicked() {
-        addOrReplaceFragment(AccountDetailsFragment.newInstance(), ACCOUNT_FRAGMENT_DETAILS_TAG, true);
+    public void onUserDetailsClicked(View transitionView, String transitionName) {
+        addOrReplaceFragment(AccountDetailsFragment.newInstance(), ACCOUNT_FRAGMENT_DETAILS_TAG,
+                true, transitionView, transitionName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -207,6 +209,11 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void addOrReplaceFragment(Fragment fragment, String tag, boolean addToBackStack) {
+        addOrReplaceFragment(fragment, tag, addToBackStack, null, null);
+    }
+
+    private void addOrReplaceFragment(Fragment fragment, String tag, boolean addToBackStack,
+                                      View transitionView, String transitionName) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.replace(R.id.fragment_container, fragment, tag);
@@ -217,6 +224,10 @@ public class MainActivity extends AppCompatActivity implements
         if (addToBackStack) {
             currentFragment = fragment;
             transaction.addToBackStack(null);
+        }
+
+        if (transitionView != null && transitionName != null) {
+            transaction.addSharedElement(transitionView, transitionName);
         }
 
         transaction.commitAllowingStateLoss();

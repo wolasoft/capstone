@@ -155,6 +155,7 @@ public class AnnouncementListFragment extends SimpleFragment implements
             }
         });
     }
+
     private void search() {
         if (searchParams == null) {
             return;
