@@ -17,16 +17,19 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.wolasoft.maplenou.data.api.errors.APIError;
 import com.wolasoft.maplenou.data.preferences.AppPreferences;
 import com.wolasoft.maplenou.databinding.ActivityMainBinding;
 import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.maplenou.views.account.details.AccountDetailsFragment;
 import com.wolasoft.maplenou.views.account.main.AccountFragment;
 import com.wolasoft.maplenou.views.account.subscribe.SubscribeFragment;
-import com.wolasoft.maplenou.views.account.subscribe.SubscribeSuccessActivity;
 import com.wolasoft.maplenou.views.announcement.create.CreateAnnouncementFragment;
+import com.wolasoft.maplenou.views.announcement.create.SuccessFragment;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.maplenou.views.announcement.list.AnnouncementListFragment;
+import com.wolasoft.maplenou.views.common.ErrorFeedBackActivity;
+import com.wolasoft.maplenou.views.common.FeedBackActivity;
 import com.wolasoft.maplenou.views.favorite.list.FavoriteListFragment;
 import com.wolasoft.maplenou.views.login.LoginFragment;
 import com.wolasoft.maplenou.views.message.MessageFragment;
@@ -38,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements
         FavoriteListFragment.OnFavoriteListFragmentInteractionListener,
         LoginFragment.OnLoginFragmentInteractionListener,
         SubscribeFragment.OnFragmentSubscribeInteractionListener,
-        AccountFragment.OnFragmentAccountInteractionListener {
+        AccountFragment.OnFragmentAccountInteractionListener,
+        CreateAnnouncementFragment.OnAnnounceCreationInteractionListener {
 
     private static final String ACCOUNT_FRAGMENT_TAG = "ACCOUNT_FRAGMENT_TAG";
     private static final String ACCOUNT_FRAGMENT_DETAILS_TAG = "ACCOUNT_DETAILS_FRAGMENT_TAG";
@@ -52,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements
     private static final String MESSAGE_FRAGMENT_TAG = "MESSAGE_FRAGMENT_TAG";
     private static final String SUBSCRIBE_FRAGMENT_TAG = "SUBSCRIBE_FRAGMENT_TAG";
     private static final String CURRENT_TAB_ID = "CURRENT_TAB_ID";
-    public static int ACCOUNT_CREATED_REQUEST_CODE = 1;
     private FragmentManager fragmentManager;
     private BottomNavigationView navigation;
     private ActivityMainBinding dataBinding;
@@ -180,8 +183,19 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onAccountCreated() {
-        Intent intent = new Intent(this, SubscribeSuccessActivity.class);
-        startActivityForResult(intent, ACCOUNT_CREATED_REQUEST_CODE);
+        navigation.setSelectedItemId(currentTabId);
+        FeedBackActivity.setFragment(SuccessFragment.newInstance(
+                R.string.account_subscribe_message_success));
+        Intent intent = new Intent(this, FeedBackActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onAccountCreationFailed(APIError error) {
+        Intent intent = new Intent(this, ErrorFeedBackActivity.class);
+        intent.putExtra(ErrorFeedBackActivity.API_ERROR_KEY, error);
+        startActivity(intent);
+        navigation.setSelectedItemId(currentTabId);
     }
 
     @Override
@@ -195,6 +209,23 @@ public class MainActivity extends AppCompatActivity implements
                 true, transitionView, transitionName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public void onAnnounceCreated() {
+        navigation.setSelectedItemId(currentTabId);
+        FeedBackActivity.setFragment(SuccessFragment.newInstance(
+                R.string.announcement_creation_success_description));
+        Intent intent = new Intent(this, FeedBackActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onAnnounceCreationFailed(APIError error) {
+        navigation.setSelectedItemId(currentTabId);
+        Intent intent = new Intent(this, ErrorFeedBackActivity.class);
+        intent.putExtra(ErrorFeedBackActivity.API_ERROR_KEY, error);
+        startActivity(intent);
     }
 
     @Override

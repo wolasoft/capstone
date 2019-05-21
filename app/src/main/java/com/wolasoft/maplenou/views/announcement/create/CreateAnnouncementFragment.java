@@ -2,6 +2,7 @@ package com.wolasoft.maplenou.views.announcement.create;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -34,8 +35,6 @@ import com.wolasoft.maplenou.utils.Tracker;
 import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.category.CategoryListActivity;
 import com.wolasoft.maplenou.views.city.CityListActivity;
-import com.wolasoft.maplenou.views.common.ErrorFeedBackActivity;
-import com.wolasoft.maplenou.views.common.FeedBackActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.DimensionUtils;
 import com.wolasoft.waul.utils.ImageUtils;
@@ -57,6 +56,7 @@ public class CreateAnnouncementFragment extends SimpleFragment {
     private static final int TAKE_IMAGE_REQUEST_CODE = 4;
     private static final int GALLERY_PERMISSION_REQUEST_CODE = 6;
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 7;
+    private OnAnnounceCreationInteractionListener mListener;
     private FragmentCreateAnnouncementBinding dataBinding;
     @Inject
     public AnnouncementRepository repository;
@@ -113,6 +113,23 @@ public class CreateAnnouncementFragment extends SimpleFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnAnnounceCreationInteractionListener) {
+            mListener = (OnAnnounceCreationInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnAnnounceCreationInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
     private void initViews() {
         dataBinding.categoryTV.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), CategoryListActivity.class);
@@ -153,14 +170,14 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                         new CallBack<Announcement>() {
                             @Override
                             public void onSuccess(Announcement data) {
-                                FeedBackActivity.setFragment(SuccessFragment.newInstance(
-                                        R.string.announcement_creation_success_description));
-                                Intent intent = new Intent(getContext(), FeedBackActivity.class);
                                 dataBinding.progressBar.setVisibility(View.GONE);
                                 Bundle bundle = new Bundle();
                                 bundle.putString(Tracker.Params.PARAM_CREATION_STATE, "success");
                                 tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_CREATION, bundle);
-                                startActivity(intent);
+
+                                if (mListener != null) {
+                                    mListener.onAnnounceCreated();
+                                }
                             }
 
                             @Override
@@ -168,10 +185,11 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                                 Bundle bundle = new Bundle();
                                 bundle.putString(Tracker.Params.PARAM_CREATION_STATE, "failed");
                                 tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_CREATION, bundle);
-                                Intent intent = new Intent(getContext(), ErrorFeedBackActivity.class);
-                                intent.putExtra(ErrorFeedBackActivity.API_ERROR_KEY, error);
                                 dataBinding.progressBar.setVisibility(View.GONE);
-                                startActivity(intent);
+
+                                if (mListener != null) {
+                                    mListener.onAnnounceCreationFailed(error);
+                                }
                             }
                         });
                 });
@@ -399,5 +417,10 @@ public class CreateAnnouncementFragment extends SimpleFragment {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    public interface OnAnnounceCreationInteractionListener {
+        void onAnnounceCreated();
+        void onAnnounceCreationFailed(APIError error);
     }
 }

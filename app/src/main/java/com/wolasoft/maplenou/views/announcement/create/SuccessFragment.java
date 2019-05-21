@@ -19,7 +19,7 @@ public class SuccessFragment extends FeedBackFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            descriptionRes = getArguments().getInt(DESCRIPTION_KEY);
+            description = getArguments().getString(DESCRIPTION_KEY);
         }
     }
 
@@ -39,7 +39,12 @@ public class SuccessFragment extends FeedBackFragment {
     }
 
     @Override
-    protected int getDescription() {
-        return descriptionRes;
+    protected int getTitleStyle() {
+        return R.style.headline_main_bold;
+    }
+
+    @Override
+    protected String getDescription() {
+        return description;
     }
 }

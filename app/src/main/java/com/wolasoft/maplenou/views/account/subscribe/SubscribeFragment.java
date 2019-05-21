@@ -1,13 +1,13 @@
 package com.wolasoft.maplenou.views.account.subscribe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -20,6 +20,7 @@ import com.wolasoft.maplenou.data.entities.Token;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentSubscribeBinding;
 import com.wolasoft.maplenou.utils.Tracker;
+import com.wolasoft.maplenou.views.common.ErrorFeedBackActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.PhoneNumberFormattingTextWatcher;
 import com.wolasoft.waul.utils.PhoneNumberUtils;
@@ -100,11 +101,14 @@ public class SubscribeFragment extends SimpleFragment {
 
             @Override
             public void onError(APIError error) {
-                // TODO handle error
                 dataBinding.progressBar.setVisibility(View.GONE);
                 Bundle bundle = new Bundle();
                 bundle.putString(Tracker.Params.PARAM_SUBSCRIBE_STATE, "failed");
                 tracker.sendEvent(Tracker.Event.EVENT_SUBSCRIBE, bundle);
+                Intent intent = new Intent(getContext(), ErrorFeedBackActivity.class);
+                intent.putExtra(ErrorFeedBackActivity.API_ERROR_KEY, error);
+                dataBinding.progressBar.setVisibility(View.GONE);
+                startActivity(intent);
             }
         };
 
@@ -133,7 +137,9 @@ public class SubscribeFragment extends SimpleFragment {
 
             @Override
             public void onError(APIError error) {
-                // TODO handle error
+                if (mListener != null) {
+                    mListener.onAccountCreationFailed(error);
+                }
             }
         });
     }
@@ -236,5 +242,6 @@ public class SubscribeFragment extends SimpleFragment {
 
     public interface OnFragmentSubscribeInteractionListener {
         void onAccountCreated();
+        void onAccountCreationFailed(APIError error);
     }
 }

@@ -39,7 +39,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/common_message_success"
-                style="@style/CommonMessageSuccess"
                 android:layout_marginTop="@dimen/spacer4"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
