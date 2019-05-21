@@ -106,9 +106,9 @@ public class CreateAnnouncementFragment extends SimpleFragment {
         dataBinding.selectImage.setOnClickListener(v -> {
             WDialogBuilder.create(getContext(), getString(R.string.message_image_source), "")
                     .setPositiveButton(R.string.message_take_photo,
-                            (dialog, which) -> requestCamera())
+                            (dialog, which) -> requestCameraPermission())
                     .setNegativeButton(R.string.message_choose_photo_from_gallery,
-                            (dialog, which) -> requestPhotoGallery())
+                            (dialog, which) -> requestPhotoGalleryPermission())
                     .create().show();
         });
 
@@ -217,57 +217,62 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                         DimensionUtils.dpToPx(getContext(),75)));
     }
 
-    private void requestPhotoGallery() {
-        if (ContextCompat.checkSelfPermission(
-                getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+    private void requestPhotoGalleryPermission() {
+        int permission = ContextCompat.checkSelfPermission(
+                getContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            boolean shouldExplain =
+                    shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
+
+            if (shouldExplain) {
                 WDialogBuilder.create(getContext(), "",
                         getString(R.string.permission_gallery_explanation_message))
                         .setPositiveButton(R.string.common_understand,
-                                (dialog, which) -> {
-                            dialog.dismiss();
-                                    ActivityCompat.requestPermissions(
-                                            getActivity(),
+                                (dialog, which) ->
+                                    requestPermissions(
                                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                            GALLERY_PERMISSION_REQUEST_CODE);
-                        })
+                                            GALLERY_PERMISSION_REQUEST_CODE))
                 .create().show();
-            } else {
-                ActivityCompat.requestPermissions(
-                        getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        GALLERY_PERMISSION_REQUEST_CODE);
+
+                return;
             }
-        } else {
-            openImageGallery();
+
+            requestPermissions(
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    GALLERY_PERMISSION_REQUEST_CODE);
+
+            return;
         }
+
+        openImageGallery();
     }
 
-    private void requestCamera() {
-        if (ContextCompat.checkSelfPermission(
-                getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    getActivity(), Manifest.permission.CAMERA)) {
+    private void requestCameraPermission() {
+        int permission = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            boolean shouldExplain = shouldShowRequestPermissionRationale(Manifest.permission.CAMERA);
+
+            if (shouldExplain) {
                 WDialogBuilder.create(getContext(), "",
                         getString(R.string.permission_camera_explanation_message))
                         .setPositiveButton(R.string.common_understand,
-                                (dialog, which) -> {
-                            dialog.dismiss();
-                                    ActivityCompat.requestPermissions(
-                                            getActivity(), new String[]{Manifest.permission.CAMERA},
-                                            CAMERA_PERMISSION_REQUEST_CODE);
-                        })
+                                (dialog, which) -> requestPermissions(
+                                            new String[]{Manifest.permission.CAMERA},
+                                            CAMERA_PERMISSION_REQUEST_CODE))
                 .create().show();
 
-            } else {
-                ActivityCompat.requestPermissions(
-                        getActivity(), new String[]{Manifest.permission.CAMERA},
-                        CAMERA_PERMISSION_REQUEST_CODE);
+                return;
+
             }
-        } else {
-            openCamera();
+
+            requestPermissions(
+                    new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+
+            return;
         }
+
+        openCamera();
     }
 
     private boolean isFormValid() {
@@ -354,26 +359,24 @@ public class CreateAnnouncementFragment extends SimpleFragment {
                                            @NonNull int[] grantResults) {
         Toast toast;
         switch (requestCode) {
-            case GALLERY_PERMISSION_REQUEST_CODE: {
+            case GALLERY_PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openImageGallery();
                 } else {
-                    toast = Toast.makeText(
-                            getContext(), R.string.permission_message_refused, Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getContext(), R.string.permission_message_refused, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 return;
-            }
-            case CAMERA_PERMISSION_REQUEST_CODE: {
+            case CAMERA_PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openCamera();
                 } else {
-                    toast = Toast.makeText(
-                            getContext(), R.string.permission_message_refused, Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getContext(), R.string.permission_message_refused, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 return;
-            }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

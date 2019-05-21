@@ -114,7 +114,7 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
                     tracker.sendEvent(Tracker.Event.EVENT_ANNOUNCEMENT_SAVED, null);
                 }
 
-                requestWritePermission();
+                requestWriteStoragePermission();
 
                 break;
             default:
@@ -325,34 +325,33 @@ public class AnnouncementDetailsFragment extends SimpleFragment {
         }
     }
 
-    private void requestWritePermission() {
+    private void requestWriteStoragePermission() {
         int permission = ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        boolean shouldExplain = ActivityCompat.shouldShowRequestPermissionRationale(
-                getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
+            boolean shouldExplain = shouldShowRequestPermissionRationale(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
             if (shouldExplain) {
                 WDialogBuilder.create(getContext(), "",
                         getString(R.string.permission_write_storage_explanation_message))
                         .setPositiveButton(R.string.common_understand,
-                                (dialog, which) -> {
-                                    dialog.dismiss();
-                                    ActivityCompat.requestPermissions(
-                                            getActivity(),
-                                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                            WRITE_PERMISSION_REQUEST_CODE);
-                                })
+                                (dialog, which) -> requestPermissions(
+                                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                        WRITE_PERMISSION_REQUEST_CODE))
                         .create().show();
-
-            } else {
-                ActivityCompat.requestPermissions(
-                        getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        WRITE_PERMISSION_REQUEST_CODE);
+                return;
             }
-        } else {
-            saveAnnouncement();
+
+            requestPermissions(
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    WRITE_PERMISSION_REQUEST_CODE);
+            
+            return;
         }
+
+        saveAnnouncement();
     }
 
     private void updateAppWidget() {
