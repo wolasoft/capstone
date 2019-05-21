@@ -1,6 +1,7 @@
 package com.wolasoft.maplenou.views.common;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ public abstract class FeedBackFragment extends Fragment {
     protected static final String DESCRIPTION_KEY = "DESCRIPTION_KEY";
     protected FragmentFeedBackBinding dataBinding;
     protected OnFeedBackInteractionListener mListener;
-    protected int descriptionRes;
+    protected String description;
 
     public FeedBackFragment() { }
 
@@ -31,6 +32,11 @@ public abstract class FeedBackFragment extends Fragment {
                              Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feed_back, container, false);
         dataBinding.titleTV.setText(getTitle());
+        if (Build.VERSION.SDK_INT < 23) {
+            dataBinding.titleTV.setTextAppearance(getContext(), getTitleStyle());
+        } else {
+            dataBinding.titleTV.setTextAppearance(getTitleStyle());
+        }
         dataBinding.descriptionTV.setText(getDescription());
         dataBinding.icon.setImageResource(getIcon());
         dataBinding.imageHolder.setBackgroundResource(getColor());
@@ -66,5 +72,6 @@ public abstract class FeedBackFragment extends Fragment {
     protected abstract int getIcon();
     protected abstract int getColor();
     protected abstract int getTitle();
-    protected abstract int getDescription();
+    protected abstract int getTitleStyle();
+    protected abstract String getDescription();
 }

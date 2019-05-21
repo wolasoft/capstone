@@ -6,10 +6,10 @@ import com.wolasoft.maplenou.R;
 
 public class FailureFeedBackFragment extends FeedBackFragment {
 
-    public static FailureFeedBackFragment newInstance(int decriptionRes) {
+    public static FailureFeedBackFragment newInstance(String descriptionRes) {
         FailureFeedBackFragment fragment = new FailureFeedBackFragment();
         Bundle args = new Bundle();
-        args.putInt(DESCRIPTION_KEY, decriptionRes);
+        args.putString(DESCRIPTION_KEY, descriptionRes);
         fragment.setArguments(args);
         return fragment;
     }
@@ -18,13 +18,13 @@ public class FailureFeedBackFragment extends FeedBackFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            descriptionRes = getArguments().getInt(DESCRIPTION_KEY);
+            description = getArguments().getString(DESCRIPTION_KEY);
         }
     }
 
     @Override
     protected int getIcon() {
-        return R.drawable.smile;
+        return R.drawable.wrong;
     }
 
     @Override
@@ -38,7 +38,12 @@ public class FailureFeedBackFragment extends FeedBackFragment {
     }
 
     @Override
-    protected int getDescription() {
-        return descriptionRes;
+    protected int getTitleStyle() {
+        return R.style.headline_red_bold;
+    }
+
+    @Override
+    protected String getDescription() {
+        return description;
     }
 }

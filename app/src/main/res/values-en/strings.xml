@@ -113,7 +113,7 @@
     <string name="content_description_added_image">Added photo to your announcement</string>
 
     <!-- http errors-->
-    <string name="http_error_505_message">Unknown inconnu</string>
+    <string name="http_error_500_message">Unknown inconnu</string>
 
     <!-- login -->
     <string name="login_title">Sign in</string>

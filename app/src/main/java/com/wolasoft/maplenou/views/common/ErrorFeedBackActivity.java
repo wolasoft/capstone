@@ -18,7 +18,7 @@ public class ErrorFeedBackActivity extends BaseActivity
     private ActivityFeedBackBinding dataBinding;
     private static APIError error;
     private final String tag = "FEEDBACK_TAG";
-    private int descriptionRes;
+    private String description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +29,32 @@ public class ErrorFeedBackActivity extends BaseActivity
             error = getIntent().getParcelableExtra(API_ERROR_KEY);
             initError();
         } else {
-            descriptionRes = R.string.http_error_505_message;
+            description = getString(R.string.http_error_500_message);
         }
 
-        Fragment fragment = FailureFeedBackFragment.newInstance(descriptionRes);
+        Fragment fragment = FailureFeedBackFragment.newInstance(description);
         replaceFragment(R.id.fragment, fragment, tag, false);
     }
 
     private void initError() {
-        switch (error.getStatusCode()) {
-            case APIError.HTTP_ERROR_500:
-                descriptionRes = R.string.http_error_505_message;
-                break;
-            case APIError.HTTP_ERROR_400:
-                break;
-            case APIError.HTTP_ERROR_404:
-                break;
-            case APIError.HTTP_ERROR_409:
-                break;
+        if (error == null) {
+            description = getString(R.string.http_error_500_message);
+        } else {
+            switch (error.getStatusCode()) {
+                case APIError.HTTP_ERROR_500:
+                    description = getString(R.string.http_error_500_message);
+                    break;
+                case APIError.HTTP_ERROR_400:
+                    break;
+                case APIError.HTTP_ERROR_404:
+                    break;
+                case APIError.HTTP_ERROR_409:
+                    break;
+                default:
+                    description = getString(R.string.http_error_500_message);
+                    break;
+
+            }
         }
     }
 

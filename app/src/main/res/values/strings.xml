@@ -117,7 +117,7 @@
     <string name="content_description_added_image">Photo ajoutée à votre annonce</string>
 
     <!-- http errors-->
-    <string name="http_error_505_message">Erreur inconnu</string>
+    <string name="http_error_500_message">Erreur inconnu</string>
 
     <!-- login -->
     <string name="login_title">Se connecter</string>
