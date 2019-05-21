@@ -9,13 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
@@ -29,6 +31,7 @@ import com.wolasoft.maplenou.data.entities.City;
 import com.wolasoft.maplenou.data.repositories.AnnouncementRepository;
 import com.wolasoft.maplenou.databinding.FragmentCreateAnnouncementBinding;
 import com.wolasoft.maplenou.utils.Tracker;
+import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.category.CategoryListActivity;
 import com.wolasoft.maplenou.views.city.CityListActivity;
 import com.wolasoft.maplenou.views.common.ErrorFeedBackActivity;
@@ -76,6 +79,7 @@ public class CreateAnnouncementFragment extends SimpleFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -90,6 +94,24 @@ public class CreateAnnouncementFragment extends SimpleFragment {
         initViews();
 
         return dataBinding.getRoot();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.message, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                Intent intent = new Intent(getContext(), AboutActivity.class);
+                startActivity(intent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void initViews() {

@@ -22,6 +22,7 @@ import com.wolasoft.maplenou.data.entities.Account;
 import com.wolasoft.maplenou.data.entities.Announcement;
 import com.wolasoft.maplenou.data.repositories.AccountRepository;
 import com.wolasoft.maplenou.databinding.FragmentAccountBinding;
+import com.wolasoft.maplenou.views.about.AboutActivity;
 import com.wolasoft.maplenou.views.announcement.details.AnnouncementDetailsActivity;
 import com.wolasoft.waul.fragments.SimpleFragment;
 import com.wolasoft.waul.utils.NetworkUtils;
@@ -81,6 +82,10 @@ public class AccountFragment extends SimpleFragment
                 if (mListener != null) {
                     mListener.onDisconnect();
                 }
+                break;
+            case R.id.action_about:
+                Intent intent = new Intent(getContext(), AboutActivity.class);
+                startActivity(intent);
                 break;
         }
 
