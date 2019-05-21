@@ -31,12 +31,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            versionNameSuffix '-RELEASE'
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug {
             minifyEnabled false
+            versionNameSuffix '-DEBUG'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -52,6 +54,7 @@ android {
 
         local {
             dimension 'version'
+            versionNameSuffix '-LOCAL'
             applicationId "com.wolasoft.maplenou.local"
             buildConfigField "String", "HOST", "\"http://192.168.0.14:80/\""
         }
